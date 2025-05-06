@@ -259,6 +259,23 @@ export async function sendVoiceMessage(
     const metadataBlob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
     formData.append('metadata', metadataBlob);
     
+    // Add user data as separate fields for easier access in Make.com
+    formData.append('userName', user.name);
+    formData.append('userEmail', user.email);
+    formData.append('userUrl', user.url || '');
+    formData.append('userMission', user.missionStatement || '');
+    formData.append('userId', user.id?.toString() || 'unknown');
+    
+    // Log what we're sending for debugging
+    console.log('Sending voice message to webhook:', channel.webhookUrl);
+    console.log('User data included:', {
+      userName: user.name,
+      userEmail: user.email,
+      userUrl: user.url || '',
+      userMission: user.missionStatement || '',
+      userId: user.id?.toString() || 'unknown'
+    });
+    
     // Send the data to the webhook as multipart/form-data
     const response = await fetch(channel.webhookUrl, {
       method: 'POST',
@@ -266,8 +283,18 @@ export async function sendVoiceMessage(
       body: formData,
     });
     
+    // Log response for debugging
+    console.log('Webhook response status:', response.status);
+    let responseText = '';
+    try {
+      responseText = await response.text();
+      console.log('Webhook response:', responseText);
+    } catch (e) {
+      console.log('Could not read response text:', e);
+    }
+    
     if (!response.ok) {
-      throw new Error(`Webhook responded with status: ${response.status}`);
+      throw new Error(`Webhook responded with status: ${response.status} - ${responseText}`);
     }
     
     // Log the execution
