@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react';
 import { Download, Upload, CheckCircle, Warning } from 'phosphor-react';
-import { Button } from '../../../components/ui/Button';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '../../../components/ui/Dialog';
-import { Checkbox } from '../../../components/ui/Checkbox';
-import { Label } from '../../../components/ui/Label';
+import { Button } from '../../ui/Button';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '../../ui/Dialog';
+import { Checkbox } from '../../ui/Checkbox';
+import { Label } from '../../ui/Label';
 import { exportData, importData, downloadFile, readFileAsText } from '../../../services/importExportService';
 
 // Type for checkbox onChange handler
