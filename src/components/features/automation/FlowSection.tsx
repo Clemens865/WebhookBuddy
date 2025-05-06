@@ -176,7 +176,7 @@ const FlowSection: React.FC<FlowSectionProps> = ({
           filteredFlows.map(flow => (
             <div 
               key={flow.id} 
-              className={`${selectedFlow === flow.id ? 'bg-neon-pulse text-void-black' : 'bg-card-gray text-text-primary'} rounded-lg p-4 text-center cursor-pointer aspect-square flex flex-col justify-center ${selectedFlow === flow.id ? 'ring-2 ring-white' : ''}`}
+              className={`${selectedFlow === flow.id ? 'bg-void-black text-white' : 'bg-transparent dark:text-white text-void-black'} rounded-lg p-4 text-center cursor-pointer aspect-square flex flex-col justify-center border ${selectedFlow === flow.id ? 'border-neon-pulse border-2' : 'border-border-gray'} transition-all duration-200`}
               onClick={() => setSelectedFlow(flow.id === selectedFlow ? null : flow.id as number)}
             >
               <FlowArrow size={24} weight="regular" className="mx-auto mb-2" />
@@ -197,7 +197,7 @@ const FlowSection: React.FC<FlowSectionProps> = ({
             <Button 
               onClick={handleExecuteFlow} 
               disabled={isExecuting}
-              className="bg-neon-pulse hover:bg-neon-pulse/90 text-void-black font-medium px-4 py-2 shadow-md shadow-neon-pulse/20 transition-all duration-200 hover:scale-105 flex items-center justify-center space-x-2 w-full sm:w-auto"
+              className="bg-neon-pulse hover:bg-brand-secondary-dark text-void-black font-medium px-4 py-2 shadow-md hover:shadow-lg shadow-neon-pulse/20 transition-all duration-200 flex items-center justify-center space-x-2 w-full sm:w-auto border-2 border-transparent hover:border-brand-secondary-dark"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
                 <path fillRule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clipRule="evenodd" />
@@ -207,7 +207,7 @@ const FlowSection: React.FC<FlowSectionProps> = ({
           </div>
           
           {executionStatus && (
-            <div className={`mt-3 p-3 rounded-md ${executionStatus.success ? 'bg-green-900/20 border border-green-500/30' : 'bg-red-900/20 border border-red-500/30'} transition-all duration-300`}>
+            <div className={`mt-3 p-3 rounded-md ${executionStatus.success ? 'dark:bg-green-900/20 bg-green-100 border dark:border-green-500/30 border-green-300' : 'dark:bg-red-900/20 bg-red-100 border dark:border-red-500/30 border-red-300'} transition-all duration-300`}>
               <div className="flex items-start space-x-2">
                 {executionStatus.success ? (
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0">
@@ -218,7 +218,7 @@ const FlowSection: React.FC<FlowSectionProps> = ({
                     <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z" clipRule="evenodd" />
                   </svg>
                 )}
-                <p className={`text-sm ${executionStatus.success ? 'text-green-500' : 'text-red-500'}`}>{executionStatus.message}</p>
+                <p className={`text-sm ${executionStatus.success ? 'dark:text-green-500 text-green-700' : 'dark:text-red-500 text-red-700'}`}>{executionStatus.message}</p>
               </div>
             </div>
           )}

@@ -93,7 +93,7 @@ const AgentSection: React.FC = () => {
           {message.attachments && message.attachments.length > 0 && (
             <div className="mt-2 space-y-2">
               {message.attachments.map(attachment => (
-                <div key={attachment.id} className="flex items-center space-x-2 p-2 bg-black bg-opacity-20 rounded">
+                <div key={attachment.id} className="flex items-center space-x-2 p-2 dark:bg-black dark:bg-opacity-20 bg-gray-200 rounded">
                   {attachment.thumbnailData ? (
                     <img 
                       src={`data:${attachment.type};base64,${attachment.thumbnailData}`} 
@@ -257,7 +257,7 @@ const AgentSection: React.FC = () => {
           )}
           
           {error && (
-            <div className="bg-red-500 bg-opacity-20 text-red-200 p-3 rounded mt-4">
+            <div className="dark:bg-red-500 dark:bg-opacity-20 bg-red-100 dark:text-red-200 text-red-700 p-3 rounded mt-4 border dark:border-red-500/30 border-red-300">
               {error}
             </div>
           )}
