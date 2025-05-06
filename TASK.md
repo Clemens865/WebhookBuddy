@@ -42,6 +42,14 @@ Yorizon Buddy V1.2 is a Chrome side panel extension designed to bridge web brows
   - Added individual form fields for user data (name, email, mission statement)
   - Enhanced error handling and logging for webhook requests
   - Improved response handling for better debugging
+- Implemented comprehensive light theme
+  - Created elegant light theme based on brand color guide
+  - Updated category and flow cards with proper styling for both themes
+  - Enhanced agent chat interface with theme-aware colors and styling
+  - Improved dropdown selects, chat boxes, and input fields for light theme
+  - Added smooth transitions between themes
+  - Fixed Execute Flow button hover effect for better visibility
+  - Ensured consistent text colors and contrast in both themes
 
 ### Upcoming Tasks
 - Add additional file type support for attachments

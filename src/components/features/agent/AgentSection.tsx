@@ -85,7 +85,7 @@ const AgentSection: React.FC = () => {
         className={`flex ${isUser ? 'justify-end' : 'justify-start'} mb-4`}
       >
         <div 
-          className={`max-w-[80%] rounded-lg p-3 ${isUser ? 'bg-neon-pulse text-void-black' : 'bg-card-gray text-text-primary'}`}
+          className={`max-w-[80%] rounded-lg p-3 ${isUser ? 'bg-neon-pulse text-void-black' : 'dark:bg-card-gray bg-highlight-gray dark:text-text-primary text-void-black'}`}
         >
           <div className="text-sm">{message.text}</div>
           
@@ -101,7 +101,7 @@ const AgentSection: React.FC = () => {
                       className="w-10 h-10 object-cover rounded"
                     />
                   ) : (
-                    <div className="w-10 h-10 flex items-center justify-center bg-gray-700 rounded">
+                    <div className="w-10 h-10 flex items-center justify-center dark:bg-gray-700 bg-gray-300 rounded">
                       <Paperclip size={16} />
                     </div>
                   )}
@@ -243,11 +243,11 @@ const AgentSection: React.FC = () => {
       </div>
       
       {/* Chat area */}
-      <div className="flex-1 flex flex-col bg-card-gray rounded-lg overflow-hidden">
+      <div className="flex-1 flex flex-col bg-card-gray dark:bg-card-gray bg-white border border-border-gray dark:border-border-gray rounded-lg overflow-hidden">
         {/* Chat messages */}
         <div className="flex-1 p-4 overflow-y-auto">
           {messages.length === 0 ? (
-            <div className="h-full flex items-center justify-center text-gray-500">
+            <div className="h-full flex items-center justify-center dark:text-gray-500 text-gray-400">
               {selectedAgent ? 'Send a message to start chatting' : 'Select an agent to start chatting'}
             </div>
           ) : (
@@ -265,13 +265,13 @@ const AgentSection: React.FC = () => {
         
         {/* Selected files */}
         {selectedFiles.length > 0 && (
-          <div className="px-4 py-2 bg-black bg-opacity-20 border-t border-gray-700">
+          <div className="px-4 py-2 dark:bg-black dark:bg-opacity-20 bg-gray-100 border-t dark:border-gray-700 border-gray-200">
             <div className="text-xs mb-2">Attachments:</div>
             <div className="flex flex-wrap gap-2">
               {selectedFiles.map((file, index) => (
                 <div 
                   key={index} 
-                  className="flex items-center space-x-2 bg-gray-800 rounded px-2 py-1"
+                  className="flex items-center space-x-2 dark:bg-gray-800 bg-gray-200 rounded px-2 py-1"
                 >
                   <span className="text-xs truncate max-w-[100px]">{file.name}</span>
                   <button 
@@ -289,7 +289,7 @@ const AgentSection: React.FC = () => {
         {/* Chat input */}
         <form 
           onSubmit={handleChatSubmit}
-          className="p-4 border-t border-gray-700 flex items-end space-x-2"
+          className="p-4 border-t dark:border-gray-700 border-gray-200 flex items-end space-x-2"
         >
           <input 
             type="file" 
