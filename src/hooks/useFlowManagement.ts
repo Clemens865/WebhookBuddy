@@ -59,6 +59,9 @@ export const useFlowManagement = (selectedCategory: number | null, refreshTrigge
       }
     };
 
+    // Clear selected flow when category changes to prevent accidental triggering
+    setSelectedFlow(null);
+    
     loadFlows();
   }, [selectedCategory, refreshTrigger]); // Re-run when selectedCategory or refreshTrigger changes
 
