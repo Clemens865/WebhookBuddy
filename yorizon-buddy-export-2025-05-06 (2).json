@@ -1,0 +1,179 @@
+{
+  "version": "1.0.0",
+  "timestamp": "2025-05-06T06:40:39.711Z",
+  "data": {
+    "categories": [
+      {
+        "name": "Test",
+        "description": "",
+        "uuid": "942fc03a-6bb2-4dda-8ff3-61c2d257a919",
+        "createdAt": "2025-05-05T15:39:05.940Z",
+        "updatedAt": "2025-05-05T21:08:06.661Z",
+        "id": 3
+      }
+    ],
+    "flows": [
+      {
+        "name": "Test 1",
+        "description": "",
+        "webhookUrl": "https://clamens.app.n8n.cloud/webhook-test/d238f573-7c83-447f-be8d-69062f12eed8",
+        "categoryId": 1,
+        "uuid": "0ee8fb59-d427-4e02-96af-d0d59bac85cd",
+        "createdAt": "2025-05-05T15:39:47.399Z",
+        "updatedAt": "2025-05-05T21:13:24.014Z",
+        "promptId": 1,
+        "id": 6
+      },
+      {
+        "name": "test 2",
+        "description": "",
+        "webhookUrl": "https://clamens.app.n8n.cloud/webhook-test/b475a1e3-1b1f-4b48-b44a-2e71a6d77f93",
+        "categoryId": 1,
+        "uuid": "dbfb765f-7864-4d1f-8f96-8829da06d2db",
+        "createdAt": "2025-05-05T20:03:26.733Z",
+        "updatedAt": "2025-05-05T20:03:26.733Z",
+        "id": 7
+      },
+      {
+        "name": "test3",
+        "description": "",
+        "webhookUrl": "https://clamens.app.n8n.cloud/webhook-test/b475a1e3-1b1f-4b48-b44a-2e71a6d77f93",
+        "categoryId": 1,
+        "uuid": "b094c939-5774-4bd9-8b96-47a15c68284b",
+        "createdAt": "2025-05-05T20:11:08.237Z",
+        "updatedAt": "2025-05-05T20:11:08.237Z",
+        "id": 8
+      },
+      {
+        "name": "test4",
+        "description": "",
+        "webhookUrl": "https://clamens.app.n8n.cloud/webhook-test/b475a1e3-1b1f-4b48-b44a-2e71a6d77f93",
+        "categoryId": 1,
+        "uuid": "732a3190-f67d-4990-98ae-d27bfa7bb543",
+        "createdAt": "2025-05-05T20:11:14.282Z",
+        "updatedAt": "2025-05-05T20:11:14.282Z",
+        "id": 9
+      },
+      {
+        "name": "test5",
+        "description": "",
+        "webhookUrl": "",
+        "categoryId": 1,
+        "uuid": "32b62892-78a2-4139-80e4-14bb618f6977",
+        "createdAt": "2025-05-05T20:50:39.903Z",
+        "updatedAt": "2025-05-05T20:50:39.903Z",
+        "id": 10
+      },
+      {
+        "name": "Test 1",
+        "description": "",
+        "webhookUrl": "https://clamens.app.n8n.cloud/webhook-test/d238f573-7c83-447f-be8d-69062f12eed8",
+        "categoryId": 1,
+        "uuid": "0ee8fb59-d427-4e02-96af-d0d59bac85cd",
+        "createdAt": "2025-05-05T15:39:47.399Z",
+        "updatedAt": "2025-05-05T21:13:24.014Z",
+        "promptId": 1,
+        "id": 12
+      },
+      {
+        "name": "test 2",
+        "description": "",
+        "webhookUrl": "https://clamens.app.n8n.cloud/webhook-test/b475a1e3-1b1f-4b48-b44a-2e71a6d77f93",
+        "categoryId": 1,
+        "uuid": "dbfb765f-7864-4d1f-8f96-8829da06d2db",
+        "createdAt": "2025-05-05T20:03:26.733Z",
+        "updatedAt": "2025-05-05T20:03:26.733Z",
+        "id": 13
+      },
+      {
+        "name": "test3",
+        "description": "",
+        "webhookUrl": "https://clamens.app.n8n.cloud/webhook-test/b475a1e3-1b1f-4b48-b44a-2e71a6d77f93",
+        "categoryId": 1,
+        "uuid": "b094c939-5774-4bd9-8b96-47a15c68284b",
+        "createdAt": "2025-05-05T20:11:08.237Z",
+        "updatedAt": "2025-05-05T20:11:08.237Z",
+        "id": 14
+      },
+      {
+        "name": "test4",
+        "description": "",
+        "webhookUrl": "https://clamens.app.n8n.cloud/webhook-test/b475a1e3-1b1f-4b48-b44a-2e71a6d77f93",
+        "categoryId": 1,
+        "uuid": "732a3190-f67d-4990-98ae-d27bfa7bb543",
+        "createdAt": "2025-05-05T20:11:14.282Z",
+        "updatedAt": "2025-05-05T20:11:14.282Z",
+        "id": 15
+      },
+      {
+        "name": "test5",
+        "description": "",
+        "webhookUrl": "",
+        "categoryId": 1,
+        "uuid": "32b62892-78a2-4139-80e4-14bb618f6977",
+        "createdAt": "2025-05-05T20:50:39.903Z",
+        "updatedAt": "2025-05-05T20:50:39.903Z",
+        "id": 16
+      },
+      {
+        "name": "Test 1",
+        "description": "",
+        "webhookUrl": "https://clamens.app.n8n.cloud/webhook-test/d238f573-7c83-447f-be8d-69062f12eed8",
+        "promptId": null,
+        "categoryId": 2,
+        "uuid": "fbf84784-66fa-4a4b-b0cb-4032cc4ae526",
+        "createdAt": "2025-05-06T06:39:07.105Z",
+        "updatedAt": "2025-05-06T06:39:07.105Z",
+        "id": 17
+      },
+      {
+        "name": "Testing",
+        "description": "",
+        "webhookUrl": "https://clamens.app.n8n.cloud/webhook-test/d238f573-7c83-447f-be8d-69062f12eed8",
+        "promptId": null,
+        "categoryId": 3,
+        "uuid": "5de57f64-24d5-460b-8073-477354799db5",
+        "createdAt": "2025-05-06T06:40:34.716Z",
+        "updatedAt": "2025-05-06T06:40:34.716Z",
+        "id": 18
+      }
+    ],
+    "prompts": [
+      {
+        "name": "Test Prompt",
+        "systemPrompt": "I am a stupid System Prompt",
+        "userPrompt": "I am a stupid user Prompt",
+        "createdAt": "2025-05-05T21:05:06.327Z",
+        "updatedAt": "2025-05-05T21:05:19.493Z",
+        "id": 2
+      }
+    ],
+    "voiceChannels": [
+      {
+        "name": "Voice Test",
+        "webhookUrl": "https://clamens.app.n8n.cloud/webhook-test/d238f573-7c83-447f-be8d-69062f12eed8",
+        "createdAt": "2025-05-05T21:25:05.705Z",
+        "updatedAt": "2025-05-05T21:27:50.967Z",
+        "id": 2
+      }
+    ],
+    "agents": [
+      {
+        "name": "App-Dev III",
+        "description": "",
+        "webhookUrl": "https://clamens.app.n8n.cloud/webhook-test/d238f573-7c83-447f-be8d-69062f12eed8",
+        "createdAt": "2025-05-05T21:57:10.504Z",
+        "updatedAt": "2025-05-05T21:57:10.504Z",
+        "id": 2
+      },
+      {
+        "name": "App-Dev III",
+        "description": "",
+        "webhookUrl": "https://clamens.app.n8n.cloud/webhook-test/d238f573-7c83-447f-be8d-69062f12eed8",
+        "createdAt": "2025-05-05T21:57:10.504Z",
+        "updatedAt": "2025-05-05T21:57:10.504Z",
+        "id": 3
+      }
+    ]
+  }
+}

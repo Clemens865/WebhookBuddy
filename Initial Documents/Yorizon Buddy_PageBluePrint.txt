@@ -1,0 +1,1227 @@
+# Yorizon Buddy V1.2 - Comprehensive Page Blueprints
+
+## Page Overview & MVP Status
+
+| Page ID | Page Name | MVP Status | Priority | User Flows | Features Supported |
+|---------|-----------|------------|----------|------------|-------------------|
+| page_001 | Dashboard | Essential | High | 1.1, 1.2, 2.1, 2.2 | All Core Features |
+| page_002 | Automation Categories | Phase 2 | Medium | 3.1 | Automation System |
+| page_003 | Automation Flows | Phase 2 | Medium | 3.1 | Automation System |
+| page_004 | Prompt Categories | Essential | High | 1.3, 2.2 | Prompts Management |
+| page_005 | Prompt Editor | Essential | High | 1.3 | Prompts Management |
+| page_006 | Agent Dashboard | Phase 2 | Medium | 3.3 | Agent System |
+| page_007 | Agent Configuration | Phase 2 | Medium | 3.3 | Agent System |
+| page_008 | Agent Chat | Essential | High | 1.2, 2.2 | Agent System |
+| page_009 | Voice Channels | Phase 3 | Low | 3.2 | Voice System |
+| page_010 | Voice Recording | Phase 3 | Low | 3.2 | Voice System |
+| page_011 | User Settings | Essential | High | 1.1, 2.1, 3.4 | User Profile System, Theme Support |
+| page_012 | Security Settings | Essential | Medium | 2.1 | Security & Compliance |
+
+---
+
+## page_001: Dashboard
+
+### Purpose & Context
+The Dashboard serves as the central landing page and navigation hub for the entire extension, providing quick access to all major features and recent user activities. It's the entry point after installation and appears when users first open the side panel.
+
+### MVP Status: ESSENTIAL
+This page is crucial for the MVP as it provides navigation to all core features and immediate value through highlights of recent activities.
+
+### User Flows Supported
+- 1.1: First-Time User Onboarding
+- 1.2: Agent Chat with Web Page Content
+- 2.1: Configure User Profile and Settings
+- 2.2: Browse and Use Saved Prompts
+
+### Components & Elements
+
+#### 1. Header Section
+- **Extension Logo & Title**
+  - Behavior: Links to extension homepage/dashboard
+  - Type: Branding element
+
+- **Theme Toggle**
+  - Behavior: Switches between light/dark modes
+  - State: Current theme state (light/dark/auto)
+  - Type: IconButton with animation
+
+- **Settings Icon**
+  - Behavior: Opens User Settings page (page_011)
+  - Type: IconButton
+
+- **User Profile Indicator**
+  - Behavior: Shows logged-in state or opens settings
+  - States: Configured/unconfigured
+  - Type: Avatar or icon with optional status indicator
+
+#### 2. Navigation Tabs
+- **Primary Navigation Bar**
+  - Behavior: Switches between main sections of the extension
+  - Type: TabGroup (horizontal)
+  - Items:
+    - MVP Tabs: Chat, Prompts, Settings
+    - Future Tabs: Automations, Voice, Agents
+  - State: Active tab highlighted
+
+#### 3. Quick Access Section
+- **Recent Actions**
+  - Behavior: Shows last 3-5 actions performed
+  - Data: Action type, timestamp, brief description
+  - Type: List with icons representing action types
+  - Interaction: Click to repeat or navigate to related page
+
+- **Quick Action Buttons**
+  - Type: ButtonGroup
+  - Items:
+    - New Chat (navigates to page_008)
+    - New Prompt (navigates to page_005)
+    - Process Selection (immediate action on selected text)
+    - Future: Record Voice, Execute Flow
+  - Behavior: Direct actions without navigation
+
+#### 4. Activity Feed
+- **Activity List**
+  - Behavior: Scrollable list of recent activities
+  - Data: Activity type, timestamp, result/status, reference entity
+  - Type: VirtualizedList with pagination
+  - Items per page: Dynamic based on available height
+  - Filtering: Dropdown to filter by activity type
+  - Empty state: Welcome message for new users with getting started tips
+
+- **Activity Item**
+  - Type: Card component
+  - Elements:
+    - Activity icon (chat, prompt creation, etc.)
+    - Timestamp (relative: "2 hours ago")
+    - Brief description
+    - Result indicator (success/error)
+    - Action button (context-specific)
+  - Behavior: Expandable for more details
+  - Interactions: Click to navigate to related page or repeat action
+
+#### 5. Status Indicators
+- **Service Status Bar**
+  - Behavior: Shows connection status of integrated services
+  - Type: StatusPills
+  - Items:
+    - OpenAI API status
+    - Future: Webhook connections, Voice services
+  - States: Connected, Disconnected, Error
+
+- **Storage Status**
+  - Behavior: Shows storage usage statistics
+  - Type: ProgressBar with tooltip
+  - Data: Used vs. available storage (percentage)
+  - State: Normal, Warning (>80%), Critical (>95%)
+
+#### 6. Onboarding Elements (First-time only)
+- **Welcome Card**
+  - Behavior: Shown only to new users, dismissible
+  - Type: Banner component
+  - Content: Welcome message, brief overview, getting started button
+  - Interaction: Dismisses after onboarding completed
+
+- **Feature Tooltips**
+  - Behavior: Guided tooltips highlighting key features
+  - Type: Tooltip overlay
+  - Progression: Sequential tooltips with next/skip buttons
+  - State: Active tooltip step, completed/skipped
+
+### Data Requirements
+- User profile from Chrome Storage Sync API
+- Recent activities from IndexedDB (`activities` collection)
+- Service connection statuses from application state
+- Feature configuration statuses from Chrome Storage
+- Storage usage statistics from browser storage APIs
+
+### API Dependencies
+- Chrome Storage API for user preferences and recent items
+- IndexedDB for activity history
+- OpenAI API status check (lightweight ping)
+
+### States & Transitions
+
+#### Normal States
+- **Default View**: Shows all sections with recent data
+- **Empty State**: For new users with no activity history
+- **Filtered View**: When activity type filter is applied
+
+#### Error States
+- **API Disconnected**: When OpenAI API is unreachable
+- **Storage Error**: When unable to load activity data
+- **Extension Error**: System-wide errors affecting functionality
+
+#### Loading States
+- **Initial Load**: Skeleton loaders for activity feed
+- **Data Refresh**: Loading indicators for data updates
+- **Action in Progress**: Button loading states for quick actions
+
+### Responsive Behavior
+- Layout adapts to side panel width (narrow/wide states)
+- Activity feed collapses to icons-only in narrow state
+- Quick access buttons reorganize based on available width
+- Scrollable content with fixed header and navigation
+
+### Accessibility Considerations
+- Keyboard navigation between all interactive elements
+- ARIA labels for all icons and non-text elements
+- Color contrast compliance for both themes
+- Focus management for interactive elements
+- Screen reader announcements for dynamic content changes
+
+### Performance Considerations
+- Virtualized list rendering for activity feed
+- Lazy loading of non-essential dashboard elements
+- Caching of recent activities for quick display
+- Optimized re-renders using React memo and callback
+- Economy of network requests (batch where possible)
+
+### Scaling Considerations
+- **Initial Launch Tier**: Simple activity feed with limited history
+- **Growth Tier**: Expanded filtering, grouping of activities, increased storage
+- **Enterprise Tier**: Team activity visualization, shared activities
+
+### Implementation Notes
+- Dashboard serves as the React Router base with child routes
+- Use React Context for shared state (theme, notifications)
+- Implement skeleton loading state for immediate responsiveness
+- Use WebWorkers for data processing to keep UI responsive
+
+---
+
+## page_002: Automation Categories
+
+### Purpose & Context
+The Automation Categories page provides an interface for creating and managing hierarchical categories for automation flows. It allows users to organize their automations logically and enables efficient navigation and management of multiple automation workflows.
+
+### MVP Status: PHASE 2 (Not in MVP)
+This page is planned for Phase 2 as automation flows are deferred features in the MVP roadmap.
+
+### User Flows Supported
+- 3.1: Create and Execute Automation Flow (Phase 2)
+
+### Components & Elements
+
+#### 1. Header Section
+- **Page Title & Description**
+  - Type: Text elements
+  - Content: "Automation Categories" with brief explanation
+
+- **Action Buttons**
+  - Type: ButtonGroup
+  - Items:
+    - Create New Category
+    - Import Categories (future)
+    - Export Categories (future)
+  - Behavior: Primary actions for category management
+
+- **Search Bar**
+  - Type: SearchInput with clear button
+  - Behavior: Filters categories as user types
+  - State: Empty, Active, Results, No Results
+
+#### 2. Category Tree View
+- **Tree Navigation**
+  - Type: TreeView component
+  - Behavior: Hierarchical display of categories
+  - Interactions:
+    - Expand/collapse nodes
+    - Select category to view details
+    - Drag and drop for reordering (with animation)
+  - Data Display:
+    - Category name
+    - Icon (customizable)
+    - Flow count badge
+    - Visibility indicator
+
+- **Category Context Menu**
+  - Type: ContextMenu
+  - Trigger: Right-click on category
+  - Items:
+    - Edit
+    - Delete
+    - Duplicate
+    - Create Subcategory
+    - Cut/Copy/Paste
+  - Behavior: Shows relevant actions for selected category
+
+- **Empty State**
+  - Type: EmptyState component
+  - Content: Guidance for creating first category
+  - Behavior: Shown when no categories exist
+  - Action: Create New Category button
+
+#### 3. Category Detail Panel
+- **Category Info Card**
+  - Type: Form/InfoCard
+  - Fields:
+    - Category Name
+    - Description
+    - Icon selection
+    - Parent Category dropdown
+    - Visibility toggle
+  - Behavior: Shows details of selected category
+  - State: View mode or edit mode
+
+- **Flow List**
+  - Type: DataList or DataGrid
+  - Content: Automation flows in selected category
+  - Columns:
+    - Flow name
+    - Last executed
+    - Success rate
+    - Actions (edit, duplicate, delete, execute)
+  - Behavior: Paginated list with sorting options
+  - Empty State: "No flows in this category" message with create button
+
+- **Statistics Card**
+  - Type: InfoCard with charts
+  - Content: Usage statistics for category
+  - Data:
+    - Flow count
+    - Execution count (total/success/failure)
+    - Average execution time
+  - Visualization: Mini charts or sparklines
+
+#### 4. Modal Dialogs
+- **Create/Edit Category Dialog**
+  - Type: Modal form
+  - Fields:
+    - Name (required)
+    - Description
+    - Parent Category selector
+    - Icon picker
+    - Color selector
+  - Validation: Name required and unique
+  - Buttons: Save, Cancel, Delete (edit only)
+
+- **Delete Confirmation Dialog**
+  - Type: Modal dialog
+  - Content: Warning about deletion consequences
+  - Options: Delete category only or delete with flows
+  - Buttons: Confirm, Cancel
+
+- **Bulk Action Dialog**
+  - Type: Modal dialog
+  - Content: Configuration for bulk actions
+  - Options based on action type
+  - Progress indicator for ongoing operations
+
+### Data Requirements
+- Category structure from IndexedDB (`automationCategories` collection)
+- Category metadata (name, description, icon, parent, visibility)
+- Reference counts to flows in each category
+- Usage statistics aggregated from flow execution history
+- User permissions for category management
+
+### API Dependencies
+- IndexedDB for storage and retrieval
+- Chrome Storage API for recently used categories
+
+### States & Transitions
+
+#### Normal States
+- **Empty View**: No categories created yet
+- **Tree View**: Categories displayed hierarchically
+- **Detail View**: Category details and contained flows
+- **Search Results**: Filtered view based on search term
+
+#### Edit States
+- **Create Mode**: Form for new category creation
+- **Edit Mode**: Form with existing category data
+- **Bulk Edit**: Multiple categories selected for action
+
+#### Error States
+- **Validation Error**: Form validation failures
+- **Storage Error**: Failed to save or retrieve data
+- **Constraint Error**: Cannot delete category with dependencies
+
+### Responsive Behavior
+- Tree view collapses to simplified view in narrow panel
+- Detail panel slides in from side or appears below in narrow view
+- Responsive form elements adjust to available width
+- Touch-friendly targets for mobile compatibility
+
+### Accessibility Considerations
+- Keyboard navigation for tree structure
+- ARIA roles for tree view elements
+- Announced changes when tree structure updates
+- Focus management during modal operations
+- Clear instructions for drag and drop operations
+
+### Performance Considerations
+- Virtualized tree rendering for large category structures
+- Incremental loading of category data for fast initial render
+- Caching of category structure for quick navigation
+- Optimized drag and drop with minimal re-renders
+- Batched updates for tree modifications
+
+### Scaling Considerations
+- **Growth Phase**: Implement sharing and collaboration features
+- **Enterprise Scale**: Team permissions and access control
+- **Data Volume**: Pagination and virtualization for large category trees
+
+### Implementation Notes
+- Use efficient tree data structure for fast operations
+- Implement context menu with portal for proper layering
+- Use drag and drop library compatible with React 18+
+- Optimize tree rerendering with key selection strategies
+- Implement undo capability for destructive actions
+
+---
+
+## page_003: Automation Flows
+
+### Purpose & Context
+The Automation Flows page allows users to create, configure, edit, and execute data processing workflows that connect web page data to external systems via webhooks. This is where users define exactly what data to extract from web pages and where to send it.
+
+### MVP Status: PHASE 2 (Not in MVP)
+This page is planned for Phase 2 as automation flows are deferred features in the MVP roadmap.
+
+### User Flows Supported
+- 3.1: Create and Execute Automation Flow
+
+### Components & Elements
+
+#### 1. Header Section
+- **Page Title & Navigation**
+  - Type: BreadcrumbNavigation
+  - Items: Automations > [Category Name] > [Flow Name/New Flow]
+  - Behavior: Navigates between hierarchy levels
+
+- **Action Buttons**
+  - Type: ButtonGroup
+  - Items:
+    - Save Flow
+    - Test Flow
+    - Execute Flow
+    - Duplicate
+    - Delete
+  - States: Enabled/disabled based on current state
+  - Behavior: Primary flow operations
+
+#### 2. Flow Configuration Form
+- **Basic Information Section**
+  - Type: FormSection
+  - Fields:
+    - Flow Name (required)
+    - Description (textarea)
+    - Category (dropdown with create option)
+    - Tags (multi-select input)
+  - Validation: Inline validation with error messages
+  - Behavior: Auto-save or explicit save button
+
+- **Data Selection Section**
+  - Type: FormSection with complex inputs
+  - Title: "What to Extract"
+  - Subsections:
+    - **Content Options**
+      - Type: CheckboxGroup
+      - Items:
+        - Page Title
+        - URL
+        - Meta Description
+        - Selected Text
+        - Main Content
+        - Full Page HTML
+      - Behavior: Multiple selections allowed
+    
+    - **Advanced Selectors** (collapsible)
+      - Type: DynamicFormArray
+      - Items: Multiple custom selectors
+      - Fields per item:
+        - Selector type (CSS/XPath)
+        - Selector value (text input with validation)
+        - Data name (for reference in webhook)
+        - Test button (highlights matching elements)
+      - Behavior: Add/remove multiple selectors
+    
+    - **Preview Panel**
+      - Type: CodePreview with syntax highlighting
+      - Content: Live preview of extracted data
+      - Behavior: Updates as configuration changes
+      - Controls: Refresh, Copy, Format
+
+- **Processing Options Section**
+  - Type: FormSection
+  - Fields:
+    - Content Format (JSON/Text/HTML)
+    - Text Processing (None/Summarize/Translate)
+    - Max Content Size (slider)
+    - Include Screenshots (checkbox)
+  - Behavior: Configures data processing before sending
+
+#### 3. Webhook Configuration
+- **Endpoint Configuration**
+  - Type: FormSection
+  - Fields:
+    - Webhook URL (text input with validation)
+    - HTTP Method (dropdown: POST/PUT/PATCH)
+    - Content Type (dropdown)
+  - Validation: URL format, required fields
+
+- **Authentication Settings**
+  - Type: FormSection with conditional rendering
+  - Fields:
+    - Auth Type (dropdown: None/API Key/Basic/Bearer/OAuth2)
+    - Conditional fields based on selection:
+      - API Key: Key name, value, location (header/query)
+      - Basic: Username, password
+      - Bearer: Token
+      - OAuth2: Client ID, secret, token URL, scopes
+  - Security: Password/key fields with masking
+  - Behavior: Fields change based on selected auth type
+
+- **Advanced Options** (collapsible)
+  - Type: FormSection
+  - Fields:
+    - Custom Headers (key-value pairs)
+    - Request Timeout (number input)
+    - Retry Strategy (dropdown with configuration)
+    - Error Handling (options selection)
+  - Behavior: Expandable section for advanced users
+
+#### 4. Testing & Execution Panel
+- **Test Controls**
+  - Type: ActionPanel
+  - Elements:
+    - Test button with loading state
+    - Target URL input (uses current by default)
+    - Execute on test checkbox
+  - Behavior: Runs flow against specified URL
+
+- **Results Display**
+  - Type: TabGroup
+  - Tabs:
+    - Request Preview (formatted request data)
+    - Response (formatted response with syntax highlighting)
+    - Headers (key-value table)
+    - Timeline (request/response timing)
+    - Errors (formatted error messages if any)
+  - Behavior: Shows results of test execution
+  - States: Loading, Success, Error, Empty
+
+- **Execution History**
+  - Type: DataTable with timeline
+  - Columns: 
+    - Timestamp
+    - URL
+    - Status
+    - Duration
+    - Action (view details)
+  - Behavior: Paginated history of executions
+  - Interaction: Click to view detailed execution record
+
+#### 5. Notification Area
+- **Status Messages**
+  - Type: AlertComponent
+  - Variants: Success, Error, Warning, Info
+  - Behavior: Shows operation results, auto-dismissible
+  - Content: Operation result with action context
+
+- **Validation Summary**
+  - Type: ValidationSummary
+  - Content: List of validation errors preventing save/execute
+  - Behavior: Appears when attempting to save invalid configuration
+  - Interaction: Click error to navigate to field
+
+### Data Requirements
+- Flow configuration from IndexedDB (`automationFlows` collection)
+- Category list from IndexedDB (`automationCategories` collection)
+- Execution history from IndexedDB (`flowExecutions` collection)
+- Current page data for testing from content scripts
+- Webhook response data from API calls
+
+### API Dependencies
+- Content script API for DOM interaction and data extraction
+- Webhook endpoints configured in flow
+- Chrome Storage for recent/favorite flows
+- IndexedDB for flow storage
+
+### States & Transitions
+
+#### Normal States
+- **New Flow**: Empty form with default values
+- **View Mode**: Displaying existing flow configuration
+- **Edit Mode**: Modifying flow configuration
+- **Testing**: Executing flow against current page
+- **Results**: Displaying test results
+
+#### Error States
+- **Validation Error**: Form has invalid data
+- **Execution Error**: Flow failed during test/execution
+- **Permission Error**: Missing permissions for extraction
+- **Webhook Error**: Failed to connect to webhook endpoint
+
+#### Loading States
+- **Saving**: Flow configuration being persisted
+- **Testing**: Flow being executed for testing
+- **Loading Flow**: Existing flow being loaded
+- **Extracting Data**: Content being processed from page
+
+### Responsive Behavior
+- Multi-column layout collapses to single column in narrow view
+- Preview panels collapse/expand based on available space
+- Form sections become accordion-style in narrow view
+- Horizontal tabs convert to dropdown in narrow view
+
+### Accessibility Considerations
+- Logical tab order through complex form
+- Error messages linked to form fields
+- Status announcements for operations
+- Keyboard shortcuts for common operations
+- High contrast mode compatibility for syntax highlighting
+
+### Performance Considerations
+- Debounced input for fields affecting previews
+- Virtualized lists for execution history
+- Syntax highlighting with web workers
+- Lazy loading of advanced configuration sections
+- Optimistic UI updates with background synchronization
+
+### Scaling Considerations
+- **Growth Phase**: Template library for common flow patterns
+- **Enterprise Scale**: Shared flows with team permissions
+- **Data Volume**: Efficient storage of execution history with retention policies
+
+### Implementation Notes
+- Use form libraries with validation (Formik/React Hook Form)
+- Implement progressive enhancement for advanced features
+- Use efficient JSON diffing for change detection
+- Create abstraction layer for webhook clients
+- Implement background execution capability for long-running flows
+
+---
+
+## page_004: Prompt Categories
+
+### Purpose & Context
+The Prompt Categories page enables users to organize their prompt templates in a structured way for easy retrieval and management. It provides a categorical view of all saved prompts with sorting, filtering, and search capabilities.
+
+### MVP Status: ESSENTIAL
+This page is essential for the MVP as it supports the core prompt management functionality, enabling users to organize and retrieve prompt templates efficiently.
+
+### User Flows Supported
+- 1.3: Save and Manage Prompt Templates
+- 2.2: Browse and Use Saved Prompts
+
+### Components & Elements
+
+#### 1. Header Section
+- **Page Title & Description**
+  - Type: HeadingGroup
+  - Content: "Prompt Library" with brief description
+
+- **Action Buttons**
+  - Type: ButtonGroup
+  - Items:
+    - Create New Category
+    - Create New Prompt
+    - Import/Export (Phase 2 feature)
+  - Behavior: Primary actions for prompt management
+
+- **Search & Filter Bar**
+  - Type: SearchInputWithFilters
+  - Search input: Full-text search across prompts
+  - Filters:
+    - Category dropdown
+    - Recently used
+    - Creation date range
+    - Tags (Phase 2)
+  - Behavior: Dynamic filtering as user types/selects
+  - State: Active filters indicator with clear option
+
+#### 2. Category Management
+- **Category List**
+  - Type: SidebarList or TabGroup (depending on width)
+  - Items: All categories with count badges
+  - Special Items: 
+    - All Prompts
+    - Uncategorized
+    - Favorites
+    - Recently Used
+  - Interaction: Click to filter prompts by category
+  - State: Selected category highlighted
+
+- **Category Actions**
+  - Type: ContextMenu or ActionButtons
+  - Items: 
+    - Edit Category
+    - Delete Category
+    - Create New Prompt in Category
+  - Behavior: Available on category hover/selection
+
+- **Category Form Modal**
+  - Type: FormDialog
+  - Fields:
+    - Category Name (required)
+    - Description
+    - Color (for visual identification)
+  - Validation: Name uniqueness
+  - Buttons: Save, Cancel, Delete (for edit mode)
+
+#### 3. Prompt List
+- **Prompt Cards**
+  - Type: CardGrid or CardList (toggleable view)
+  - Card Elements:
+    - Prompt title
+    - Preview snippet (first few lines)
+    - Category badge
+    - Last used date
+    - Usage count badge
+    - Variable indicator (if has variables)
+  - Interaction: Click to view/edit, right-click for context menu
+  - States: Normal, Hover, Selected
+
+- **Prompt Sorting**
+  - Type: SortControls
+  - Options: Name, Creation Date, Last Used, Usage Count
+  - Behavior: Reorders prompt list
+  - State: Current sort indicator
+
+- **Prompt List Empty State**
+  - Type: EmptyState
+  - Content: Guidance for creating first prompt
+  - Action: Create New Prompt button
+  - Variants: Empty category, No search results, All empty
+
+- **Pagination Controls**
+  - Type: Pagination
+  - Elements: Page numbers, next/previous buttons, items per page
+  - Behavior: Controls for navigating large prompt libraries
+  - State: Current page indicator
+
+#### 4. Prompt Actions
+- **Prompt Context Menu**
+  - Type: ContextMenu
+  - Items:
+    - Use in Chat
+    - Edit
+    - Duplicate
+    - Move to Category
+    - Delete
+    - Add to Favorites
+  - Behavior: Right-click on prompt card or action button
+
+- **Bulk Action Bar**
+  - Type: ActionBar
+  - Visible: When multiple prompts selected
+  - Actions:
+    - Delete Selected
+    - Move to Category
+    - Export Selected (Phase 2)
+  - Behavior: Applies action to all selected prompts
+
+- **Quick Action Buttons**
+  - Type: IconButtons on cards
+  - Items:
+    - Use in Chat (primary)
+    - Edit
+    - Favorite toggle
+    - More (opens context menu)
+  - Behavior: Direct actions without menu navigation
+
+#### 5. Modal Dialogs
+- **Delete Confirmation**
+  - Type: ConfirmDialog
+  - Content: Warning about prompt/category deletion
+  - Buttons: Confirm, Cancel
+  - Variants: Single item, multiple items
+
+- **Move to Category Dialog**
+  - Type: SelectDialog
+  - Content: Category list with search
+  - Option: Create new category inline
+  - Behavior: Moves selected prompt(s) to target category
+
+- **Variable Prompt Dialog**
+  - Type: FormDialog
+  - Content: Input fields for each template variable
+  - Dynamic: Fields based on prompt variables
+  - Behavior: Appears when using prompt with variables
+  - Preview: Shows completed prompt with variables
+
+### Data Requirements
+- Prompt data from IndexedDB (`prompts` collection)
+- Category data from IndexedDB (`promptCategories` collection)
+- Usage statistics from prompt history
+- User preferences for view settings
+
+### API Dependencies
+- IndexedDB for prompt and category storage
+- Chrome Storage API for recent items and preferences
+
+### States & Transitions
+
+#### Normal States
+- **Default View**: All categories and prompts
+- **Category View**: Prompts filtered by category
+- **Search Results**: Prompts matching search criteria
+- **Empty Library**: No prompts created yet
+- **Multiple Selection**: Several prompts selected for bulk actions
+
+#### Error States
+- **Search Error**: Invalid search pattern
+- **Storage Error**: Failed to load prompts
+- **Delete Error**: Cannot delete category with prompts
+
+#### Loading States
+- **Initial Load**: Skeleton screens for categories and prompts
+- **Search Loading**: Progress indicator during search
+- **Action Loading**: Progress during bulk operations
+
+### Responsive Behavior
+- Grid view converts to list view in narrow panel
+- Category sidebar collapses to dropdown in narrow view
+- Action buttons prioritize based on available space
+- Search expands to full width in narrow view
+
+### Accessibility Considerations
+- Keyboard navigation grid with arrow key support
+- Screen reader announcements for filtering changes
+- ARIA attributes for interactive elements
+- Focus management during modal operations
+- Color not used as only means of distinction
+
+### Performance Considerations
+- Virtualized list for large prompt libraries
+- Pagination for efficient data loading
+- Indexed search for quick results
+- Caching recently used categories and prompts
+- Optimized re-renders using memoization
+
+### Scaling Considerations
+- **Initial Launch**: Simple category list with basic prompts
+- **Growth Phase**: Tag system, advanced filtering
+- **Enterprise Scale**: Shared categories, permission system
+
+### Implementation Notes
+- Use React Context for selection state
+- Implement drag and drop for category organization (future)
+- Create efficient search indexing for prompt content
+- Use skeleton loading pattern for perceived performance
+- Implement proper keyboard focus management for grid navigation
+
+---
+
+## page_005: Prompt Editor
+
+### Purpose & Context
+The Prompt Editor page provides an interface for creating and editing prompt templates with support for template variables, formatting, and categorization. It enables users to create reusable prompts that can be applied across the extension.
+
+### MVP Status: ESSENTIAL
+This page is essential for the MVP as it supports a core feature of saving and editing prompt templates for reuse with the Agent Chat.
+
+### User Flows Supported
+- 1.3: Save and Manage Prompt Templates
+
+### Components & Elements
+
+#### 1. Header Section
+- **Page Title & Navigation**
+  - Type: BreadcrumbNavigation
+  - Items: Prompts > [Category] > [Prompt Name/New Prompt]
+  - Behavior: Navigates hierarchy levels
+
+- **Action Buttons**
+  - Type: ButtonGroup
+  - Primary Actions:
+    - Save Prompt (disabled until changes)
+    - Use in Chat
+    - Delete
+  - Secondary Actions (dropdown):
+    - Duplicate
+    - Export (Phase 2)
+    - Create Template From (Phase 2)
+  - States: Enabled/disabled based on edit state
+
+#### 2. Prompt Metadata Form
+- **Basic Information**
+  - Type: FormGroup
+  - Fields:
+    - Prompt Name (required)
+    - Description (optional)
+    - Category (dropdown with create new option)
+  - Validation: Name required, inline validation
+  - Behavior: Auto-save draft or explicit save
+
+- **Tags Input** (Phase 2)
+  - Type: TagInput
+  - Behavior: Add/remove tags with autocomplete
+  - Validation: Format validation for tags
+
+- **Usage Statistics** (read-only)
+  - Type: StatisticGroup
+  - Items:
+    - Created date
+    - Last modified
+    - Usage count
+    - Average token count
+
+#### 3. Prompt Editor
+- **Rich Text Editor** (MVP: Plain Text)
+  - Type: TextEditor (plain for MVP, rich for Phase 2)
+  - Features:
+    - Syntax highlighting for template variables
+    - Line numbers
+    - Word/character count
+    - Token count estimation
+  - Behavior: Full editor with undo/redo
+  - Keyboard Shortcuts: Standard editor shortcuts
+
+- **Editor Toolbar**
+  - Type: EditorToolbar
+  - Tools:
+    - Insert Variable button (opens variable panel)
+    - Template formatting tools (Phase 2)
+    - Markdown syntax helpers (Phase 2)
+  - Behavior: Contextual to editor position
+
+- **Character/Token Counter**
+  - Type: StatusBar
+  - Content: Character count, token estimation
+  - State: Warning color when approaching limits
+  - Behavior: Updates as user types
+
+#### 4. Variable Management
+- **Variable Panel**
+  - Type: SidePanel or BottomPanel (based on width)
+  - Title: "Template Variables"
+  - Content: List of variables in current prompt
+  - Empty State: Guidance for creating first variable
+
+- **Variable List**
+  - Type: DataList
+  - Columns:
+    - Variable name
+    - Default value
+    - Description (optional)
+    - Actions (edit, remove)
+  - Behavior: Managing existing variables
+
+- **Variable Form**
+  - Type: InlineForm or Dialog
+  - Fields:
+    - Variable name (validated format)
+    - Default value
+    - Description
+    - Validation rules (Phase 2)
+  - Buttons: Add/Update, Cancel
+  - Validation: Name format, uniqueness
+
+- **Variable Preview**
+  - Type: PreviewCard
+  - Content: How the variable will appear in use
+  - Behavior: Updates with variable changes
+
+#### 5. Preview & Testing
+- **Prompt Preview**
+  - Type: PreviewPanel
+  - Content: Prompt with default variable values substituted
+  - Controls: Refresh, Toggle variable highlighting
+  - Behavior: Shows how prompt will appear when used
+
+- **Token Estimation Tool**
+  - Type: InfoCard
+  - Content: Estimated token usage with variables
+  - Details: Base tokens, variable tokens, total
+  - State: Warning when approaching model limits
+
+- **Test in Chat Button**
+  - Type: PrimaryButton
+  - Behavior: Opens test dialog or navigates to chat with prompt
+  - State: Disabled if unsaved changes
+
+#### 6. Version History (Phase 2)
+- **Version Timeline**
+  - Type: VersionList
+  - Items: Previous versions with timestamps
+  - Behavior: Select version to view
+  - Actions: Restore previous version
+
+- **Diff Viewer**
+  - Type: DiffDisplay
+  - Content: Visual diff between versions
+  - Controls: Navigate changes, restore selection
+
+#### 7. Error & Notification Area
+- **Validation Messages**
+  - Type: AlertList
+  - Content: Form validation errors
+  - Behavior: Appears when validation fails
+  - State: Error, Warning, Info variants
+
+- **Save Status**
+  - Type: StatusIndicator
+  - States: Saved, Unsaved Changes, Saving...
+  - Behavior: Indicates current save state
+  - Animation: Pulse when unsaved changes exist
+
+### Data Requirements
+- Prompt data from IndexedDB (`prompts` collection)
+- Category list from IndexedDB (`promptCategories` collection)
+- Template variable definitions and validation rules
+- Version history (Phase 2)
+- Usage statistics from prompt history
+
+### API Dependencies
+- IndexedDB for prompt storage and retrieval
+- Chrome Storage API for drafts and recent items
+- OpenAI tokenizer library for token estimation
+
+### States & Transitions
+
+#### Normal States
+- **New Prompt**: Empty editor with defaults
+- **Edit Mode**: Modifying existing prompt
+- **View Mode**: Viewing prompt with limited editing (future)
+- **Draft Saved**: Temporary state after auto-save
+- **Published**: Prompt saved to library
+
+#### Error States
+- **Validation Error**: Form has invalid fields
+- **Save Error**: Failed to save prompt
+- **Token Limit Warning**: Prompt approaching token limits
+
+#### Loading States
+- **Loading Prompt**: Skeleton loader while fetching
+- **Saving**: Progress indicator during save
+- **Processing Variables**: When analyzing prompt for variables
+
+### Responsive Behavior
+- Multi-column layout converts to stacked in narrow panel
+- Variable panel moves from side to bottom in narrow view
+- Toolbar simplifies with dropdown menus in narrow view
+- Preview toggles between visible/hidden in narrow view
+
+### Accessibility Considerations
+- Fully keyboard-navigable editor
+- Screen reader support for editor and variables
+- ARIA attributes for dynamic content
+- Color contrast for syntax highlighting
+- Focus indicators for all interactive elements
+
+### Performance Considerations
+- Debounced auto-save functionality
+- Efficient syntax highlighting with worker threads
+- Optimized variable parsing and highlighting
+- Background saving with optimistic UI updates
+- Efficient diff algorithm for version comparison (Phase 2)
+
+### Scaling Considerations
+- **Initial Launch**: Basic plain text editor with variables
+- **Growth Phase**: Rich text formatting, version history
+- **Enterprise Scale**: Collaborative editing, template library
+
+### Implementation Notes
+- Use editor library compatible with variable syntax
+- Implement custom token counting algorithm based on OpenAI specs
+- Create context-aware variable syntax highlighting
+- Use IndexedDB transactions for data consistency
+- Implement undo/redo stack separate from browser history
+
+---
+
+## page_006: Agent Dashboard
+
+### Purpose & Context
+The Agent Dashboard provides an overview of all configured AI and webhook agents, enabling users to manage, monitor, and access their different agent configurations. It serves as a central hub for agent-related activities.
+
+### MVP Status: PHASE 2 (Not in MVP)
+This page is planned for Phase 2 as multiple agent configuration is deferred in the MVP, which will focus on a single OpenAI integration.
+
+### User Flows Supported
+- 3.3: Configure and Use Multiple Agents
+
+### Components & Elements
+
+#### 1. Header Section
+- **Page Title & Description**
+  - Type: HeadingGroup
+  - Content: "Agent Dashboard" with brief explanation
+
+- **Action Buttons**
+  - Type: ButtonGroup
+  - Items:
+    - Create New Agent
+    - Import Agent (Phase 2)
+    - Agent Settings
+  - Behavior: Primary actions for agent management
+
+- **Search & Filter Bar**
+  - Type: SearchInputWithFilters
+  - Search: Full-text search across agent names and descriptions
+  - Filters:
+    - Agent type (LLM, Webhook, Custom)
+    - Status (Active, Inactive, Error)
+    - Last used (timeframe)
+  - Behavior: Filters agent list as user types/selects
+
+#### 2. Agent Overview Section
+- **Agent Statistics**
+  - Type: StatisticsCards
+  - Items:
+    - Total agents count
+    - Active in last 24 hours
+    - Error status count
+    - API usage metrics
+  - Visualization: Numbers with trend indicators
+
+- **Quick Access**
+  - Type: FavoritesList
+  - Content: Pinned/favorite agents for quick access
+  - Behavior: Click to open chat with that agent
+  - Empty State: Guidance for pinning agents
+  - Actions: Pin/unpin, use, configure
+
+#### 3. Agent List
+- **Agent Cards**
+  - Type: CardGrid with toggle to ListView
+  - Card Elements:
+    - Agent name and icon
+    - Agent type badge (OpenAI, Custom LLM, Webhook)
+    - Status indicator (Active, Inactive, Error)
+    - Last used timestamp
+    - Usage count badge
+    - Description snippet
+    - Action buttons
+  - Interaction: Click to view details, buttons for quick actions
+  - States: Normal, Error, Inactive, Selected
+
+- **Card Actions**
+  - Type: ActionButtons
+  - Items:
+    - Chat (primary - opens chat with this agent)
+    - Configure
+    - Duplicate
+    - Delete
+    - Pin/Unpin
+  - Behavior: Direct actions without navigation
+
+- **List Empty State**
+  - Type: EmptyState
+  - Content: Guidance for creating first agent
+  - Action: Create New Agent button
+  - Variants: No agents, No search results
+
+- **Group By Options**
+  - Type: SegmentedControl
+  - Options: None, Type, Status, Usage
+  - Behavior: Reorganizes cards into groups
+
+#### 4. Agent Details Panel
+- **Details Drawer/Modal**
+  - Type: SideDrawer or Modal (based on size)
+  - Trigger: Click on agent card or info button
+  - Content: Expanded agent details without full edit capability
+  - Sections:
+    - Configuration summary
+    - Usage statistics 
+    - Recent conversations
+    - Performance metrics
+  - Actions: Edit, Use, Delete, Close
+
+- **Usage Charts**
+  - Type: ChartGroup
+  - Charts:
+    - Usage over time (line chart)
+    - Response time distribution (histogram)
+    - Error rate (gauge chart)
+    - Token usage (bar chart)
+  - Behavior: Interactive with tooltips
+  - Time Range: Selectable timeframe for data
+
+- **Recent Conversations**
+  - Type: ActivityList
+  - Items: Recent conversations with this agent
+  - Columns:
+    - Timestamp
+    - First message preview
+    - Duration
+    - Status
+    - Action (open conversation)
+  - Behavior: Paginated list with "View All" option
+
+#### 5. Modal Dialogs
+- **Create Agent Wizard**
+  - Type: MultiStepForm
+  - Steps:
+    - Agent type selection (LLM, Webhook, Custom)
+    - Basic information (name, description)
+    - Configuration (fields based on type)
+    - Advanced settings
+    - Test connection
+  - Navigation: Next, Back, Cancel, Finish
+  - Validation: Step validation before proceeding
+
+- **Delete Confirmation**
+  - Type: ConfirmDialog
+  - Content: Warning about agent deletion and impact
+  - Options: Delete conversation history checkbox
+  - Buttons: Confirm, Cancel
+
+- **Agent Error Details**
+  - Type: ErrorDialog
+  - Content: Detailed error information for troubleshooting
+  - Elements:
+    - Error message and code
+    - Timestamp
+    - Context information
+    - Troubleshooting steps
+  - Actions: Dismiss, Retry, Reconfigure
+
+#### 6. Notification Area
+- **Status Messages**
+  - Type: AlertComponent
+  - Variants: Success, Error, Warning, Info
+  - Behavior: Indicates results of actions
+  - Content: Context-specific messages
+  - Dismissible: Auto-dismiss or manual close
+
+- **API Status Indicator**
+  - Type: StatusBadge
+  - States: Operational, Degraded, Outage
+  - Content: Service status with details on hover
+  - Behavior: Real-time update of API status
+  - Sources: OpenAI status, custom endpoints
+
+### Data Requirements
+- Agent configurations from IndexedDB (`agentConfigs` collection)
+- Usage statistics from conversation history
+- API status from status endpoints
+- Performance metrics from conversation logs
+
+### API Dependencies
+- IndexedDB for agent storage
+- Chrome Storage API for favorites and recent items
+- OpenAI API status endpoint
+- Custom webhook status checks
+
+### States & Transitions
+
+#### Normal States
+- **Default View**: All configured agents
+- **Filtered View**: Agents matching search/filters
+- **Grouped View**: Agents organized by selected attribute
+- **Detail View**: Single agent expanded details
+
+#### Error States
+- **Configuration Error**: Agent misconfigured
+- **Connection Error**: Agent endpoint unreachable
+- **Authentication Error**: Invalid API keys/credentials
+- **Rate Limit**: API usage exceeded limits
+
+#### Loading States
+- **Initial Load**: Skeleton screens for agent cards
+- **Refreshing**: Loading indicators during data refresh
+- **Creating/Updating**: Progress during agent operations
+- **Testing Connection**: Progress during endpoint tests
+
+### Responsive Behavior
+- Grid view changes columns based on panel width
+- Details panel slides in or appears as modal based on size
+- Charts resize with responsive breakpoints
+- Action buttons collapse to menu on narrow views
+
+### Accessibility Considerations
+-

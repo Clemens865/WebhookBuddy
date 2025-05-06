@@ -1,0 +1,456 @@
+# Project Scope: Yorizon Buddy V1.2
+
+## Project Overview
+Yorizon Buddy V1.2 is a Chrome side panel extension designed to bridge web browsing with data processing workflows, enabling users to collect, process, and send web page data to webhooks and AI agents through four interconnected core components.
+
+## App Description
+Yorizon Buddy serves as an intelligent companion for knowledge workers, researchers, content creators, and professionals who need to extract, process, and utilize web data efficiently. The extension leverages Chrome's side panel functionality to provide seamless access to automation tools, prompt management, AI agent interactions, and voice recording capabilities without disrupting the browsing experience. It enables users to create structured workflows for data collection and processing, maintain libraries of reusable prompts, communicate with AI services, and record voice inputs for various processing needs.
+
+## Technical Context
+The application is implemented as a Chrome extension utilizing the Side Panel API, which presents unique constraints and opportunities. The extension must operate within Chrome's security model and maintain performance while processing potentially large amounts of web page data. The architecture separates concerns between background scripts (for API communications and background tasks), content scripts (for DOM interactions), and the side panel interface (for user interactions), all while ensuring secure handling of sensitive data like API keys.
+
+## Requirements Fulfillment
+
+| Requirement | Implementation | Priority | Associated Pages |
+|-------------|----------------|----------|-----------------|
+| Automation System | Flow creation interface, webhook configuration, data type selection | Essential | page_001, page_002, page_003 |
+| Prompts Management | Category-based organization, template variables, export/import | Essential | page_004, page_005 |
+| Agent System | Chat interface, OpenAI integration, custom webhook agents | Essential | page_006, page_007, page_008 |
+| Voice System | Voice channel configuration, recording, transcription | Essential | page_009, page_010 |
+| User Profile | User settings interface, persistence via Chrome storage | High | page_011 |
+| Theme Support | Light/dark mode implementation, system detection | Medium | All pages |
+| Security | API key encryption, HTTPS enforcement, data protection | Essential | page_011, page_012 |
+
+## Pages
+
+### page_001 (Dashboard)
+Central landing page providing access to all major features and recent activities.
+#### Elements
+- Navigation tabs for main components
+- Quick access buttons for frequent actions
+- Recent activities feed
+- Status indicators for connected services
+
+### page_002 (Automation Categories)
+Interface for creating and managing automation categories.
+#### Elements
+- Category list with hierarchy visualization
+- Create/edit/delete category controls
+- Category search and filter
+- Drag and drop reordering interface
+
+### page_003 (Automation Flows)
+Interface for configuring data collection flows and webhook endpoints.
+#### Elements
+- Flow configuration form
+- Data type selection checkboxes
+- Webhook URL input with testing capability
+- Response visualization panel
+- Error handling options
+- Flow execution controls
+- Activity logging interface
+
+### page_004 (Prompt Categories)
+Interface for organizing prompt templates in categories.
+#### Elements
+- Category management controls
+- Category hierarchy visualization
+- Search and filtering system
+- Import/export controls
+
+### page_005 (Prompt Editor)
+Interface for creating and editing prompt templates.
+#### Elements
+- Rich text editor for prompt content
+- Template variable insertion tool
+- Character/token counter
+- Version history viewer
+- Save/cancel controls
+- Category assignment dropdown
+
+### page_006 (Agent Dashboard)
+Overview of available AI and webhook agents.
+#### Elements
+- Agent cards with configuration status
+- Quick access to recent conversations
+- Create new agent button
+- Agent search and filter
+
+### page_007 (Agent Configuration)
+Interface for setting up and configuring agents.
+#### Elements
+- Agent type selection (LLM/webhook)
+- API configuration fields
+- Authentication settings
+- Advanced parameters
+- Test connection button
+
+### page_008 (Agent Chat)
+Interface for interacting with configured agents.
+#### Elements
+- Chat message history
+- Message composition area
+- Content inclusion controls (page content, selected text)
+- Image attachment capability
+- Stream toggle for supported APIs
+- Context management interface
+- Agent selection dropdown
+
+### page_009 (Voice Channels)
+Interface for managing voice channels for different purposes.
+#### Elements
+- Channel list with configuration status
+- Create/edit/delete channel controls
+- Channel selection interface
+- Default settings configuration
+
+### page_010 (Voice Recording)
+Interface for recording and sending voice messages.
+#### Elements
+- Recording controls (start/stop/pause)
+- Audio visualization
+- Playback controls
+- Format selection dropdown
+- Quality settings
+- Transcription toggle
+- Context inclusion options
+- Send button with webhook target selection
+
+### page_011 (User Settings)
+Interface for configuring user profile and application preferences.
+#### Elements
+- User profile fields (username, email)
+- Language preference selection
+- Domain settings configuration
+- Mission statement editor
+- Theme selection (light/dark/auto)
+- Storage management controls
+- Security settings
+
+### page_012 (Security Settings)
+Interface for managing security-related configurations.
+#### Elements
+- API key management interface
+- Data retention controls
+- Encryption settings
+- Session timeout configuration
+- Data purge options
+
+## Features
+
+### Automation System
+Enables users to create structured workflows for collecting web page data and sending it to configured webhooks.
+
+#### Priority
+Essential
+
+#### Technical Requirements
+- React Context API for state management
+- Axios for webhook requests
+- Chrome Storage API for saving configurations
+- Content scripts for DOM interaction
+- Web Workers for CPU-intensive processing tasks
+- Rate limiting protection implementation
+
+#### Associated Pages
+- page_001 (Dashboard)
+- page_002 (Automation Categories)
+- page_003 (Automation Flows)
+
+### Prompts Management
+Allows users to create, organize, and reuse text prompts with template variables support.
+
+#### Priority
+Essential
+
+#### Technical Requirements
+- DraftJS or SlateJS for rich text editing
+- JSON parsing for import/export functionality
+- IndexedDB (via Dexie.js) for storing large prompt libraries
+- Search functionality with indexing for performance
+- Version tracking system
+
+#### Associated Pages
+- page_001 (Dashboard)
+- page_004 (Prompt Categories)
+- page_005 (Prompt Editor)
+
+### Agent System
+Provides interfaces for interacting with AI services and webhook agents through a chat-like experience.
+
+#### Priority
+Essential
+
+#### Technical Requirements
+- WebSocket support for streaming responses
+- Token counting library for context management
+- Lazy-loading for chat history
+- Image compression before transmission
+- OpenAI API client implementation
+- Custom webhook configuration support
+
+#### Associated Pages
+- page_001 (Dashboard)
+- page_006 (Agent Dashboard)
+- page_007 (Agent Configuration)
+- page_008 (Agent Chat)
+
+### Voice System
+Enables recording and sending voice messages to configured webhooks with transcription capabilities.
+
+#### Priority
+Essential
+
+#### Technical Requirements
+- Web Audio API for recording
+- Audio visualization libraries
+- Audio format conversion utilities
+- Transcription service integration
+- Blob handling for audio data
+- Compression libraries for audio optimization
+
+#### Associated Pages
+- page_001 (Dashboard)
+- page_009 (Voice Channels)
+- page_010 (Voice Recording)
+
+### User Profile System
+Manages user information, preferences, and application settings with persistent storage.
+
+#### Priority
+High
+
+#### Technical Requirements
+- Chrome Storage Sync API for cross-device settings
+- Encryption for sensitive data
+- Theme detection and application
+- Language localization support
+
+#### Associated Pages
+- page_001 (Dashboard)
+- page_011 (User Settings)
+
+### Theme Support
+Provides light and dark mode interfaces with automatic system detection.
+
+#### Priority
+Medium
+
+#### Technical Requirements
+- TailwindCSS for styling with theme variables
+- Media query detection for system preferences
+- Theme toggle implementation
+- Chrome Storage for saving preference
+
+#### Associated Pages
+- All pages
+
+## API Integrations
+
+### OpenAI API
+Integration with OpenAI's GPT models for AI assistant capabilities.
+
+#### Implementation Details
+- REST API client with authentication
+- Streaming response handling
+- Token management and counting
+- Error handling with fallbacks
+- Rate limit adherence
+
+#### Usage
+Used in the Agent System for providing AI assistant capabilities, processing user queries, and generating responses based on web page content.
+
+### Webhook API
+Generic webhook handling for connecting with external services.
+
+#### Implementation Details
+- Configurable endpoints with authentication
+- Support for various authentication methods (API key, OAuth2)
+- Response processing and visualization
+- Error handling with retry mechanisms
+- Rate limiting protection
+
+#### Usage
+Used throughout the application for sending data to external services, particularly in the Automation System and Voice System.
+
+### Chrome Storage API
+Browser storage solution for persisting user data.
+
+#### Implementation Details
+- Chrome Storage Sync for lightweight cross-device data
+- Chrome Storage Local for larger datasets
+- Structured data organization
+- Encryption for sensitive information
+- Migration handling for version updates
+
+#### Usage
+Used for storing configuration data, user preferences, categories, and references to larger datasets stored in IndexedDB.
+
+### IndexedDB API
+Client-side database for storing larger datasets.
+
+#### Implementation Details
+- Dexie.js as abstraction layer
+- Schema versioning management
+- Indexed fields for performance
+- Bulk operations for efficiency
+- Backup and restore capabilities
+
+#### Usage
+Used for storing chat histories, prompt libraries, and other large datasets that exceed Chrome Storage limits.
+
+## Development Assets
+
+### UI Components
+Reusable interface elements ensuring consistent user experience.
+
+#### Programmatic Generation Method
+- React component library
+- TailwindCSS for styling
+- Storybook for component development and documentation
+- Jest for component testing
+- React Testing Library for interaction testing
+
+### Icon System
+Visual elements for the interface.
+
+#### Programmatic Generation Method
+- SVG-based icon system
+- Dynamic color application based on theme
+- Lazy loading for performance
+- Accessibility considerations (aria-labels)
+
+### Data Extraction Utilities
+Tools for extracting and processing web page data.
+
+#### Programmatic Generation Method
+- DOM traversal utilities
+- HTML sanitization libraries
+- Text processing algorithms
+- Metadata extraction functions
+- Image handling utilities
+
+## Security & Compliance Requirements
+
+### Data Protection
+- All user data must be stored locally within the browser environment
+- API keys must be encrypted before storage using Chrome's secure mechanisms
+- Clear data purge option must be available to users
+- No tracking or analytics without explicit user consent
+- Compliance with GDPR and CCPA requirements for user data handling
+
+### Transmission Security
+- All external communications must use HTTPS
+- Proper CORS handling for all API requests
+- Webhook communications must support various authentication methods
+- Large payloads should be compressed before transmission
+- Rate limiting protection to prevent service abuse
+
+### Authentication
+- Secure input fields for sensitive data entry
+- Support for API key authentication and OAuth2 where applicable
+- Session timeouts for security
+- Chrome's identity API usage where appropriate
+
+### Error Handling
+- Secure error logging without exposing sensitive information
+- Graceful degradation when services are unavailable
+- Automatic retry mechanisms with exponential backoff
+- User-friendly error messages without technical details
+
+## Dependencies & Connections
+
+| Component | Depends On | Connected To |
+|-----------|------------|--------------|
+| Automation System (page_002, page_003) | User Profile (page_011) | Webhook API, Chrome Storage API |
+| Prompts Management (page_004, page_005) | User Profile (page_011) | IndexedDB API, Chrome Storage API |
+| Agent System (page_006, page_007, page_008) | User Profile (page_011), Prompts Management (page_004, page_005) | OpenAI API, Webhook API, IndexedDB API |
+| Voice System (page_009, page_010) | User Profile (page_011) | Webhook API, Chrome Storage API |
+| Dashboard (page_001) | All components | N/A |
+| User Settings (page_011) | N/A | Chrome Storage API |
+| Security Settings (page_012) | User Profile (page_011) | Chrome Storage API |
+
+## Technical Stack & Libraries
+
+### Core Technologies
+- JavaScript/TypeScript (strict type checking)
+- React 18+ (component architecture)
+- Chrome Extension APIs (v3 manifest)
+- TailwindCSS (styling)
+
+### State Management
+- React Context API (simpler states)
+- Redux or Zustand (complex state management)
+- Chrome Storage API (persistence)
+
+### User Interface
+- React Router (navigation)
+- DraftJS or SlateJS (rich text editing)
+- React-Query (data fetching)
+- Framer Motion (animations)
+
+### Data Management
+- Dexie.js 3+ (IndexedDB wrapper)
+- LocalForage (storage fallback)
+- Immer (immutable state updates)
+- date-fns (date manipulation)
+
+### Networking
+- Axios 1.x (HTTP requests)
+- WebSocket API (streaming)
+- Fetch API (simpler requests)
+
+### Security
+- CryptoJS (encryption)
+- sanitize-html (content sanitization)
+- jwt-decode (token handling)
+
+### Building & Testing
+- Webpack 5 or Vite 3+ (bundling)
+- ESLint & Prettier (code quality)
+- Jest (unit testing)
+- Playwright (E2E testing)
+- TypeScript 4.5+ (type checking)
+
+### Performance
+- Web Workers API (background processing)
+- Intersection Observer API (lazy loading)
+- React.lazy and Suspense (component loading)
+- Compression libraries (data optimization)
+
+## Deployment Architecture
+
+### Extension Structure
+- Background Service Worker (API communications, event handling)
+- Content Scripts (DOM interaction, page analysis)
+- Side Panel Interface (React application)
+- Options Page (advanced configuration)
+
+### Build Pipeline
+- TypeScript compilation with strict type checking
+- Asset optimization and bundling
+- CSS minification and purging
+- Code splitting for performance
+- Extension manifest generation
+
+### Chrome Web Store Deployment
+- Privacy policy documentation generation
+- Permission justification documentation
+- Promotional assets preparation
+- Version control with semantic versioning
+- Beta testing program implementation
+- Staged rollout strategy
+
+### Performance Considerations
+- Memory management for long browser sessions
+- Caching strategies for repeat requests
+- Background tasks optimization
+- Event throttling for DOM operations
+- Lazy initialization of expensive resources
+
+### Monitoring & Updates
+- Error tracking system
+- Usage analytics (opt-in)
+- Automatic update notification
+- In-app changelog
+- Feature flagging for gradual rollout

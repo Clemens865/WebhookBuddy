@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  html, body {
+    @apply bg-void-black text-text-primary;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  #root {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+  }
+
+  h1 {
+    @apply text-2xl;
+  }
+
+  h2 {
+    @apply text-xl;
+  }
+
+  h3 {
+    @apply text-lg;
+  }
+
+  button {
+    @apply focus:outline-none focus:ring-2 focus:ring-neon-pulse focus:ring-opacity-50;
+  }
+
+  input, textarea, select {
+    @apply bg-input-field border border-border-gray rounded focus:outline-none focus:ring-2 focus:ring-neon-pulse focus:border-transparent;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded font-medium transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-opacity-50;
+  }
+
+  .btn-primary {
+    @apply btn bg-neon-pulse text-void-black hover:bg-neon-pulse-hover active:bg-neon-pulse-active focus:ring-neon-pulse;
+  }
+
+  .btn-secondary {
+    @apply btn bg-card-gray text-text-primary hover:bg-highlight-gray focus:ring-neon-pulse;
+  }
+
+  .btn-outline {
+    @apply btn bg-transparent border border-border-gray text-text-primary hover:bg-highlight-gray focus:ring-neon-pulse;
+  }
+
+  .btn-ghost {
+    @apply btn bg-transparent text-text-primary hover:bg-highlight-gray focus:ring-neon-pulse;
+  }
+
+  .btn-danger {
+    @apply btn bg-error text-white hover:bg-opacity-90 focus:ring-error;
+  }
+
+  .card {
+    @apply bg-card-gray rounded-md p-4;
+  }
+
+  .input {
+    @apply px-3 py-2 bg-input-field border border-border-gray rounded text-text-primary placeholder:text-icon-gray focus:outline-none focus:ring-2 focus:ring-neon-pulse focus:border-transparent;
+  }
+
+  .switch {
+    @apply relative inline-flex h-6 w-11 items-center rounded-full bg-border-gray transition-colors focus:outline-none focus:ring-2 focus:ring-neon-pulse focus:ring-offset-2 focus:ring-offset-void-black;
+  }
+
+  .switch[data-state="checked"] {
+    @apply bg-neon-pulse;
+  }
+
+  .switch-thumb {
+    @apply pointer-events-none block h-5 w-5 rounded-full bg-white shadow-lg ring-0 transition-transform;
+  }
+
+  .switch-thumb[data-state="checked"] {
+    @apply translate-x-5;
+  }
+
+  .switch-thumb[data-state="unchecked"] {
+    @apply translate-x-0;
+  }
+
+  .tab {
+    @apply px-4 py-2 text-text-secondary font-medium transition-colors duration-200 ease-in-out focus:outline-none;
+  }
+
+  .tab[data-state="active"] {
+    @apply bg-neon-pulse text-void-black rounded-t-md;
+  }
+
+  .tab[data-state="inactive"] {
+    @apply hover:text-text-primary hover:bg-highlight-gray rounded-t-md;
+  }
+
+  .divider {
+    @apply h-px w-full bg-divider-gray;
+  }
+
+  .divider-vertical {
+    @apply w-px h-full bg-divider-gray;
+  }
+}

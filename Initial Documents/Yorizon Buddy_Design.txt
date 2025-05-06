@@ -1,0 +1,313 @@
+# Creative UI Style and Implementation Guide: Yorizon Buddy V1.2
+
+## Design Vision & Inspiration
+
+Yorizon Buddy V1.2 represents a fusion of utilitarian function with vibrant digital energy. The design draws inspiration from cybernetic interfaces, where high-contrast dark environments are punctuated by electric neon accents that highlight active elements and guide user attention. This creates a focused workspace with a distinct personality.
+
+The interface embodies a "digital tools" aesthetic that balances professional utility with modern tech appeal. The high-contrast environment reduces eye strain during extended use while creating a canvas where the neon highlights provide immediate visual feedback on interactive elements. This visual language communicates precision, efficiency, and technical capability while providing subtle energy through its electric accent colors.
+
+The design acknowledges the side panel context by embracing vertical layouts and compact components. Moving beyond standard extension design, it introduces a distinctive personality through carefully orchestrated color relationships and systematic component design. The result is a workspace that feels both powerful and accessible—a specialized tool that integrates seamlessly with the browsing experience while maintaining its own unique identity.
+
+## Translation Principles
+
+### Artistic to Digital
+1. **Electric Accents as Functional Guides**: The neon green accent becomes a functional wayfinding system, highlighting active states, primary actions, and selected elements. The vibrance is calibrated to provide just enough visual energy without overwhelming.
+
+2. **Layered Depth Through Tone**: Rather than using elaborate shadows, we create perceived depth through systematic tonal shifts in the background colors. This creates a subtle layered environment that communicates hierarchy while maintaining a sleek, digital appearance.
+
+3. **Minimalist Line Elements**: Thin dividers, minimal borders, and geometric forms with considered rounded corners create a design language that feels refined and precise. These elements provide subtle structure without overwhelming the interface.
+
+### Abstract to Concrete
+1. **Technical Efficiency to Interface Economy**: The focused utility of the application translates to an interface that uses space economically, with compact components and clear information hierarchy. Every element serves a defined purpose.
+
+2. **Dynamic Energy to Interactive Elements**: The dynamic quality of the neon accents translates to subtle animations and transitions that provide feedback without distraction. Elements respond with precise, controlled movements that communicate their function.
+
+3. **Systematic Order to Component Patterns**: The organizational clarity of the application's purpose manifests in systematic component patterns that create visual consistency and predictability across different sections.
+
+### Inspiration to Implementation
+1. **Modular Component System**: Implement a robust component architecture that maintains visual consistency while accommodating the diverse functional requirements of the four main systems.
+
+2. **Progressive Interaction Depth**: Create an interface that reveals functionality progressively, with immediate access to common tools and deeper functionality available through logical expansion points.
+
+3. **Contextual Responsiveness**: Design components that respond to their context, adapting to different states and screen widths while maintaining their core visual identity.
+
+## Technical Specifications
+
+### Device Specifications
+- **Primary Context**: Chrome side panel (vertical format)
+- **Width Range**: 300px - 450px (flexible)
+- **Height Range**: 600px - 900px (variable based on browser window)
+- **Responsive Approach**: 
+  - Single-column layout that adapts to width changes
+  - Component collapsing rather than complete layout shifts
+  - Subtle breakpoint at 360px for component size adjustments
+
+### Framework & Libraries
+- **Primary Framework**: React 18+ with TypeScript
+- **CSS Approach**: TailwindCSS with custom theme configuration
+- **Component Library**: Custom components with Radix UI primitives for accessibility
+- **Animation Library**: Framer Motion for subtle transitions and feedback animations
+- **Icon System**: Phosphor Icons (lightweight, consistent style)
+- **Form Handling**: React Hook Form for efficient form state management
+- **Code Editor**: CodeMirror 6 for prompt editing with syntax highlighting
+
+### Asset Requirements
+- **Icon Set**: Custom SVG icons for specialized functions (automation flows, agent types, voice recording)
+- **Logo Assets**: Yorizon logo in SVG format with variants (standard, compact)
+- **Illustration Requirements**: Simple line illustrations for empty states (8-10 total)
+- **Animation Assets**: JSON-based Lottie animations for loading states and interactive feedback (3-5 total)
+
+### Technical Challenges
+- **Efficient State Management**: Implement context-based state management with selective re-rendering
+- **Performance in Constrained Environment**: Optimize rendering and minimize JS bundle size
+- **Complex Form Handling**: Create intuitive interfaces for webhook configuration and automation flows
+- **Consistent Dark Mode**: Ensure consistent implementation across all components and states
+- **Panel Width Adaptability**: Maintain usability across different side panel widths
+- **Code Editor Integration**: Integrate editor component for prompt management with appropriate theme
+
+### Performance Considerations
+- **Code Splitting**: Implement route-based code splitting for the four main functional areas
+- **Image Optimization**: Use SVG for interface elements and optimized PNG/WebP for any raster assets
+- **Virtual Rendering**: Implement virtualized lists for chat history, automation listings, and prompt libraries
+- **Bundle Optimization**: Tree-shake all dependencies and only import used components
+- **Selective Re-rendering**: Use React.memo and useMemo for complex component trees
+- **Cached Calculations**: Memoize expensive calculations for token counts and syntax highlighting
+
+## Design System
+
+### Inspired Color Palette
+
+#### Primary Colors
+- **Neon Pulse**: `#d0f138` - Primary accent for active states, buttons, and selection
+- **Neon Pulse Hover**: `#e1ff4a` - Lighter variant for hover states
+- **Neon Pulse Active**: `#b3d025` - Darker variant for active/pressed states
+- **Void Black**: `#121214` - Primary background color
+- **Surface Gray**: `#1e1e1e` - Container background, one level up from primary background
+
+#### Secondary Colors
+- **Card Gray**: `#252527` - Card backgrounds and secondary containers
+- **Input Field**: `#2c2c2e` - Form input backgrounds
+- **Highlight Gray**: `#33333a` - Hover state for non-accent elements
+
+#### Functional Colors
+- **Success Green**: `#2dd4bf` - Success states and confirmations
+- **Warning Amber**: `#fbbf24` - Warning states and alerts
+- **Error Red**: `#f43f5e` - Error states and destructive actions
+- **Info Blue**: `#38bdf8` - Informational elements and links
+
+#### Gray Scale
+- **Divider Gray**: `#38383c` - Subtle divider lines
+- **Border Gray**: `#49494e` - Container borders
+- **Icon Gray**: `#8a8a8a` - Secondary icons and inactive text
+- **Text Secondary**: `#a1a1aa` - Secondary and supporting text
+- **Text Primary**: `#ffffff` - Primary text color
+
+#### Accessibility Considerations
+- Primary text on Void Black: 19:1 contrast ratio (exceeds WCAG AAA)
+- Secondary text on Void Black: 13:1 contrast ratio (exceeds WCAG AAA)
+- Neon Pulse on Void Black: 8.3:1 contrast ratio (exceeds WCAG AAA for large text)
+- Interactive elements maintain 3:1 minimum contrast ratio for state changes
+
+### Typography System
+
+#### Font Selection
+- **Primary Font**: Inter - A clean, modern sans-serif that provides excellent readability at small sizes
+- **Monospace Font**: Fira Code - For code snippets, token counts, and prompt syntax
+
+#### Type Scale
+- **xs**: 12px / 16px line height - Usage: Metadata, timestamps, keyboard shortcuts
+- **sm**: 14px / 20px line height - Usage: Secondary text, button labels, form inputs
+- **base**: 16px / 24px line height - Usage: Primary content, chat messages, descriptions
+- **lg**: 18px / 28px line height - Usage: Section headers, important content
+- **xl**: 20px / 30px line height - Usage: Page titles, major headings
+- **2xl**: 24px / 32px line height - Usage: Application title (limited use)
+
+#### Font Weights
+- **Regular (400)**: Primary content, labels, descriptions
+- **Medium (500)**: Section headers, button text, emphasized content
+- **Semibold (600)**: Page titles, important actions, navigation elements
+- **Bold (700)**: Application title, key stats, critical information
+
+#### Typographic Treatments
+- **Line Length**: Maximum 66 characters for optimal readability
+- **Truncation**: Ellipsis truncation for long text in constrained spaces
+- **Text Overflow**: Hidden with ellipsis for single-line elements
+- **Word Breaking**: Break-word for URLs and long strings without spaces
+
+#### Technical Implementation
+```css
+/* Font imports */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
+
+/* Font variables */
+:root {
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-mono: 'Fira Code', Consolas, Monaco, 'Andale Mono', monospace;
+  
+  /* Type scale (in rems) */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  
+  /* Line heights */
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+}
+```
+
+### Compositional Approach
+
+#### Layout Principles
+- **Vertical Priority**: Optimize for vertical scrolling with logical grouping of related elements
+- **Card Containers**: Distinct card components with subtle background shifts for visual separation
+- **Progressive Disclosure**: Collapsible sections for secondary information and advanced options
+- **Content Density**: Balanced density that provides sufficient information without overwhelming
+- **Visual Hierarchy**: Clear visual weight distribution guides users to primary actions
+
+#### Spacing System
+- **Base Unit**: 4px (0.25rem)
+- **Increments**: Multiples of the base unit (4, 8, 12, 16, 20, 24, 32, 40, 48, 64)
+- **Component Spacing**: 16px (1rem) between major components
+- **Section Spacing**: 24px (1.5rem) between primary sections
+- **Container Padding**: 16px (1rem) for standard containers
+- **Condensed Spacing**: 12px (0.75rem) for dense UI areas
+- **Expanded Spacing**: 24px (1.5rem) for emphasis and separation
+
+#### Visual Hierarchy
+- **Background Layering**: Subtle background tone shifts create perceived layers
+- **Color Weight**: Neon Pulse accent guides attention to primary actions
+- **Typography Scale**: Consistent type hierarchy reinforces information importance
+- **Component Prominence**: Size and position of elements reflect their importance
+- **White Space**: Strategic use of negative space to create focus areas
+
+#### Responsive Adaptation
+- **Single-Column Base**: Primary layout remains single-column across widths
+- **Component Adaptation**: Individual components adapt to available width
+- **Priority Visibility**: High-priority functions remain visible while secondary functions collapse
+- **Flexible Heights**: Components adapt to variable heights with internal scrolling
+- **Touch Target Scaling**: Interactive elements maintain minimum 44px touch targets
+
+### Component Stylistic Guide
+
+#### Button Treatments
+- **Primary Button**:
+  - Background: Neon Pulse (`#d0f138`)
+  - Text: Void Black (`#121214`)
+  - Border: None
+  - Border Radius: 6px
+  - Padding: 10px 16px
+  - Font: Inter Medium, 14px
+  - Hover: Background lightens to `#e1ff4a`
+  - Active: Background darkens to `#b3d025`
+  - Disabled: 50% opacity, no hover effect
+  
+- **Secondary Button**:
+  - Background: Surface Gray (`#1e1e1e`)
+  - Text: White (`#ffffff`)
+  - Border: 1px solid Border Gray (`#49494e`)
+  - Border Radius: 6px
+  - Padding: 9px 16px (accounting for border)
+  - Font: Inter Medium, 14px
+  - Hover: Border color lightens to `#6b6b70`
+  - Active: Background darkens to `#171718`
+  - Disabled: 50% opacity, no hover effect
+  
+- **Tertiary Button**:
+  - Background: Transparent
+  - Text: Text Secondary (`#a1a1aa`)
+  - Border: None
+  - Border Radius: 6px
+  - Padding: 8px 12px
+  - Font: Inter Medium, 14px
+  - Hover: Background `rgba(255,255,255,0.05)`
+  - Active: Background `rgba(255,255,255,0.1)`
+  - Disabled: 50% opacity, no hover effect
+  
+- **Icon Button**:
+  - Background: Transparent
+  - Icon: Icon Gray (`#8a8a8a`)
+  - Border: None
+  - Size: 32px × 32px (minimum touch target)
+  - Hover: Icon color changes to White
+  - Active: Background `rgba(255,255,255,0.1)`
+  - Disabled: 50% opacity
+
+#### Input and Form Elements
+- **Text Input**:
+  - Background: Input Field (`#2c2c2e`)
+  - Text: White (`#ffffff`)
+  - Border: 1px solid Border Gray (`#49494e`)
+  - Border Radius: 6px
+  - Padding: 9px 12px
+  - Font: Inter Regular, 14px
+  - Focus: Border color changes to Neon Pulse
+  - Placeholder: Icon Gray (`#8a8a8a`)
+  - Error: Border color changes to Error Red
+  
+- **Select Input**:
+  - Background: Input Field (`#2c2c2e`)
+  - Text: White (`#ffffff`)
+  - Border: 1px solid Border Gray (`#49494e`)
+  - Border Radius: 6px
+  - Padding: 9px 12px
+  - Arrow Icon: Icon Gray, transitions to White on hover
+  - Dropdown Background: Card Gray
+  - Option Hover: Background `rgba(255,255,255,0.1)`
+  
+- **Checkbox/Toggle**:
+  - Unchecked Background: Input Field (`#2c2c2e`)
+  - Checked Background: Neon Pulse (`#d0f138`)
+  - Border: 1px solid Border Gray (`#49494e`)
+  - Border Radius: 4px (checkbox), 16px (toggle)
+  - Size: 20px × 20px (checkbox), 40px × 20px (toggle)
+  - Transition: 150ms cubic-bezier(0.4, 0, 0.2, 1)
+  - Focus: Border color changes to white with subtle glow
+
+- **Textarea**:
+  - Background: Input Field (`#2c2c2e`)
+  - Text: White (`#ffffff`)
+  - Border: 1px solid Border Gray (`#49494e`)
+  - Border Radius: 6px
+  - Padding: 12px
+  - Resize: Vertical
+  - Line Height: 1.5
+  - Focus: Border color changes to Neon Pulse
+
+- **Form Label**:
+  - Text: Text Secondary (`#a1a1aa`)
+  - Font: Inter Medium, 14px
+  - Margin Bottom: 8px
+  - Required Indicator: Error Red asterisk
+
+#### Navigation Elements
+- **Tabs**:
+  - Background: Transparent
+  - Text: Text Secondary (inactive), White (active)
+  - Active Indicator: 2px Neon Pulse underline
+  - Padding: 12px 16px
+  - Font: Inter Medium, 14px
+  - Hover (inactive): Text lightens to `#c4c4cc`
+  - Transition: 200ms ease-out for all changes
+  
+- **Sidebar Navigation**:
+  - Background: Surface Gray
+  - Item Background: Transparent (inactive), `rgba(208, 241, 56, 0.1)` (active)
+  - Text: Text Secondary (inactive), White (active)
+  - Icon: Icon Gray (inactive), Neon Pulse (active)
+  - Padding: 12px 16px
+  - Border Left: 2px solid Neon Pulse (active only)
+  
+- **Breadcrumbs**:
+  - Text: Text Secondary
+  - Separator: Icon Gray, custom chevron icon
+  - Font: Inter Regular, 14px
+  - Current Page: White, Inter Medium
+  - Hover: Text lightens to White
+
+- **Dropdown Menu**:
+  - Background:
