@@ -138,7 +138,7 @@ const PromptSection: React.FC<PromptSectionProps> = ({
           prompts.map((prompt) => (
             <div 
               key={prompt.id} 
-              className={`${selectedPrompt === prompt.id ? 'bg-neon-pulse text-void-black' : 'bg-card-gray text-text-primary'} p-4 rounded-lg text-center cursor-pointer aspect-square flex flex-col justify-center ${selectedPrompt === prompt.id ? 'ring-2 ring-white' : ''}`}
+              className={`${selectedPrompt === prompt.id ? 'bg-void-black text-white' : 'bg-transparent dark:text-white text-void-black'} p-4 rounded-lg text-center cursor-pointer aspect-square flex flex-col justify-center border ${selectedPrompt === prompt.id ? 'border-neon-pulse border-2' : 'border-border-gray'} transition-all duration-200`}
               onClick={() => setSelectedPrompt(prompt.id === selectedPrompt ? null : prompt.id as number)}
             >
               <FileText size={24} weight="regular" className="mx-auto mb-2" />
