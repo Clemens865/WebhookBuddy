@@ -7,11 +7,12 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-neon-pulse text-void-black hover:bg-neon-pulse-hover',
-        destructive: 'bg-error text-white hover:bg-error/90',
-        outline: 'border border-border-gray bg-transparent hover:bg-highlight-gray',
-        secondary: 'bg-card-gray text-text-primary hover:bg-highlight-gray',
-        ghost: 'hover:bg-highlight-gray',
+        default: 'bg-transparent dark:text-text-primary text-void-black border border-border-gray hover:bg-highlight-gray',
+        primary: 'bg-neon-pulse text-void-black hover:bg-neon-pulse-hover',
+        destructive: 'bg-transparent text-error border border-error hover:bg-error/10',
+        outline: 'border border-border-gray bg-transparent dark:text-text-primary text-void-black hover:bg-highlight-gray',
+        secondary: 'bg-transparent dark:text-text-primary text-void-black hover:bg-highlight-gray',
+        ghost: 'hover:bg-highlight-gray dark:text-text-primary text-void-black',
         link: 'text-neon-pulse underline-offset-4 hover:underline',
       },
       size: {
