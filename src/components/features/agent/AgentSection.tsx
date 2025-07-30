@@ -78,6 +78,7 @@ const AgentSection: React.FC = () => {
   // Render chat message
   const renderMessage = (message: ChatMessage) => {
     const isUser = message.sender === 'user';
+    const isSystem = message.text.startsWith('Workflow was');
     
     return (
       <div 
@@ -85,7 +86,13 @@ const AgentSection: React.FC = () => {
         className={`flex ${isUser ? 'justify-end' : 'justify-start'} mb-4`}
       >
         <div 
-          className={`max-w-[80%] rounded-lg p-3 ${isUser ? 'bg-neon-pulse text-void-black' : 'dark:bg-card-gray bg-highlight-gray dark:text-text-primary text-void-black'}`}
+          className={`max-w-[80%] rounded-lg p-3 ${
+            isUser 
+              ? 'bg-neon-pulse text-void-black' 
+              : isSystem 
+                ? 'dark:bg-card-gray bg-highlight-gray dark:text-text-primary text-void-black border dark:border-border-gray border-gray-300' 
+                : 'dark:bg-card-gray bg-highlight-gray dark:text-text-primary text-void-black'
+          }`}
         >
           <div className="text-sm">{message.text}</div>
           
@@ -243,7 +250,7 @@ const AgentSection: React.FC = () => {
       </div>
       
       {/* Chat area */}
-      <div className="flex-1 flex flex-col bg-card-gray dark:bg-card-gray bg-white border border-border-gray dark:border-border-gray rounded-lg overflow-hidden">
+      <div className="flex flex-col bg-card-gray dark:bg-card-gray bg-white border border-border-gray dark:border-border-gray rounded-lg overflow-hidden h-[calc(100vh-500px)]">
         {/* Chat messages */}
         <div className="flex-1 p-4 overflow-y-auto">
           {messages.length === 0 ? (
@@ -289,7 +296,7 @@ const AgentSection: React.FC = () => {
         {/* Chat input */}
         <form 
           onSubmit={handleChatSubmit}
-          className="p-4 border-t dark:border-gray-700 border-gray-200 flex items-end space-x-2"
+          className="p-4 border-t dark:border-gray-700 border-gray-200 flex items-end space-x-2 h-[200px]"
         >
           <input 
             type="file" 
@@ -313,8 +320,8 @@ const AgentSection: React.FC = () => {
               value={chatInput}
               onChange={(e) => setChatInput(e.target.value)}
               placeholder="Type your message..."
-              className="resize-none"
-              rows={1}
+              className="resize-none h-[170px] w-full"
+              rows={8}
               disabled={!selectedAgent || isLoading}
             />
           </div>

@@ -54,6 +54,8 @@ const FlowSection: React.FC<FlowSectionProps> = ({
   
   return (
     <div className="space-y-4">
+      {/* Section Title */}
+      <h2 className="text-xl font-semibold text-void-black dark:text-white mb-2">Flows</h2>
       {/* Flow Actions */}
       <div className="flex space-x-4 mb-8 ml-2 mt-10">
         <Dialog open={flowDialogOpen} onOpenChange={setFlowDialogOpen}>

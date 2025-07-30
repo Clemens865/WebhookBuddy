@@ -38,7 +38,7 @@ export interface Flow {
 }
 
 // Define our database
-class YorizonDatabase extends Dexie {
+class WebhookBuddyDatabase extends Dexie {
   users!: Table<User>;
   categories!: Table<Category>;
   flows!: Table<Flow>;
@@ -47,7 +47,7 @@ class YorizonDatabase extends Dexie {
   agents!: Table<Agent>;
 
   constructor() {
-    super('YorizonBuddyDB');
+    super('WebhookBuddyDB');
     this.version(5).stores({
       users: '++id',
       categories: '++id, uuid, name',
@@ -248,4 +248,4 @@ class YorizonDatabase extends Dexie {
 }
 
 // Create and export a single instance of the database
-export const db = new YorizonDatabase();
+export const db = new WebhookBuddyDatabase();

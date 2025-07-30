@@ -2,8 +2,8 @@ import { defineManifest } from '@crxjs/vite-plugin';
 
 export default defineManifest({
   manifest_version: 3,
-  name: 'Yorizon Buddy',
-  version: '1.2.0',
+  name: 'Webhook Buddy',
+  version: '1.0.0',
   description: 'A Chrome side panel extension for web data processing workflows',
   icons: {
     16: 'icons/icon-16.png',
@@ -12,7 +12,7 @@ export default defineManifest({
     128: 'icons/icon-128.png',
   },
   action: {
-    default_title: 'Yorizon Buddy',
+    default_title: 'Webhook Buddy',
     default_icon: {
       16: 'icons/icon-16.png',
       32: 'icons/icon-32.png',

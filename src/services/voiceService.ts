@@ -46,6 +46,8 @@ export class VoiceRecorder {
   private recordingStartTime: number = 0;
   private audioFormat: string = 'webm';
   private sampleRate: number = 48000;
+  private maxRecordingDuration: number = 120000; // 2 minutes in milliseconds
+  private recordingTimer: number | null = null;
   
   // Start recording with options
   async startRecording(options: { format?: string; sampleRate?: number } = {}): Promise<boolean> {
@@ -84,6 +86,15 @@ export class VoiceRecorder {
       
       // Start recording with 10ms timeslice for more frequent ondataavailable events
       this.mediaRecorder.start(10);
+      
+      // Set a timer to automatically stop recording after maxRecordingDuration
+      this.recordingTimer = window.setTimeout(() => {
+        if (this.isRecording()) {
+          console.log(`Automatically stopping recording after ${this.maxRecordingDuration / 1000} seconds`);
+          this.stopRecording();
+        }
+      }, this.maxRecordingDuration);
+      
       return true;
     } catch (error) {
       console.error('Error starting recording:', error);
@@ -128,6 +139,12 @@ export class VoiceRecorder {
         return;
       }
       
+      // Clear the recording timer if it exists
+      if (this.recordingTimer !== null) {
+        clearTimeout(this.recordingTimer);
+        this.recordingTimer = null;
+      }
+      
       this.mediaRecorder.onstop = () => {
         // Calculate duration in seconds
         const duration = (Date.now() - this.recordingStartTime) / 1000;
@@ -160,6 +177,12 @@ export class VoiceRecorder {
   
   // Cancel recording
   cancelRecording(): void {
+    // Clear the recording timer if it exists
+    if (this.recordingTimer !== null) {
+      clearTimeout(this.recordingTimer);
+      this.recordingTimer = null;
+    }
+    
     if (this.mediaRecorder && this.mediaRecorder.state !== 'inactive') {
       this.mediaRecorder.stop();
     }
@@ -265,6 +288,22 @@ export async function sendVoiceMessage(
     formData.append('userUrl', user.url || '');
     formData.append('userMission', user.missionStatement || '');
     formData.append('userId', user.id?.toString() || 'unknown');
+    
+    // Add page data as a separate JSON field
+    if (pageData) {
+      // Create a clean JSON string of just the page data
+      const pageDataJson = JSON.stringify(pageData);
+      formData.append('pageData', pageDataJson);
+      
+      // Also add individual page data fields for easier access
+      formData.append('pageUrl', pageData.url || '');
+      formData.append('pageTitle', pageData.title || '');
+      
+      // Add selected text if available
+      if (pageData.selectedText) {
+        formData.append('selectedText', pageData.selectedText);
+      }
+    }
     
     // Log what we're sending for debugging
     console.log('Sending voice message to webhook:', channel.webhookUrl);

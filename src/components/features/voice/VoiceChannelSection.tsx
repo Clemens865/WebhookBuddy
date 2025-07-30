@@ -29,6 +29,7 @@ const VoiceChannelSection: React.FC = () => {
     isRecording,
     isSending,
     recordingStatus,
+    recordingTimeLeft,
     startRecording,
     stopRecording,
     cancelRecording,
@@ -110,17 +111,20 @@ const VoiceChannelSection: React.FC = () => {
               onClick={() => setSelectedChannel(channel.id || null)}
             >
               <div className="flex-1 truncate">
-                <span className="font-medium">{channel.name}</span>
+                <span className={`font-medium ${selectedChannel === channel.id ? 'text-void-black' : ''}`}>{channel.name}</span>
               </div>
               <div className="flex items-center space-x-2">
                 {selectedChannel === channel.id && (
                   <div className="flex items-center space-x-2">
                     {isRecording ? (
                       <>
+                        <div className="flex items-center mr-2 text-sm font-medium">
+                          <span className="text-red-500">{Math.floor(recordingTimeLeft / 60)}:{(recordingTimeLeft % 60).toString().padStart(2, '0')}</span>
+                        </div>
                         <Button 
                           variant="default" 
                           size="sm" 
-                          className="flex items-center space-x-1 bg-neon-pulse text-void-black hover:bg-neon-pulse/90"
+                          className="flex items-center space-x-1 bg-neon-pulse text-void-black hover:bg-neon-pulse/90 !text-void-black"
                           onClick={(e) => {
                             e.stopPropagation();
                             stopRecording();
@@ -132,7 +136,7 @@ const VoiceChannelSection: React.FC = () => {
                         <Button 
                           variant="outline" 
                           size="sm" 
-                          className="flex items-center space-x-1"
+                          className="flex items-center space-x-1 !text-void-black"
                           onClick={(e) => {
                             e.stopPropagation();
                             cancelRecording();
@@ -147,7 +151,7 @@ const VoiceChannelSection: React.FC = () => {
                         <Button 
                           variant="default" 
                           size="sm" 
-                          className="flex items-center space-x-1 bg-neon-pulse text-void-black hover:bg-neon-pulse/90"
+                          className="flex items-center space-x-1 bg-neon-pulse text-void-black hover:bg-neon-pulse/90 !text-void-black"
                           onClick={(e) => {
                             e.stopPropagation();
                             startRecording();
@@ -160,7 +164,7 @@ const VoiceChannelSection: React.FC = () => {
                         <Button 
                           variant="default" 
                           size="sm" 
-                          className="flex items-center space-x-1 bg-neon-pulse text-void-black hover:bg-neon-pulse/90"
+                          className="flex items-center space-x-1 bg-neon-pulse text-void-black hover:bg-neon-pulse/90 !text-void-black"
                           onClick={(e) => {
                             e.stopPropagation();
                             sendRecording(channel.id || 0);
@@ -181,6 +185,7 @@ const VoiceChannelSection: React.FC = () => {
                     e.stopPropagation();
                     handleChannelInfo(channel);
                   }}
+                  className={selectedChannel === channel.id ? '!text-void-black hover:!text-void-black/80' : ''}
                 >
                   <Info size={16} />
                 </Button>
@@ -191,6 +196,7 @@ const VoiceChannelSection: React.FC = () => {
                     e.stopPropagation();
                     handleChannelEdit(channel);
                   }}
+                  className={selectedChannel === channel.id ? '!text-void-black hover:!text-void-black/80' : ''}
                 >
                   <PencilSimple size={16} />
                 </Button>
@@ -201,6 +207,7 @@ const VoiceChannelSection: React.FC = () => {
                     e.stopPropagation();
                     handleChannelDelete(channel.id || 0);
                   }}
+                  className={selectedChannel === channel.id ? '!text-void-black hover:!text-void-black/80' : ''}
                 >
                   <Trash size={16} />
                 </Button>

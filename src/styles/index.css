@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
+@import './theme-components.css';
 
 @tailwind base;
 @tailwind components;
@@ -7,6 +8,23 @@
 
 @layer base {
   :root {
+    /* Light theme variables */
+    --color-bg-primary: #ffffff;
+    --color-bg-secondary: #f7f9f3;
+    --color-bg-tertiary: #e8ecdf;
+    --color-text-primary: #2c2c2e;
+    --color-text-secondary: #4d5d2a;
+    --color-border: #d1d5db;
+    --color-input: #f3f4f6;
+    --color-card: #ffffff;
+    --color-highlight: #f0f2e6;
+    --color-divider: #e5e7eb;
+    
+    /* Common theme variables */
+    --color-accent: #d0f138;
+    --color-accent-hover: #e1ff4a;
+    --color-accent-active: #b3d025;
+    
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -14,13 +32,29 @@
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
   }
+  
+  .dark {
+    /* Dark theme variables */
+    --color-bg-primary: #121214;
+    --color-bg-secondary: #1e1e1e;
+    --color-bg-tertiary: #252527;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #a1a1aa;
+    --color-border: #49494e;
+    --color-input: #2c2c2e;
+    --color-card: #252527;
+    --color-highlight: #33333a;
+    --color-divider: #38383c;
+  }
 
   html, body {
-    @apply bg-void-black text-text-primary;
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   #root {
@@ -47,7 +81,13 @@
   }
 
   button {
-    @apply focus:outline-none focus:ring-2 focus:ring-neon-pulse focus:ring-opacity-50;
+    outline: none;
+    transition: all 0.2s ease;
+  }
+  
+  button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-accent);
   }
 
   input, textarea, select {

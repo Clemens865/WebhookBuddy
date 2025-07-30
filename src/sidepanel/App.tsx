@@ -48,13 +48,31 @@ const App: React.FC = () => {
 
   return (
     <div className={`min-h-screen ${darkMode ? 'dark' : ''} bg-background text-foreground`}>
+      {/* Logo and App Name Header */}
+      <div className="p-4 flex items-center justify-center border-b border-divider-gray">
+        <div className="flex items-center">
+          <img 
+            src="/icons/icon-48.png" 
+            alt="Webhook Buddy Logo" 
+            className="h-10 w-auto mr-3" 
+          />
+          <h1 className="text-xl font-semibold">Webhook Buddy</h1>
+        </div>
+      </div>
+      
+      {/* User Profile and Theme Switcher */}
       <div className="p-4 flex items-center justify-between border-b border-divider-gray">
         <UserProfileDialog
           {...userProfile}
         />
-        <div className="flex items-center space-x-2">
-          <span className="text-sm">Dark Mode</span>
-          <Switch checked={darkMode} onCheckedChange={setDarkMode} />
+        <div className="flex items-center space-x-2 ml-auto">
+          <span className="text-sm">{darkMode ? 'Dark' : 'Light'}</span>
+          <Switch
+            checked={darkMode}
+            onCheckedChange={setDarkMode}
+            aria-label="Toggle theme"
+            className={`theme-switch ${darkMode ? 'theme-switch-dark' : 'theme-switch-light'}`}
+          />
         </div>
       </div>
       

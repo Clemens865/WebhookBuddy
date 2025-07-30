@@ -38,3 +38,16 @@ coverage/
 *.crx
 *.pem
 
+# Proprietary/sensitive files
+Initial Documents/
+*.zip
+*export*.json
+
+# Build artifacts
+dist/
+build/
+
+# Package manager
+package-lock.json
+yarn.lock
+

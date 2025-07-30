@@ -1,7 +1,7 @@
 // Content script for the Chrome extension
 
 // This script runs in the context of web pages
-console.log('Yorizon Buddy content script loaded');
+console.log('Webhook Buddy content script loaded');
 
 // Function to extract page data
 function extractPageData() {

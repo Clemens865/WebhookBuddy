@@ -7,7 +7,7 @@
 // Background script for the Chrome extension
 // Listen for installation
 chrome.runtime.onInstalled.addListener(() => {
-    console.log('Yorizon Buddy extension installed');
+    console.log('Webhook Buddy extension installed');
 });
 // Listen for side panel activation
 chrome.sidePanel.setPanelBehavior({ openPanelOnActionClick: true }).catch((error) => {

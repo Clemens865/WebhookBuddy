@@ -10,6 +10,8 @@ interface UseVoiceRecordingReturn {
   isRecording: boolean;
   isSending: boolean;
   recordingStatus: RecordingStatus | null;
+  recordingTimeLeft: number; // Remaining time in seconds
+  maxRecordingDuration: number; // Maximum recording duration in seconds
   startRecording: () => Promise<void>;
   stopRecording: () => Promise<void>;
   cancelRecording: () => void;
@@ -20,7 +22,10 @@ export function useVoiceRecording(): UseVoiceRecordingReturn {
   const [isRecording, setIsRecording] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [recordingStatus, setRecordingStatus] = useState<RecordingStatus | null>(null);
+  const [recordingTimeLeft, setRecordingTimeLeft] = useState<number>(120); // 2 minutes in seconds
+  const maxRecordingDuration = 120; // 2 minutes in seconds
   const recorderRef = useRef<VoiceRecorder>(new VoiceRecorder());
+  const timerIntervalRef = useRef<number | null>(null);
   const audioRef = useRef<{
     blob: Blob;
     format: string;
@@ -43,6 +48,24 @@ export function useVoiceRecording(): UseVoiceRecordingReturn {
       if (success) {
         setIsRecording(true);
         setRecordingStatus(null);
+        // Reset the recording time left
+        setRecordingTimeLeft(maxRecordingDuration);
+        
+        // Start the countdown timer
+        if (timerIntervalRef.current) {
+          clearInterval(timerIntervalRef.current);
+        }
+        
+        timerIntervalRef.current = window.setInterval(() => {
+          setRecordingTimeLeft(prevTime => {
+            if (prevTime <= 1) {
+              // Time's up, stop recording
+              stopRecording();
+              return 0;
+            }
+            return prevTime - 1;
+          });
+        }, 1000);
       } else {
         setRecordingStatus({
           success: false,
@@ -56,11 +79,17 @@ export function useVoiceRecording(): UseVoiceRecordingReturn {
         message: `Error starting recording: ${error instanceof Error ? error.message : String(error)}`
       });
     }
-  }, []);
+  }, [maxRecordingDuration]);
 
   // Stop recording and get enhanced audio metadata
   const stopRecording = useCallback(async () => {
     if (!isRecording) return;
+    
+    // Clear the countdown timer
+    if (timerIntervalRef.current) {
+      clearInterval(timerIntervalRef.current);
+      timerIntervalRef.current = null;
+    }
     
     try {
       // Get audio data with enhanced metadata
@@ -90,6 +119,12 @@ export function useVoiceRecording(): UseVoiceRecordingReturn {
   // Cancel recording
   const cancelRecording = useCallback(() => {
     if (!isRecording) return;
+    
+    // Clear the countdown timer
+    if (timerIntervalRef.current) {
+      clearInterval(timerIntervalRef.current);
+      timerIntervalRef.current = null;
+    }
     
     recorderRef.current.cancelRecording();
     audioRef.current = null;
@@ -138,6 +173,8 @@ export function useVoiceRecording(): UseVoiceRecordingReturn {
     isRecording,
     isSending,
     recordingStatus,
+    recordingTimeLeft,
+    maxRecordingDuration,
     startRecording,
     stopRecording,
     cancelRecording,

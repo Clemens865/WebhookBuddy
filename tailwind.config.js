@@ -5,30 +5,37 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Primary Colors
+        // Brand Colors - Based on provided color guide
+        'brand-primary': '#4d5d2a', // Primary olive green (50-75% usage)
+        'brand-primary-light': '#e8ecdf', // Light variant of primary color
+        'brand-primary-dark': '#3a4520', // Dark variant of primary color
+        'brand-secondary': '#d0f138', // Neon yellow/green (25-50% usage - Utopia)
+        'brand-secondary-light': '#e1ff4a', // Light variant of secondary color
+        'brand-secondary-dark': '#b3d025', // Dark variant of secondary color
+        'brand-accent': '#808a6a', // Olive accent color (from secondary colors)
+        'brand-accent-light': '#a3ac91', // Light variant of accent color
+        'brand-accent-dark': '#5e6750', // Dark variant of accent color
+        
+        // Theme Colors - Dark Mode
         'neon-pulse': '#d0f138', // Primary accent for active states, buttons, and selection
         'neon-pulse-hover': '#e1ff4a', // Lighter variant for hover states
         'neon-pulse-active': '#b3d025', // Darker variant for active/pressed states
         'void-black': '#121214', // Primary background color
         'surface-gray': '#1e1e1e', // Container background, one level up from primary background
-        
-        // Secondary Colors
         'card-gray': '#252527', // Card backgrounds and secondary containers
         'input-field': '#2c2c2e', // Form input backgrounds
         'highlight-gray': '#33333a', // Hover state for non-accent elements
-        
-        // Functional Colors
-        'success': '#2dd4bf', // Success states and confirmations
-        'warning': '#fbbf24', // Warning states and alerts
-        'error': '#f43f5e', // Error states and destructive actions
-        'info': '#38bdf8', // Informational elements and links
-        
-        // Gray Scale
         'divider-gray': '#38383c', // Subtle divider lines
         'border-gray': '#49494e', // Container borders
         'icon-gray': '#8a8a8a', // Secondary icons and inactive text
         'text-secondary': '#a1a1aa', // Secondary and supporting text
         'text-primary': '#ffffff', // Primary text color
+        
+        // Functional Colors (Same for both themes)
+        'success': '#2dd4bf', // Success states and confirmations
+        'warning': '#fbbf24', // Warning states and alerts
+        'error': '#f43f5e', // Error states and destructive actions
+        'info': '#38bdf8', // Informational elements and links
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],

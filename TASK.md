@@ -1,7 +1,7 @@
-# Yorizon Buddy V1.2 - Development Tasks
+# Webhook Buddy V1.0 - Development Tasks
 
 ## Project Overview
-Yorizon Buddy V1.2 is a Chrome side panel extension designed to bridge web browsing with data processing workflows. It enables users to collect, process, and send web page data to webhooks and AI agents through four main components: Automation System, Prompts Management, Agent System, and Voice System.
+Webhook Buddy V1.0 is a Chrome side panel extension designed to bridge web browsing with data processing workflows. It enables users to collect, process, and send web page data to webhooks and AI agents through four main components: Automation System, Prompts Management, Agent System, and Voice System.
 
 ## Current Status
 **Date: 2025-05-05**
@@ -50,6 +50,24 @@ Yorizon Buddy V1.2 is a Chrome side panel extension designed to bridge web brows
   - Added smooth transitions between themes
   - Fixed Execute Flow button hover effect for better visibility
   - Ensured consistent text colors and contrast in both themes
+
+**Date: 2025-05-07**
+- Enhanced UI components for better light theme readability
+  - Updated Dialog component styling for proper contrast in light theme
+  - Modified Input and Textarea components to have white background and black text in light theme
+  - Updated Button variants to ensure proper text color in light theme
+  - Improved flow execution and agent chat status message styling for better readability
+  - Enhanced system message handling in the AgentSection component
+- Updated extension icons
+  - Implemented new Logo.png and Logo-dark.png files as extension icons
+  - Configured manifest.json to use Logo-dark.png for the Chrome toolbar icon
+  - Configured manifest.json to use Logo.png for the extension icon in other contexts
+  - Ensured proper icon display in both light and dark browser themes
+- Implemented voice recording time limit
+  - Added a 2-minute maximum recording duration for voice messages
+  - Implemented a countdown timer display during recording
+  - Added automatic recording stop when time limit is reached
+  - Enhanced user experience with visual feedback on remaining time
 
 ### Upcoming Tasks
 - Add additional file type support for attachments

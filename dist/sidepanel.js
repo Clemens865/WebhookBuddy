@@ -8995,12 +8995,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_theme_components_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! -!../../node_modules/css-loader/dist/cjs.js!./theme-components.css */ "./node_modules/css-loader/dist/cjs.js!./src/styles/theme-components.css");
 // Imports
+
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap);"]);
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap);"]);
+___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_theme_components_css__WEBPACK_IMPORTED_MODULE_2__["default"]);
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, `*, ::before, ::after{
   --tw-border-spacing-x: 0;
@@ -9512,6 +9515,23 @@ video {
 }
 
 :root {
+    /* Light theme variables */
+    --color-bg-primary: #ffffff;
+    --color-bg-secondary: #f7f9f3;
+    --color-bg-tertiary: #e8ecdf;
+    --color-text-primary: #2c2c2e;
+    --color-text-secondary: #4d5d2a;
+    --color-border: #d1d5db;
+    --color-input: #f3f4f6;
+    --color-card: #ffffff;
+    --color-highlight: #f0f2e6;
+    --color-divider: #e5e7eb;
+    
+    /* Common theme variables */
+    --color-accent: #d0f138;
+    --color-accent-hover: #e1ff4a;
+    --color-accent-active: #b3d025;
+    
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -9520,16 +9540,29 @@ video {
     -webkit-text-size-adjust: 100%;
   }
 
-html, body{
-  --tw-bg-opacity: 1;
-  background-color: rgb(18 18 20 / var(--tw-bg-opacity, 1));
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+.dark {
+    /* Dark theme variables */
+    --color-bg-primary: #121214;
+    --color-bg-secondary: #1e1e1e;
+    --color-bg-tertiary: #252527;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #a1a1aa;
+    --color-border: #49494e;
+    --color-input: #2c2c2e;
+    --color-card: #252527;
+    --color-highlight: #33333a;
+    --color-divider: #38383c;
+  }
+
+html, body {
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;
-}
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
 
 #root {
     height: 100%;
@@ -9557,15 +9590,15 @@ h3{
   line-height: 1.75rem;
 }
 
-button:focus{
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
-  --tw-ring-color: rgb(208 241 56 / var(--tw-ring-opacity, 1));
-  --tw-ring-opacity: 0.5;
-}
+button {
+    outline: none;
+    transition: all 0.2s ease;
+  }
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-accent);
+  }
 
 input, textarea, select{
   border-radius: 0.375rem;
@@ -9782,6 +9815,15 @@ input:focus, textarea:focus, select:focus{
 .ml-2{
   margin-left: 0.5rem;
 }
+.ml-auto{
+  margin-left: auto;
+}
+.mr-2{
+  margin-right: 0.5rem;
+}
+.mr-3{
+  margin-right: 0.75rem;
+}
 .mt-0\\.5{
   margin-top: 0.125rem;
 }
@@ -9848,8 +9890,17 @@ input:focus, textarea:focus, select:focus{
 .h-9{
   height: 2.25rem;
 }
+.h-\\[170px\\]{
+  height: 170px;
+}
+.h-\\[200px\\]{
+  height: 200px;
+}
 .h-\\[calc\\(100vh-150px\\)\\]{
   height: calc(100vh - 150px);
+}
+.h-\\[calc\\(100vh-500px\\)\\]{
+  height: calc(100vh - 500px);
 }
 .h-full{
   height: 100%;
@@ -9874,6 +9925,9 @@ input:focus, textarea:focus, select:focus{
 }
 .w-5{
   width: 1.25rem;
+}
+.w-auto{
+  width: auto;
 }
 .w-full{
   width: 100%;
@@ -10059,9 +10113,17 @@ input:focus, textarea:focus, select:focus{
   --tw-border-opacity: 1;
   border-color: rgb(56 56 60 / var(--tw-border-opacity, 1));
 }
+.border-error{
+  --tw-border-opacity: 1;
+  border-color: rgb(244 63 94 / var(--tw-border-opacity, 1));
+}
 .border-gray-200{
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity, 1));
+}
+.border-gray-300{
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity, 1));
 }
 .border-gray-600{
   --tw-border-opacity: 1;
@@ -10071,18 +10133,20 @@ input:focus, textarea:focus, select:focus{
   --tw-border-opacity: 1;
   border-color: rgb(55 65 81 / var(--tw-border-opacity, 1));
 }
-.border-green-500\\/30{
-  border-color: rgb(34 197 94 / 0.3);
+.border-green-300{
+  --tw-border-opacity: 1;
+  border-color: rgb(134 239 172 / var(--tw-border-opacity, 1));
 }
-.border-red-500\\/30{
-  border-color: rgb(239 68 68 / 0.3);
+.border-neon-pulse{
+  --tw-border-opacity: 1;
+  border-color: rgb(208 241 56 / var(--tw-border-opacity, 1));
+}
+.border-red-300{
+  --tw-border-opacity: 1;
+  border-color: rgb(252 165 165 / var(--tw-border-opacity, 1));
 }
 .border-transparent{
   border-color: transparent;
-}
-.bg-black{
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
 }
 .bg-black\\/80{
   background-color: rgb(0 0 0 / 0.8);
@@ -10095,17 +10159,17 @@ input:focus, textarea:focus, select:focus{
   --tw-bg-opacity: 1;
   background-color: rgb(37 37 39 / var(--tw-bg-opacity, 1));
 }
-.bg-error{
+.bg-gray-100{
   --tw-bg-opacity: 1;
-  background-color: rgb(244 63 94 / var(--tw-bg-opacity, 1));
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
 }
-.bg-gray-700{
+.bg-gray-200{
   --tw-bg-opacity: 1;
-  background-color: rgb(55 65 81 / var(--tw-bg-opacity, 1));
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity, 1));
 }
-.bg-gray-800{
+.bg-gray-300{
   --tw-bg-opacity: 1;
-  background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity, 1));
 }
 .bg-green-100{
   --tw-bg-opacity: 1;
@@ -10119,8 +10183,9 @@ input:focus, textarea:focus, select:focus{
   --tw-bg-opacity: 1;
   background-color: rgb(22 101 52 / var(--tw-bg-opacity, 1));
 }
-.bg-green-900\\/20{
-  background-color: rgb(20 83 45 / 0.2);
+.bg-highlight-gray{
+  --tw-bg-opacity: 1;
+  background-color: rgb(51 51 58 / var(--tw-bg-opacity, 1));
 }
 .bg-indigo-600{
   --tw-bg-opacity: 1;
@@ -10146,10 +10211,6 @@ input:focus, textarea:focus, select:focus{
   --tw-bg-opacity: 1;
   background-color: rgb(254 226 226 / var(--tw-bg-opacity, 1));
 }
-.bg-red-500{
-  --tw-bg-opacity: 1;
-  background-color: rgb(239 68 68 / var(--tw-bg-opacity, 1));
-}
 .bg-red-600{
   --tw-bg-opacity: 1;
   background-color: rgb(220 38 38 / var(--tw-bg-opacity, 1));
@@ -10158,15 +10219,16 @@ input:focus, textarea:focus, select:focus{
   --tw-bg-opacity: 1;
   background-color: rgb(153 27 27 / var(--tw-bg-opacity, 1));
 }
-.bg-red-900\\/20{
-  background-color: rgb(127 29 29 / 0.2);
-}
 .bg-teal-600{
   --tw-bg-opacity: 1;
   background-color: rgb(13 148 136 / var(--tw-bg-opacity, 1));
 }
 .bg-transparent{
   background-color: transparent;
+}
+.bg-void-black{
+  --tw-bg-opacity: 1;
+  background-color: rgb(18 18 20 / var(--tw-bg-opacity, 1));
 }
 .bg-white{
   --tw-bg-opacity: 1;
@@ -10175,9 +10237,6 @@ input:focus, textarea:focus, select:focus{
 .bg-yellow-600{
   --tw-bg-opacity: 1;
   background-color: rgb(202 138 4 / var(--tw-bg-opacity, 1));
-}
-.bg-opacity-20{
-  --tw-bg-opacity: 0.2;
 }
 .object-cover{
   -o-object-fit: cover;
@@ -10286,12 +10345,20 @@ input:focus, textarea:focus, select:focus{
 .tracking-tight{
   letter-spacing: -0.025em;
 }
+.\\!text-void-black{
+  --tw-text-opacity: 1 !important;
+  color: rgb(18 18 20 / var(--tw-text-opacity, 1)) !important;
+}
 .text-amber-400{
   --tw-text-opacity: 1;
   color: rgb(251 191 36 / var(--tw-text-opacity, 1));
 }
 .text-current{
   color: currentColor;
+}
+.text-error{
+  --tw-text-opacity: 1;
+  color: rgb(244 63 94 / var(--tw-text-opacity, 1));
 }
 .text-gray-400{
   --tw-text-opacity: 1;
@@ -10301,6 +10368,10 @@ input:focus, textarea:focus, select:focus{
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity, 1));
 }
+.text-gray-600{
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity, 1));
+}
 .text-green-100{
   --tw-text-opacity: 1;
   color: rgb(220 252 231 / var(--tw-text-opacity, 1));
@@ -10308,6 +10379,10 @@ input:focus, textarea:focus, select:focus{
 .text-green-500{
   --tw-text-opacity: 1;
   color: rgb(34 197 94 / var(--tw-text-opacity, 1));
+}
+.text-green-700{
+  --tw-text-opacity: 1;
+  color: rgb(21 128 61 / var(--tw-text-opacity, 1));
 }
 .text-green-800{
   --tw-text-opacity: 1;
@@ -10321,13 +10396,13 @@ input:focus, textarea:focus, select:focus{
   --tw-text-opacity: 1;
   color: rgb(254 226 226 / var(--tw-text-opacity, 1));
 }
-.text-red-200{
-  --tw-text-opacity: 1;
-  color: rgb(254 202 202 / var(--tw-text-opacity, 1));
-}
 .text-red-500{
   --tw-text-opacity: 1;
   color: rgb(239 68 68 / var(--tw-text-opacity, 1));
+}
+.text-red-700{
+  --tw-text-opacity: 1;
+  color: rgb(185 28 28 / var(--tw-text-opacity, 1));
 }
 .text-red-800{
   --tw-text-opacity: 1;
@@ -10436,21 +10511,32 @@ input:focus, textarea:focus, select:focus{
 .file\\:font-medium::file-selector-button{
   font-weight: 500;
 }
-.placeholder\\:text-icon-gray::-moz-placeholder{
+.placeholder\\:text-gray-400::-moz-placeholder{
   --tw-text-opacity: 1;
-  color: rgb(138 138 138 / var(--tw-text-opacity, 1));
+  color: rgb(156 163 175 / var(--tw-text-opacity, 1));
 }
-.placeholder\\:text-icon-gray::placeholder{
+.placeholder\\:text-gray-400::placeholder{
   --tw-text-opacity: 1;
-  color: rgb(138 138 138 / var(--tw-text-opacity, 1));
+  color: rgb(156 163 175 / var(--tw-text-opacity, 1));
 }
-.hover\\:scale-105:hover{
-  --tw-scale-x: 1.05;
-  --tw-scale-y: 1.05;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+.placeholder\\:text-text-secondary::-moz-placeholder{
+  --tw-text-opacity: 1;
+  color: rgb(161 161 170 / var(--tw-text-opacity, 1));
 }
-.hover\\:bg-error\\/90:hover{
-  background-color: rgb(244 63 94 / 0.9);
+.placeholder\\:text-text-secondary::placeholder{
+  --tw-text-opacity: 1;
+  color: rgb(161 161 170 / var(--tw-text-opacity, 1));
+}
+.hover\\:border-brand-secondary-dark:hover{
+  --tw-border-opacity: 1;
+  border-color: rgb(179 208 37 / var(--tw-border-opacity, 1));
+}
+.hover\\:bg-brand-secondary-dark:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(179 208 37 / var(--tw-bg-opacity, 1));
+}
+.hover\\:bg-error\\/10:hover{
+  background-color: rgb(244 63 94 / 0.1);
 }
 .hover\\:bg-highlight-gray:hover{
   --tw-bg-opacity: 1;
@@ -10462,6 +10548,9 @@ input:focus, textarea:focus, select:focus{
 }
 .hover\\:bg-neon-pulse\\/90:hover{
   background-color: rgb(208 241 56 / 0.9);
+}
+.hover\\:\\!text-void-black\\/80:hover{
+  color: rgb(18 18 20 / 0.8) !important;
 }
 .hover\\:text-neon-pulse:hover{
   --tw-text-opacity: 1;
@@ -10476,6 +10565,11 @@ input:focus, textarea:focus, select:focus{
 }
 .hover\\:opacity-100:hover{
   opacity: 1;
+}
+.hover\\:shadow-lg:hover{
+  --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 .focus\\:outline-none:focus{
   outline: 2px solid transparent;
@@ -10535,25 +10629,28 @@ input:focus, textarea:focus, select:focus{
   --tw-translate-x: 0px;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
-.data-\\[state\\=active\\]\\:bg-neon-pulse[data-state="active"]{
+.data-\\[state\\=active\\]\\:bg-highlight-gray[data-state="active"]{
   --tw-bg-opacity: 1;
-  background-color: rgb(208 241 56 / var(--tw-bg-opacity, 1));
+  background-color: rgb(51 51 58 / var(--tw-bg-opacity, 1));
 }
 .data-\\[state\\=checked\\]\\:bg-neon-pulse[data-state="checked"]{
   --tw-bg-opacity: 1;
   background-color: rgb(208 241 56 / var(--tw-bg-opacity, 1));
 }
-.data-\\[state\\=open\\]\\:bg-card-gray[data-state="open"]{
+.data-\\[state\\=inactive\\]\\:bg-transparent[data-state="inactive"]{
+  background-color: transparent;
+}
+.data-\\[state\\=open\\]\\:bg-white[data-state="open"]{
   --tw-bg-opacity: 1;
-  background-color: rgb(37 37 39 / var(--tw-bg-opacity, 1));
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
 }
 .data-\\[state\\=unchecked\\]\\:bg-border-gray[data-state="unchecked"]{
   --tw-bg-opacity: 1;
   background-color: rgb(73 73 78 / var(--tw-bg-opacity, 1));
 }
-.data-\\[state\\=active\\]\\:text-void-black[data-state="active"]{
+.data-\\[state\\=active\\]\\:text-text-primary[data-state="active"]{
   --tw-text-opacity: 1;
-  color: rgb(18 18 20 / var(--tw-text-opacity, 1));
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 .data-\\[state\\=checked\\]\\:text-void-black[data-state="checked"]{
   --tw-text-opacity: 1;
@@ -10563,15 +10660,102 @@ input:focus, textarea:focus, select:focus{
   --tw-text-opacity: 1;
   color: rgb(161 161 170 / var(--tw-text-opacity, 1));
 }
-.data-\\[state\\=open\\]\\:text-text-primary[data-state="open"]{
+.data-\\[state\\=open\\]\\:text-void-black[data-state="open"]{
+  --tw-text-opacity: 1;
+  color: rgb(18 18 20 / var(--tw-text-opacity, 1));
+}
+.data-\\[state\\=inactive\\]\\:hover\\:text-text-primary:hover[data-state="inactive"]{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
-.data-\\[state\\=inactive\\]\\:hover\\:bg-highlight-gray:hover[data-state="inactive"]{
-  --tw-bg-opacity: 1;
-  background-color: rgb(51 51 58 / var(--tw-bg-opacity, 1));
+.dark\\:border-border-gray:is(.dark *){
+  --tw-border-opacity: 1;
+  border-color: rgb(73 73 78 / var(--tw-border-opacity, 1));
 }
-.data-\\[state\\=inactive\\]\\:hover\\:text-text-primary:hover[data-state="inactive"]{
+.dark\\:border-gray-700:is(.dark *){
+  --tw-border-opacity: 1;
+  border-color: rgb(55 65 81 / var(--tw-border-opacity, 1));
+}
+.dark\\:border-green-500\\/30:is(.dark *){
+  border-color: rgb(34 197 94 / 0.3);
+}
+.dark\\:border-red-500\\/30:is(.dark *){
+  border-color: rgb(239 68 68 / 0.3);
+}
+.dark\\:bg-black:is(.dark *){
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
+}
+.dark\\:bg-card-gray:is(.dark *){
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 37 39 / var(--tw-bg-opacity, 1));
+}
+.dark\\:bg-gray-700:is(.dark *){
+  --tw-bg-opacity: 1;
+  background-color: rgb(55 65 81 / var(--tw-bg-opacity, 1));
+}
+.dark\\:bg-gray-800:is(.dark *){
+  --tw-bg-opacity: 1;
+  background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));
+}
+.dark\\:bg-green-900\\/20:is(.dark *){
+  background-color: rgb(20 83 45 / 0.2);
+}
+.dark\\:bg-input-field:is(.dark *){
+  --tw-bg-opacity: 1;
+  background-color: rgb(44 44 46 / var(--tw-bg-opacity, 1));
+}
+.dark\\:bg-red-500:is(.dark *){
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity, 1));
+}
+.dark\\:bg-red-900\\/20:is(.dark *){
+  background-color: rgb(127 29 29 / 0.2);
+}
+.dark\\:bg-opacity-20:is(.dark *){
+  --tw-bg-opacity: 0.2;
+}
+.dark\\:text-gray-500:is(.dark *){
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity, 1));
+}
+.dark\\:text-green-500:is(.dark *){
+  --tw-text-opacity: 1;
+  color: rgb(34 197 94 / var(--tw-text-opacity, 1));
+}
+.dark\\:text-red-200:is(.dark *){
+  --tw-text-opacity: 1;
+  color: rgb(254 202 202 / var(--tw-text-opacity, 1));
+}
+.dark\\:text-red-500:is(.dark *){
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity, 1));
+}
+.dark\\:text-text-primary:is(.dark *){
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+.dark\\:text-text-secondary:is(.dark *){
+  --tw-text-opacity: 1;
+  color: rgb(161 161 170 / var(--tw-text-opacity, 1));
+}
+.dark\\:text-white:is(.dark *){
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+.dark\\:placeholder\\:text-icon-gray:is(.dark *)::-moz-placeholder{
+  --tw-text-opacity: 1;
+  color: rgb(138 138 138 / var(--tw-text-opacity, 1));
+}
+.dark\\:placeholder\\:text-icon-gray:is(.dark *)::placeholder{
+  --tw-text-opacity: 1;
+  color: rgb(138 138 138 / var(--tw-text-opacity, 1));
+}
+.dark\\:data-\\[state\\=open\\]\\:bg-card-gray[data-state="open"]:is(.dark *){
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 37 39 / var(--tw-bg-opacity, 1));
+}
+.dark\\:data-\\[state\\=open\\]\\:text-text-primary[data-state="open"]:is(.dark *){
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
@@ -10621,7 +10805,167 @@ input:focus, textarea:focus, select:focus{
   --tw-rotate: 180deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
-`, "",{"version":3,"sources":["webpack://./src/styles/index.css"],"names":[],"mappings":"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","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');\n@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');\n\n@tailwind base;\n@tailwind components;\n@tailwind utilities;\n\n@layer base {\n  :root {\n    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;\n    font-synthesis: none;\n    text-rendering: optimizeLegibility;\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n    -webkit-text-size-adjust: 100%;\n  }\n\n  html, body {\n    @apply bg-void-black text-text-primary;\n    margin: 0;\n    padding: 0;\n    height: 100%;\n    width: 100%;\n  }\n\n  #root {\n    height: 100%;\n    width: 100%;\n    display: flex;\n    flex-direction: column;\n  }\n\n  h1, h2, h3, h4, h5, h6 {\n    @apply font-semibold;\n  }\n\n  h1 {\n    @apply text-2xl;\n  }\n\n  h2 {\n    @apply text-xl;\n  }\n\n  h3 {\n    @apply text-lg;\n  }\n\n  button {\n    @apply focus:outline-none focus:ring-2 focus:ring-neon-pulse focus:ring-opacity-50;\n  }\n\n  input, textarea, select {\n    @apply bg-input-field border border-border-gray rounded focus:outline-none focus:ring-2 focus:ring-neon-pulse focus:border-transparent;\n  }\n}\n\n@layer components {\n  .btn {\n    @apply px-4 py-2 rounded font-medium transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-opacity-50;\n  }\n\n  .btn-primary {\n    @apply btn bg-neon-pulse text-void-black hover:bg-neon-pulse-hover active:bg-neon-pulse-active focus:ring-neon-pulse;\n  }\n\n  .btn-secondary {\n    @apply btn bg-card-gray text-text-primary hover:bg-highlight-gray focus:ring-neon-pulse;\n  }\n\n  .btn-outline {\n    @apply btn bg-transparent border border-border-gray text-text-primary hover:bg-highlight-gray focus:ring-neon-pulse;\n  }\n\n  .btn-ghost {\n    @apply btn bg-transparent text-text-primary hover:bg-highlight-gray focus:ring-neon-pulse;\n  }\n\n  .btn-danger {\n    @apply btn bg-error text-white hover:bg-opacity-90 focus:ring-error;\n  }\n\n  .card {\n    @apply bg-card-gray rounded-md p-4;\n  }\n\n  .input {\n    @apply px-3 py-2 bg-input-field border border-border-gray rounded text-text-primary placeholder:text-icon-gray focus:outline-none focus:ring-2 focus:ring-neon-pulse focus:border-transparent;\n  }\n\n  .switch {\n    @apply relative inline-flex h-6 w-11 items-center rounded-full bg-border-gray transition-colors focus:outline-none focus:ring-2 focus:ring-neon-pulse focus:ring-offset-2 focus:ring-offset-void-black;\n  }\n\n  .switch[data-state=\"checked\"] {\n    @apply bg-neon-pulse;\n  }\n\n  .switch-thumb {\n    @apply pointer-events-none block h-5 w-5 rounded-full bg-white shadow-lg ring-0 transition-transform;\n  }\n\n  .switch-thumb[data-state=\"checked\"] {\n    @apply translate-x-5;\n  }\n\n  .switch-thumb[data-state=\"unchecked\"] {\n    @apply translate-x-0;\n  }\n\n  .tab {\n    @apply px-4 py-2 text-text-secondary font-medium transition-colors duration-200 ease-in-out focus:outline-none;\n  }\n\n  .tab[data-state=\"active\"] {\n    @apply bg-neon-pulse text-void-black rounded-t-md;\n  }\n\n  .tab[data-state=\"inactive\"] {\n    @apply hover:text-text-primary hover:bg-highlight-gray rounded-t-md;\n  }\n\n  .divider {\n    @apply h-px w-full bg-divider-gray;\n  }\n\n  .divider-vertical {\n    @apply w-px h-full bg-divider-gray;\n  }\n}\n"],"sourceRoot":""}]);
+`, "",{"version":3,"sources":["webpack://./src/styles/index.css"],"names":[],"mappings":"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","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');\n@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');\n@import './theme-components.css';\n\n@tailwind base;\n@tailwind components;\n@tailwind utilities;\n\n@layer base {\n  :root {\n    /* Light theme variables */\n    --color-bg-primary: #ffffff;\n    --color-bg-secondary: #f7f9f3;\n    --color-bg-tertiary: #e8ecdf;\n    --color-text-primary: #2c2c2e;\n    --color-text-secondary: #4d5d2a;\n    --color-border: #d1d5db;\n    --color-input: #f3f4f6;\n    --color-card: #ffffff;\n    --color-highlight: #f0f2e6;\n    --color-divider: #e5e7eb;\n    \n    /* Common theme variables */\n    --color-accent: #d0f138;\n    --color-accent-hover: #e1ff4a;\n    --color-accent-active: #b3d025;\n    \n    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;\n    font-synthesis: none;\n    text-rendering: optimizeLegibility;\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n    -webkit-text-size-adjust: 100%;\n  }\n  \n  .dark {\n    /* Dark theme variables */\n    --color-bg-primary: #121214;\n    --color-bg-secondary: #1e1e1e;\n    --color-bg-tertiary: #252527;\n    --color-text-primary: #ffffff;\n    --color-text-secondary: #a1a1aa;\n    --color-border: #49494e;\n    --color-input: #2c2c2e;\n    --color-card: #252527;\n    --color-highlight: #33333a;\n    --color-divider: #38383c;\n  }\n\n  html, body {\n    background-color: var(--color-bg-primary);\n    color: var(--color-text-primary);\n    margin: 0;\n    padding: 0;\n    height: 100%;\n    width: 100%;\n    transition: background-color 0.3s ease, color 0.3s ease;\n  }\n\n  #root {\n    height: 100%;\n    width: 100%;\n    display: flex;\n    flex-direction: column;\n  }\n\n  h1, h2, h3, h4, h5, h6 {\n    @apply font-semibold;\n  }\n\n  h1 {\n    @apply text-2xl;\n  }\n\n  h2 {\n    @apply text-xl;\n  }\n\n  h3 {\n    @apply text-lg;\n  }\n\n  button {\n    outline: none;\n    transition: all 0.2s ease;\n  }\n  \n  button:focus {\n    outline: none;\n    box-shadow: 0 0 0 2px var(--color-accent);\n  }\n\n  input, textarea, select {\n    @apply bg-input-field border border-border-gray rounded focus:outline-none focus:ring-2 focus:ring-neon-pulse focus:border-transparent;\n  }\n}\n\n@layer components {\n  .btn {\n    @apply px-4 py-2 rounded font-medium transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-opacity-50;\n  }\n\n  .btn-primary {\n    @apply btn bg-neon-pulse text-void-black hover:bg-neon-pulse-hover active:bg-neon-pulse-active focus:ring-neon-pulse;\n  }\n\n  .btn-secondary {\n    @apply btn bg-card-gray text-text-primary hover:bg-highlight-gray focus:ring-neon-pulse;\n  }\n\n  .btn-outline {\n    @apply btn bg-transparent border border-border-gray text-text-primary hover:bg-highlight-gray focus:ring-neon-pulse;\n  }\n\n  .btn-ghost {\n    @apply btn bg-transparent text-text-primary hover:bg-highlight-gray focus:ring-neon-pulse;\n  }\n\n  .btn-danger {\n    @apply btn bg-error text-white hover:bg-opacity-90 focus:ring-error;\n  }\n\n  .card {\n    @apply bg-card-gray rounded-md p-4;\n  }\n\n  .input {\n    @apply px-3 py-2 bg-input-field border border-border-gray rounded text-text-primary placeholder:text-icon-gray focus:outline-none focus:ring-2 focus:ring-neon-pulse focus:border-transparent;\n  }\n\n  .switch {\n    @apply relative inline-flex h-6 w-11 items-center rounded-full bg-border-gray transition-colors focus:outline-none focus:ring-2 focus:ring-neon-pulse focus:ring-offset-2 focus:ring-offset-void-black;\n  }\n\n  .switch[data-state=\"checked\"] {\n    @apply bg-neon-pulse;\n  }\n\n  .switch-thumb {\n    @apply pointer-events-none block h-5 w-5 rounded-full bg-white shadow-lg ring-0 transition-transform;\n  }\n\n  .switch-thumb[data-state=\"checked\"] {\n    @apply translate-x-5;\n  }\n\n  .switch-thumb[data-state=\"unchecked\"] {\n    @apply translate-x-0;\n  }\n\n  .tab {\n    @apply px-4 py-2 text-text-secondary font-medium transition-colors duration-200 ease-in-out focus:outline-none;\n  }\n\n  .tab[data-state=\"active\"] {\n    @apply bg-neon-pulse text-void-black rounded-t-md;\n  }\n\n  .tab[data-state=\"inactive\"] {\n    @apply hover:text-text-primary hover:bg-highlight-gray rounded-t-md;\n  }\n\n  .divider {\n    @apply h-px w-full bg-divider-gray;\n  }\n\n  .divider-vertical {\n    @apply w-px h-full bg-divider-gray;\n  }\n}\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/styles/theme-components.css":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/styles/theme-components.css ***!
+  \*******************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/sourceMaps.js */ "./node_modules/css-loader/dist/runtime/sourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `/* Theme-specific component styles */
+
+/* Cards */
+.card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--color-accent);
+  color: #121214;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.btn-primary:active {
+  background-color: var(--color-accent-active);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-highlight);
+}
+
+/* Inputs */
+.input {
+  background-color: var(--color-input);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(208, 241, 56, 0.25);
+}
+
+/* Tabs */
+.tabs-list {
+  background-color: var(--color-bg-secondary);
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+  display: flex;
+  gap: 0.25rem;
+}
+
+.tab {
+  color: var(--color-text-secondary);
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+
+.tab:hover {
+  color: var(--color-text-primary);
+}
+
+.tab[data-state="active"] {
+  background-color: var(--color-highlight);
+  color: var(--color-text-primary);
+}
+
+/* Dividers */
+.divider {
+  height: 1px;
+  background-color: var(--color-divider);
+  margin: 1rem 0;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--color-bg-secondary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-text-secondary);
+}
+
+/* Theme Switch */
+.theme-switch {
+  transition: all 0.2s ease;
+}
+
+.theme-switch[data-state="checked"] {
+  background-color: var(--color-accent) !important;
+}
+
+.theme-switch[data-state="unchecked"] {
+  background-color: var(--color-accent) !important;
+  opacity: 0.7;
+}
+
+.theme-switch-dark {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.theme-switch-light {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+`, "",{"version":3,"sources":["webpack://./src/styles/theme-components.css"],"names":[],"mappings":"AAAA,oCAAoC;;AAEpC,UAAU;AACV;EACE,mCAAmC;EACnC,qCAAqC;EACrC,qBAAqB;EACrB,yBAAyB;AAC3B;;AAEA,YAAY;AACZ;EACE,qCAAqC;EACrC,cAAc;EACd,gBAAgB;EAChB,oBAAoB;EACpB,uBAAuB;EACvB,yBAAyB;AAC3B;;AAEA;EACE,2CAA2C;AAC7C;;AAEA;EACE,4CAA4C;AAC9C;;AAEA;EACE,6BAA6B;EAC7B,gCAAgC;EAChC,qCAAqC;EACrC,gBAAgB;EAChB,oBAAoB;EACpB,uBAAuB;EACvB,yBAAyB;AAC3B;;AAEA;EACE,wCAAwC;AAC1C;;AAEA,WAAW;AACX;EACE,oCAAoC;EACpC,qCAAqC;EACrC,gCAAgC;EAChC,uBAAuB;EACvB,uBAAuB;EACvB,yBAAyB;AAC3B;;AAEA;EACE,aAAa;EACb,iCAAiC;EACjC,8CAA8C;AAChD;;AAEA,SAAS;AACT;EACE,2CAA2C;EAC3C,qBAAqB;EACrB,gBAAgB;EAChB,aAAa;EACb,YAAY;AACd;;AAEA;EACE,kCAAkC;EAClC,uBAAuB;EACvB,oBAAoB;EACpB,gBAAgB;EAChB,yBAAyB;EACzB,6BAA6B;EAC7B,6BAA6B;AAC/B;;AAEA;EACE,gCAAgC;AAClC;;AAEA;EACE,wCAAwC;EACxC,gCAAgC;AAClC;;AAEA,aAAa;AACb;EACE,WAAW;EACX,sCAAsC;EACtC,cAAc;AAChB;;AAEA,eAAe;AACf;EACE,UAAU;EACV,WAAW;AACb;;AAEA;EACE,2CAA2C;EAC3C,kBAAkB;AACpB;;AAEA;EACE,qCAAqC;EACrC,kBAAkB;AACpB;;AAEA;EACE,6CAA6C;AAC/C;;AAEA,iBAAiB;AACjB;EACE,yBAAyB;AAC3B;;AAEA;EACE,gDAAgD;AAClD;;AAEA;EACE,gDAAgD;EAChD,YAAY;AACd;;AAEA;EACE,0CAA0C;AAC5C;;AAEA;EACE,oCAAoC;AACtC","sourcesContent":["/* Theme-specific component styles */\n\n/* Cards */\n.card {\n  background-color: var(--color-card);\n  border: 1px solid var(--color-border);\n  border-radius: 0.5rem;\n  transition: all 0.2s ease;\n}\n\n/* Buttons */\n.btn-primary {\n  background-color: var(--color-accent);\n  color: #121214;\n  font-weight: 500;\n  padding: 0.5rem 1rem;\n  border-radius: 0.375rem;\n  transition: all 0.2s ease;\n}\n\n.btn-primary:hover {\n  background-color: var(--color-accent-hover);\n}\n\n.btn-primary:active {\n  background-color: var(--color-accent-active);\n}\n\n.btn-secondary {\n  background-color: transparent;\n  color: var(--color-text-primary);\n  border: 1px solid var(--color-border);\n  font-weight: 500;\n  padding: 0.5rem 1rem;\n  border-radius: 0.375rem;\n  transition: all 0.2s ease;\n}\n\n.btn-secondary:hover {\n  background-color: var(--color-highlight);\n}\n\n/* Inputs */\n.input {\n  background-color: var(--color-input);\n  border: 1px solid var(--color-border);\n  color: var(--color-text-primary);\n  border-radius: 0.375rem;\n  padding: 0.5rem 0.75rem;\n  transition: all 0.2s ease;\n}\n\n.input:focus {\n  outline: none;\n  border-color: var(--color-accent);\n  box-shadow: 0 0 0 2px rgba(208, 241, 56, 0.25);\n}\n\n/* Tabs */\n.tabs-list {\n  background-color: var(--color-bg-secondary);\n  border-radius: 0.5rem;\n  padding: 0.25rem;\n  display: flex;\n  gap: 0.25rem;\n}\n\n.tab {\n  color: var(--color-text-secondary);\n  border-radius: 0.375rem;\n  padding: 0.5rem 1rem;\n  font-weight: 500;\n  transition: all 0.2s ease;\n  background-color: transparent;\n  border: 1px solid transparent;\n}\n\n.tab:hover {\n  color: var(--color-text-primary);\n}\n\n.tab[data-state=\"active\"] {\n  background-color: var(--color-highlight);\n  color: var(--color-text-primary);\n}\n\n/* Dividers */\n.divider {\n  height: 1px;\n  background-color: var(--color-divider);\n  margin: 1rem 0;\n}\n\n/* Scrollbars */\n::-webkit-scrollbar {\n  width: 8px;\n  height: 8px;\n}\n\n::-webkit-scrollbar-track {\n  background-color: var(--color-bg-secondary);\n  border-radius: 4px;\n}\n\n::-webkit-scrollbar-thumb {\n  background-color: var(--color-border);\n  border-radius: 4px;\n}\n\n::-webkit-scrollbar-thumb:hover {\n  background-color: var(--color-text-secondary);\n}\n\n/* Theme Switch */\n.theme-switch {\n  transition: all 0.2s ease;\n}\n\n.theme-switch[data-state=\"checked\"] {\n  background-color: var(--color-accent) !important;\n}\n\n.theme-switch[data-state=\"unchecked\"] {\n  background-color: var(--color-accent) !important;\n  opacity: 0.7;\n}\n\n.theme-switch-dark {\n  border: 1px solid rgba(255, 255, 255, 0.1);\n}\n\n.theme-switch-light {\n  border: 1px solid rgba(0, 0, 0, 0.1);\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -61877,7 +62221,12 @@ const AgentSection = () => {
     // Render chat message
     const renderMessage = (message) => {
         const isUser = message.sender === 'user';
-        return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: `flex ${isUser ? 'justify-end' : 'justify-start'} mb-4`, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: `max-w-[80%] rounded-lg p-3 ${isUser ? 'bg-neon-pulse text-void-black' : 'bg-card-gray text-text-primary'}`, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "text-sm", children: message.text }), message.attachments && message.attachments.length > 0 && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "mt-2 space-y-2", children: message.attachments.map(attachment => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2 p-2 bg-black bg-opacity-20 rounded", children: [attachment.thumbnailData ? ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", { src: `data:${attachment.type};base64,${attachment.thumbnailData}`, alt: attachment.name, className: "w-10 h-10 object-cover rounded" })) : ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "w-10 h-10 flex items-center justify-center bg-gray-700 rounded", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_10__["default"], { size: 16 }) })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex-1 overflow-hidden", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "text-xs truncate", children: attachment.name }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "text-xs opacity-70", children: formatFileSize(attachment.size) })] })] }, attachment.id))) })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "text-xs opacity-70 mt-1", children: new Date(message.timestamp).toLocaleTimeString() })] }) }, message.id));
+        const isSystem = message.text.startsWith('Workflow was');
+        return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: `flex ${isUser ? 'justify-end' : 'justify-start'} mb-4`, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: `max-w-[80%] rounded-lg p-3 ${isUser
+                    ? 'bg-neon-pulse text-void-black'
+                    : isSystem
+                        ? 'dark:bg-card-gray bg-highlight-gray dark:text-text-primary text-void-black border dark:border-border-gray border-gray-300'
+                        : 'dark:bg-card-gray bg-highlight-gray dark:text-text-primary text-void-black'}`, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "text-sm", children: message.text }), message.attachments && message.attachments.length > 0 && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "mt-2 space-y-2", children: message.attachments.map(attachment => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2 p-2 dark:bg-black dark:bg-opacity-20 bg-gray-200 rounded", children: [attachment.thumbnailData ? ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", { src: `data:${attachment.type};base64,${attachment.thumbnailData}`, alt: attachment.name, className: "w-10 h-10 object-cover rounded" })) : ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "w-10 h-10 flex items-center justify-center dark:bg-gray-700 bg-gray-300 rounded", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_10__["default"], { size: 16 }) })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex-1 overflow-hidden", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "text-xs truncate", children: attachment.name }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "text-xs opacity-70", children: formatFileSize(attachment.size) })] })] }, attachment.id))) })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "text-xs opacity-70 mt-1", children: new Date(message.timestamp).toLocaleTimeString() })] }) }, message.id));
     };
     return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex flex-col h-full", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-4 mb-4", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "flex-1", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Select__WEBPACK_IMPORTED_MODULE_7__.Select, { value: selectedAgent?.toString() || '', onChange: (e) => {
                                 const agentId = e.target.value ? parseInt(e.target.value) : null;
@@ -61897,7 +62246,7 @@ const AgentSection = () => {
                                     const agent = agents.find(a => a.id === selectedAgent);
                                     if (agent)
                                         handleAgentInfo(agent);
-                                }, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_14__["default"], { size: 16 }) })] }))] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex-1 flex flex-col bg-card-gray rounded-lg overflow-hidden", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex-1 p-4 overflow-y-auto", children: [messages.length === 0 ? ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "h-full flex items-center justify-center text-gray-500", children: selectedAgent ? 'Send a message to start chatting' : 'Select an agent to start chatting' })) : ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "space-y-4", children: messages.map(renderMessage) })), error && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "bg-red-500 bg-opacity-20 text-red-200 p-3 rounded mt-4", children: error }))] }), selectedFiles.length > 0 && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "px-4 py-2 bg-black bg-opacity-20 border-t border-gray-700", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "text-xs mb-2", children: "Attachments:" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "flex flex-wrap gap-2", children: selectedFiles.map((file, index) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2 bg-gray-800 rounded px-2 py-1", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: "text-xs truncate max-w-[100px]", children: file.name }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { onClick: () => removeFile(index), className: "text-gray-400 hover:text-white", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_15__["default"], { size: 12 }) })] }, index))) })] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("form", { onSubmit: handleChatSubmit, className: "p-4 border-t border-gray-700 flex items-end space-x-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", { type: "file", ref: fileInputRef, onChange: handleFileSelect, className: "hidden", multiple: true }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_2__.Button, { type: "button", variant: "ghost", size: "sm", onClick: openFileSelector, className: "flex-shrink-0", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_10__["default"], { size: 20 }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "flex-1", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Textarea__WEBPACK_IMPORTED_MODULE_5__.Textarea, { value: chatInput, onChange: (e) => setChatInput(e.target.value), placeholder: "Type your message...", className: "resize-none", rows: 1, disabled: !selectedAgent || isLoading }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_2__.Button, { type: "submit", variant: "default", size: "sm", className: "flex-shrink-0 bg-neon-pulse text-void-black hover:bg-neon-pulse/90", disabled: (!chatInput.trim() && selectedFiles.length === 0) || !selectedAgent || isLoading, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_16__["default"], { size: 20 }) })] })] })] }));
+                                }, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_14__["default"], { size: 16 }) })] }))] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex flex-col bg-card-gray dark:bg-card-gray bg-white border border-border-gray dark:border-border-gray rounded-lg overflow-hidden h-[calc(100vh-500px)]", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex-1 p-4 overflow-y-auto", children: [messages.length === 0 ? ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "h-full flex items-center justify-center dark:text-gray-500 text-gray-400", children: selectedAgent ? 'Send a message to start chatting' : 'Select an agent to start chatting' })) : ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "space-y-4", children: messages.map(renderMessage) })), error && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "dark:bg-red-500 dark:bg-opacity-20 bg-red-100 dark:text-red-200 text-red-700 p-3 rounded mt-4 border dark:border-red-500/30 border-red-300", children: error }))] }), selectedFiles.length > 0 && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "px-4 py-2 dark:bg-black dark:bg-opacity-20 bg-gray-100 border-t dark:border-gray-700 border-gray-200", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "text-xs mb-2", children: "Attachments:" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "flex flex-wrap gap-2", children: selectedFiles.map((file, index) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2 dark:bg-gray-800 bg-gray-200 rounded px-2 py-1", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: "text-xs truncate max-w-[100px]", children: file.name }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { onClick: () => removeFile(index), className: "text-gray-400 hover:text-white", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_15__["default"], { size: 12 }) })] }, index))) })] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("form", { onSubmit: handleChatSubmit, className: "p-4 border-t dark:border-gray-700 border-gray-200 flex items-end space-x-2 h-[200px]", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", { type: "file", ref: fileInputRef, onChange: handleFileSelect, className: "hidden", multiple: true }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_2__.Button, { type: "button", variant: "ghost", size: "sm", onClick: openFileSelector, className: "flex-shrink-0", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_10__["default"], { size: 20 }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "flex-1", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Textarea__WEBPACK_IMPORTED_MODULE_5__.Textarea, { value: chatInput, onChange: (e) => setChatInput(e.target.value), placeholder: "Type your message...", className: "resize-none h-[170px] w-full", rows: 8, disabled: !selectedAgent || isLoading }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_2__.Button, { type: "submit", variant: "default", size: "sm", className: "flex-shrink-0 bg-neon-pulse text-void-black hover:bg-neon-pulse/90", disabled: (!chatInput.trim() && selectedFiles.length === 0) || !selectedAgent || isLoading, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_16__["default"], { size: 20 }) })] })] })] }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AgentSection);
 
@@ -61934,10 +62283,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const CategorySection = ({ categories, selectedCategory, isEditingCategory, categoryDialogOpen, newCategory, setSelectedCategory, setCategoryDialogOpen, setNewCategory, setIsEditingCategory, handleCategorySubmit, handleCategoryEdit, handleCategoryDelete, handleCategoryInfo }) => {
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "space-y-4", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex space-x-4 mb-8 ml-2 mt-10", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.Dialog, { open: categoryDialogOpen, onOpenChange: setCategoryDialogOpen, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.DialogTrigger, { asChild: true, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { variant: "outline", size: "sm", className: "flex items-center space-x-1", onClick: () => {
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "space-y-4", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", { className: "text-xl font-semibold text-void-black dark:text-white mb-2", children: "Categories" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex space-x-4 mb-8 ml-2 mt-10", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.Dialog, { open: categoryDialogOpen, onOpenChange: setCategoryDialogOpen, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.DialogTrigger, { asChild: true, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { variant: "outline", size: "sm", className: "flex items-center space-x-1", onClick: () => {
                                         setIsEditingCategory(false);
                                         setNewCategory({ name: '', description: '' });
-                                    }, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_6__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Add" })] }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.DialogContent, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.DialogHeader, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.DialogTitle, { children: isEditingCategory ? 'Edit Category' : 'Create Category' }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.DialogDescription, { children: isEditingCategory ? 'Update an existing category.' : 'Add a new category for organizing your flows.' })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid gap-6 py-6", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid grid-cols-4 items-center gap-6", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "categoryName", className: "text-right", children: "Name" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Input__WEBPACK_IMPORTED_MODULE_3__.Input, { id: "categoryName", value: newCategory.name, onChange: (e) => setNewCategory({ ...newCategory, name: e.target.value }), className: "col-span-3" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid grid-cols-4 items-center gap-6", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "categoryDescription", className: "text-right", children: "Description" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Textarea__WEBPACK_IMPORTED_MODULE_4__.Textarea, { id: "categoryDescription", value: newCategory.description, onChange: (e) => setNewCategory({ ...newCategory, description: e.target.value }), className: "col-span-3" })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.DialogFooter, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { onClick: handleCategorySubmit, children: "Save" }) })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { variant: "outline", size: "sm", className: "flex items-center space-x-1", disabled: !selectedCategory, onClick: () => selectedCategory && handleCategoryEdit(categories.find(c => c.id === selectedCategory)), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_7__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Edit" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { variant: "outline", size: "sm", className: "flex items-center space-x-1", disabled: !selectedCategory, onClick: () => selectedCategory && handleCategoryDelete(selectedCategory), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_8__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Delete" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { variant: "outline", size: "sm", className: "flex items-center space-x-1", disabled: !selectedCategory, onClick: () => selectedCategory && handleCategoryInfo(categories.find(c => c.id === selectedCategory)), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_9__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Info" })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "grid grid-cols-4 gap-x-4 gap-y-6 mt-16", children: categories.length > 0 ? (categories.map((category) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: `${selectedCategory === category.id ? 'bg-neon-pulse text-void-black' : 'bg-card-gray text-text-primary'} p-4 rounded-lg text-center cursor-pointer aspect-square flex flex-col justify-center ${selectedCategory === category.id ? 'ring-2 ring-white' : ''}`, onClick: () => handleCategorySelect(category.id || 0), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_10__["default"], { size: 24, weight: "regular", className: "mx-auto mb-2" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "font-medium", children: category.name })] }, category.id)))) : ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "col-span-4 text-center py-4 text-gray-500", children: "No categories yet. Click \"Add\" to create your first category." })) })] }));
+                                    }, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_6__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Add" })] }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.DialogContent, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.DialogHeader, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.DialogTitle, { children: isEditingCategory ? 'Edit Category' : 'Create Category' }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.DialogDescription, { children: isEditingCategory ? 'Update an existing category.' : 'Add a new category for organizing your flows.' })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid gap-6 py-6", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid grid-cols-4 items-center gap-6", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "categoryName", className: "text-right", children: "Name" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Input__WEBPACK_IMPORTED_MODULE_3__.Input, { id: "categoryName", value: newCategory.name, onChange: (e) => setNewCategory({ ...newCategory, name: e.target.value }), className: "col-span-3" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid grid-cols-4 items-center gap-6", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "categoryDescription", className: "text-right", children: "Description" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Textarea__WEBPACK_IMPORTED_MODULE_4__.Textarea, { id: "categoryDescription", value: newCategory.description, onChange: (e) => setNewCategory({ ...newCategory, description: e.target.value }), className: "col-span-3" })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.DialogFooter, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { onClick: handleCategorySubmit, children: "Save" }) })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { variant: "outline", size: "sm", className: "flex items-center space-x-1", disabled: !selectedCategory, onClick: () => selectedCategory && handleCategoryEdit(categories.find(c => c.id === selectedCategory)), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_7__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Edit" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { variant: "outline", size: "sm", className: "flex items-center space-x-1", disabled: !selectedCategory, onClick: () => selectedCategory && handleCategoryDelete(selectedCategory), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_8__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Delete" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { variant: "outline", size: "sm", className: "flex items-center space-x-1", disabled: !selectedCategory, onClick: () => selectedCategory && handleCategoryInfo(categories.find(c => c.id === selectedCategory)), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_9__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Info" })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "grid grid-cols-4 gap-x-4 gap-y-6 mt-16", children: categories.length > 0 ? (categories.map((category) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: `${selectedCategory === category.id ? 'bg-void-black text-white' : 'bg-transparent dark:text-white text-void-black'} p-4 rounded-lg text-center cursor-pointer aspect-square flex flex-col justify-center border ${selectedCategory === category.id ? 'border-neon-pulse border-2' : 'border-border-gray'} transition-all duration-200`, onClick: () => handleCategorySelect(category.id || 0), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_10__["default"], { size: 24, weight: "regular", className: "mx-auto mb-2" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "font-medium", children: category.name })] }, category.id)))) : ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "col-span-4 text-center py-4 text-gray-500", children: "No categories yet. Click \"Add\" to create your first category." })) })] }));
     function handleCategorySelect(categoryId) {
         setSelectedCategory(categoryId === selectedCategory ? null : categoryId);
     }
@@ -61999,10 +62348,10 @@ const FlowSection = ({ flows, selectedFlow, selectedCategory, isEditingFlow, flo
         loadPrompts();
     }, []);
     const filteredFlows = flows.filter(flow => flow.categoryId === selectedCategory);
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "space-y-4", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex space-x-4 mb-8 ml-2 mt-10", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_4__.Dialog, { open: flowDialogOpen, onOpenChange: setFlowDialogOpen, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_4__.DialogTrigger, { asChild: true, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_3__.Button, { variant: "outline", size: "sm", className: "flex items-center space-x-1", disabled: !selectedCategory, onClick: () => {
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "space-y-4", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", { className: "text-xl font-semibold text-void-black dark:text-white mb-2", children: "Flows" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex space-x-4 mb-8 ml-2 mt-10", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_4__.Dialog, { open: flowDialogOpen, onOpenChange: setFlowDialogOpen, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_4__.DialogTrigger, { asChild: true, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_3__.Button, { variant: "outline", size: "sm", className: "flex items-center space-x-1", disabled: !selectedCategory, onClick: () => {
                                         setIsEditingFlow(false);
                                         setNewFlow({ name: '', description: '', webhookUrl: '', promptId: null });
-                                    }, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_9__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Add" })] }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_4__.DialogContent, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_4__.DialogHeader, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_4__.DialogTitle, { children: isEditingFlow ? 'Edit Flow' : 'Create Flow' }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_4__.DialogDescription, { children: isEditingFlow ? 'Update an existing flow.' : 'Add a new flow for automation.' })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid gap-6 py-6", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid grid-cols-4 items-center gap-6", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_7__.Label, { htmlFor: "flowName", className: "text-right", children: "Name" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Input__WEBPACK_IMPORTED_MODULE_5__.Input, { id: "flowName", value: newFlow.name, onChange: (e) => setNewFlow({ ...newFlow, name: e.target.value }), className: "col-span-3" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid grid-cols-4 items-center gap-6", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_7__.Label, { htmlFor: "flowDescription", className: "text-right", children: "Description" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Textarea__WEBPACK_IMPORTED_MODULE_6__.Textarea, { id: "flowDescription", value: newFlow.description, onChange: (e) => setNewFlow({ ...newFlow, description: e.target.value }), className: "col-span-3" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid grid-cols-4 items-center gap-6", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_7__.Label, { htmlFor: "flowWebhookUrl", className: "text-right", children: "Webhook URL" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Input__WEBPACK_IMPORTED_MODULE_5__.Input, { id: "flowWebhookUrl", value: newFlow.webhookUrl, onChange: (e) => setNewFlow({ ...newFlow, webhookUrl: e.target.value }), className: "col-span-3", placeholder: "https://example.com/webhook" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid grid-cols-4 items-center gap-6", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_7__.Label, { htmlFor: "flowPrompt", className: "text-right", children: "Prompt" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Select__WEBPACK_IMPORTED_MODULE_8__.Select, { id: "flowPrompt", value: newFlow.promptId?.toString() || "", onChange: (e) => setNewFlow({ ...newFlow, promptId: e.target.value ? parseInt(e.target.value) : null }), className: "col-span-3", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", { value: "", children: "Select a prompt (optional)" }), prompts.map((prompt) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", { value: prompt.id?.toString(), children: prompt.name }, prompt.id)))] })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_4__.DialogFooter, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_3__.Button, { onClick: () => selectedCategory && handleFlowSubmit(selectedCategory), children: "Save" }) })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_3__.Button, { variant: "outline", size: "sm", className: "flex items-center space-x-1", disabled: !selectedFlow, onClick: () => selectedFlow && handleFlowEdit(flows.find(f => f.id === selectedFlow)), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_10__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Edit" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_3__.Button, { variant: "outline", size: "sm", className: "flex items-center space-x-1", disabled: !selectedFlow, onClick: () => selectedFlow && handleFlowDelete(selectedFlow), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_11__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Delete" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_3__.Button, { variant: "outline", size: "sm", className: "flex items-center space-x-1", disabled: !selectedFlow, onClick: () => selectedFlow && handleFlowInfo(flows.find(f => f.id === selectedFlow)), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_12__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Info" })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "grid grid-cols-4 gap-x-4 gap-y-6 mt-16", children: selectedCategory && filteredFlows.length > 0 ? (filteredFlows.map(flow => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: `${selectedFlow === flow.id ? 'bg-neon-pulse text-void-black' : 'bg-card-gray text-text-primary'} rounded-lg p-4 text-center cursor-pointer aspect-square flex flex-col justify-center ${selectedFlow === flow.id ? 'ring-2 ring-white' : ''}`, onClick: () => setSelectedFlow(flow.id === selectedFlow ? null : flow.id), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_13__["default"], { size: 24, weight: "regular", className: "mx-auto mb-2" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "font-medium", children: flow.name })] }, flow.id)))) : ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "col-span-4 text-center py-4 text-gray-500", children: selectedCategory !== null && selectedCategory !== undefined ? 'No flows in this category yet. Click "Add" to create your first flow.' : 'Select a category to view flows.' })) }), selectedFlow && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "mt-6 mb-4", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "flex justify-center items-center py-2", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_3__.Button, { onClick: handleExecuteFlow, disabled: isExecuting, className: "bg-neon-pulse hover:bg-neon-pulse/90 text-void-black font-medium px-4 py-2 shadow-md shadow-neon-pulse/20 transition-all duration-200 hover:scale-105 flex items-center justify-center space-x-2 w-full sm:w-auto", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24", fill: "currentColor", className: "w-5 h-5", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", { fillRule: "evenodd", d: "M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z", clipRule: "evenodd" }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: isExecuting ? 'Executing...' : 'Execute Flow' })] }) }), executionStatus && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: `mt-3 p-3 rounded-md ${executionStatus.success ? 'bg-green-900/20 border border-green-500/30' : 'bg-red-900/20 border border-red-500/30'} transition-all duration-300`, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-start space-x-2", children: [executionStatus.success ? ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24", fill: "currentColor", className: "w-5 h-5 text-green-500 mt-0.5 flex-shrink-0", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", { fillRule: "evenodd", d: "M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z", clipRule: "evenodd" }) })) : ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24", fill: "currentColor", className: "w-5 h-5 text-red-500 mt-0.5 flex-shrink-0", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", { fillRule: "evenodd", d: "M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z", clipRule: "evenodd" }) })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", { className: `text-sm ${executionStatus.success ? 'text-green-500' : 'text-red-500'}`, children: executionStatus.message })] }) }))] }))] }));
+                                    }, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_9__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Add" })] }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_4__.DialogContent, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_4__.DialogHeader, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_4__.DialogTitle, { children: isEditingFlow ? 'Edit Flow' : 'Create Flow' }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_4__.DialogDescription, { children: isEditingFlow ? 'Update an existing flow.' : 'Add a new flow for automation.' })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid gap-6 py-6", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid grid-cols-4 items-center gap-6", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_7__.Label, { htmlFor: "flowName", className: "text-right", children: "Name" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Input__WEBPACK_IMPORTED_MODULE_5__.Input, { id: "flowName", value: newFlow.name, onChange: (e) => setNewFlow({ ...newFlow, name: e.target.value }), className: "col-span-3" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid grid-cols-4 items-center gap-6", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_7__.Label, { htmlFor: "flowDescription", className: "text-right", children: "Description" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Textarea__WEBPACK_IMPORTED_MODULE_6__.Textarea, { id: "flowDescription", value: newFlow.description, onChange: (e) => setNewFlow({ ...newFlow, description: e.target.value }), className: "col-span-3" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid grid-cols-4 items-center gap-6", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_7__.Label, { htmlFor: "flowWebhookUrl", className: "text-right", children: "Webhook URL" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Input__WEBPACK_IMPORTED_MODULE_5__.Input, { id: "flowWebhookUrl", value: newFlow.webhookUrl, onChange: (e) => setNewFlow({ ...newFlow, webhookUrl: e.target.value }), className: "col-span-3", placeholder: "https://example.com/webhook" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid grid-cols-4 items-center gap-6", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_7__.Label, { htmlFor: "flowPrompt", className: "text-right", children: "Prompt" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Select__WEBPACK_IMPORTED_MODULE_8__.Select, { id: "flowPrompt", value: newFlow.promptId?.toString() || "", onChange: (e) => setNewFlow({ ...newFlow, promptId: e.target.value ? parseInt(e.target.value) : null }), className: "col-span-3", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", { value: "", children: "Select a prompt (optional)" }), prompts.map((prompt) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", { value: prompt.id?.toString(), children: prompt.name }, prompt.id)))] })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_4__.DialogFooter, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_3__.Button, { onClick: () => selectedCategory && handleFlowSubmit(selectedCategory), children: "Save" }) })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_3__.Button, { variant: "outline", size: "sm", className: "flex items-center space-x-1", disabled: !selectedFlow, onClick: () => selectedFlow && handleFlowEdit(flows.find(f => f.id === selectedFlow)), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_10__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Edit" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_3__.Button, { variant: "outline", size: "sm", className: "flex items-center space-x-1", disabled: !selectedFlow, onClick: () => selectedFlow && handleFlowDelete(selectedFlow), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_11__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Delete" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_3__.Button, { variant: "outline", size: "sm", className: "flex items-center space-x-1", disabled: !selectedFlow, onClick: () => selectedFlow && handleFlowInfo(flows.find(f => f.id === selectedFlow)), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_12__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Info" })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "grid grid-cols-4 gap-x-4 gap-y-6 mt-16", children: selectedCategory && filteredFlows.length > 0 ? (filteredFlows.map(flow => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: `${selectedFlow === flow.id ? 'bg-void-black text-white' : 'bg-transparent dark:text-white text-void-black'} rounded-lg p-4 text-center cursor-pointer aspect-square flex flex-col justify-center border ${selectedFlow === flow.id ? 'border-neon-pulse border-2' : 'border-border-gray'} transition-all duration-200`, onClick: () => setSelectedFlow(flow.id === selectedFlow ? null : flow.id), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_13__["default"], { size: 24, weight: "regular", className: "mx-auto mb-2" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "font-medium", children: flow.name })] }, flow.id)))) : ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "col-span-4 text-center py-4 text-gray-500", children: selectedCategory !== null && selectedCategory !== undefined ? 'No flows in this category yet. Click "Add" to create your first flow.' : 'Select a category to view flows.' })) }), selectedFlow && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "mt-6 mb-4", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "flex justify-center items-center py-2", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_3__.Button, { onClick: handleExecuteFlow, disabled: isExecuting, className: "bg-neon-pulse hover:bg-brand-secondary-dark text-void-black font-medium px-4 py-2 shadow-md hover:shadow-lg shadow-neon-pulse/20 transition-all duration-200 flex items-center justify-center space-x-2 w-full sm:w-auto border-2 border-transparent hover:border-brand-secondary-dark", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24", fill: "currentColor", className: "w-5 h-5", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", { fillRule: "evenodd", d: "M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z", clipRule: "evenodd" }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: isExecuting ? 'Executing...' : 'Execute Flow' })] }) }), executionStatus && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: `mt-3 p-3 rounded-md ${executionStatus.success ? 'dark:bg-green-900/20 bg-green-100 border dark:border-green-500/30 border-green-300' : 'dark:bg-red-900/20 bg-red-100 border dark:border-red-500/30 border-red-300'} transition-all duration-300`, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-start space-x-2", children: [executionStatus.success ? ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24", fill: "currentColor", className: "w-5 h-5 text-green-500 mt-0.5 flex-shrink-0", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", { fillRule: "evenodd", d: "M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z", clipRule: "evenodd" }) })) : ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24", fill: "currentColor", className: "w-5 h-5 text-red-500 mt-0.5 flex-shrink-0", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", { fillRule: "evenodd", d: "M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z", clipRule: "evenodd" }) })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", { className: `text-sm ${executionStatus.success ? 'dark:text-green-500 text-green-700' : 'dark:text-red-500 text-red-700'}`, children: executionStatus.message })] }) }))] }))] }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FlowSection);
 
@@ -62047,7 +62396,7 @@ const PromptSection = ({ prompts, selectedPrompt, isEditingPrompt, promptDialogO
                                         setIsEditingPrompt(false);
                                     }, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_6__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Add" })] }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.DialogContent, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.DialogHeader, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.DialogTitle, { children: isEditingPrompt ? 'Edit Prompt' : 'Create Prompt' }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.DialogDescription, { children: isEditingPrompt
                                                     ? 'Edit your prompt details below.'
-                                                    : 'Create a new prompt with system and user instructions.' })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "space-y-6 py-6", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid grid-cols-4 items-center gap-6", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "promptName", className: "text-right", children: "Name" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Input__WEBPACK_IMPORTED_MODULE_3__.Input, { id: "promptName", value: newPrompt.name, onChange: (e) => setNewPrompt({ ...newPrompt, name: e.target.value }), className: "col-span-3", placeholder: "Enter a name for this prompt" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid grid-cols-4 items-center gap-6", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "systemPrompt", className: "text-right", children: "System Prompt" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Textarea__WEBPACK_IMPORTED_MODULE_4__.Textarea, { id: "systemPrompt", value: newPrompt.systemPrompt, onChange: (e) => setNewPrompt({ ...newPrompt, systemPrompt: e.target.value }), className: "col-span-3 min-h-[100px]", placeholder: "Enter system instructions for the AI" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid grid-cols-4 items-center gap-6", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "userPrompt", className: "text-right", children: "User Prompt" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Textarea__WEBPACK_IMPORTED_MODULE_4__.Textarea, { id: "userPrompt", value: newPrompt.userPrompt, onChange: (e) => setNewPrompt({ ...newPrompt, userPrompt: e.target.value }), className: "col-span-3 min-h-[100px]", placeholder: "Enter user instructions or template" })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.DialogFooter, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { onClick: handlePromptSubmit, children: "Save" }) })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { variant: "outline", size: "sm", className: "flex items-center space-x-1", disabled: !selectedPrompt, onClick: () => selectedPrompt && handlePromptEdit(prompts.find(p => p.id === selectedPrompt)), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_6__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Edit" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { variant: "outline", size: "sm", className: "flex items-center space-x-1", disabled: !selectedPrompt, onClick: () => selectedPrompt && handlePromptDelete(selectedPrompt), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_7__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Delete" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { variant: "outline", size: "sm", className: "flex items-center space-x-1", disabled: !selectedPrompt, onClick: () => selectedPrompt && handlePromptInfo(prompts.find(p => p.id === selectedPrompt)), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_8__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Info" })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "grid grid-cols-4 gap-x-4 gap-y-6 mt-16", children: prompts.length > 0 ? (prompts.map((prompt) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: `${selectedPrompt === prompt.id ? 'bg-neon-pulse text-void-black' : 'bg-card-gray text-text-primary'} p-4 rounded-lg text-center cursor-pointer aspect-square flex flex-col justify-center ${selectedPrompt === prompt.id ? 'ring-2 ring-white' : ''}`, onClick: () => setSelectedPrompt(prompt.id === selectedPrompt ? null : prompt.id), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_9__["default"], { size: 24, weight: "regular", className: "mx-auto mb-2" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "font-medium", children: prompt.name })] }, prompt.id)))) : ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "col-span-4 text-center py-8 text-text-secondary", children: "No prompts found. Create your first prompt by clicking the Add button." })) })] }));
+                                                    : 'Create a new prompt with system and user instructions.' })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "space-y-6 py-6", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid grid-cols-4 items-center gap-6", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "promptName", className: "text-right", children: "Name" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Input__WEBPACK_IMPORTED_MODULE_3__.Input, { id: "promptName", value: newPrompt.name, onChange: (e) => setNewPrompt({ ...newPrompt, name: e.target.value }), className: "col-span-3", placeholder: "Enter a name for this prompt" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid grid-cols-4 items-center gap-6", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "systemPrompt", className: "text-right", children: "System Prompt" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Textarea__WEBPACK_IMPORTED_MODULE_4__.Textarea, { id: "systemPrompt", value: newPrompt.systemPrompt, onChange: (e) => setNewPrompt({ ...newPrompt, systemPrompt: e.target.value }), className: "col-span-3 min-h-[100px]", placeholder: "Enter system instructions for the AI" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid grid-cols-4 items-center gap-6", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "userPrompt", className: "text-right", children: "User Prompt" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Textarea__WEBPACK_IMPORTED_MODULE_4__.Textarea, { id: "userPrompt", value: newPrompt.userPrompt, onChange: (e) => setNewPrompt({ ...newPrompt, userPrompt: e.target.value }), className: "col-span-3 min-h-[100px]", placeholder: "Enter user instructions or template" })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.DialogFooter, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { onClick: handlePromptSubmit, children: "Save" }) })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { variant: "outline", size: "sm", className: "flex items-center space-x-1", disabled: !selectedPrompt, onClick: () => selectedPrompt && handlePromptEdit(prompts.find(p => p.id === selectedPrompt)), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_6__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Edit" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { variant: "outline", size: "sm", className: "flex items-center space-x-1", disabled: !selectedPrompt, onClick: () => selectedPrompt && handlePromptDelete(selectedPrompt), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_7__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Delete" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { variant: "outline", size: "sm", className: "flex items-center space-x-1", disabled: !selectedPrompt, onClick: () => selectedPrompt && handlePromptInfo(prompts.find(p => p.id === selectedPrompt)), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_8__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Info" })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "grid grid-cols-4 gap-x-4 gap-y-6 mt-16", children: prompts.length > 0 ? (prompts.map((prompt) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: `${selectedPrompt === prompt.id ? 'bg-void-black text-white' : 'bg-transparent dark:text-white text-void-black'} p-4 rounded-lg text-center cursor-pointer aspect-square flex flex-col justify-center border ${selectedPrompt === prompt.id ? 'border-neon-pulse border-2' : 'border-border-gray'} transition-all duration-200`, onClick: () => setSelectedPrompt(prompt.id === selectedPrompt ? null : prompt.id), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_9__["default"], { size: 24, weight: "regular", className: "mx-auto mb-2" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "font-medium", children: prompt.name })] }, prompt.id)))) : ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "col-span-4 text-center py-8 text-text-secondary", children: "No prompts found. Create your first prompt by clicking the Add button." })) })] }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PromptSection);
 
@@ -62071,10 +62420,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var phosphor_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! phosphor-react */ "./node_modules/phosphor-react/dist/icons/Upload.esm.js");
 /* harmony import */ var phosphor_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! phosphor-react */ "./node_modules/phosphor-react/dist/icons/CheckCircle.esm.js");
 /* harmony import */ var phosphor_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! phosphor-react */ "./node_modules/phosphor-react/dist/icons/Warning.esm.js");
-/* harmony import */ var _components_ui_Button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../components/ui/Button */ "./src/components/ui/Button.tsx");
-/* harmony import */ var _components_ui_Dialog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../components/ui/Dialog */ "./src/components/ui/Dialog.tsx");
-/* harmony import */ var _components_ui_Checkbox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../components/ui/Checkbox */ "./src/components/ui/Checkbox.tsx");
-/* harmony import */ var _components_ui_Label__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../components/ui/Label */ "./src/components/ui/Label.tsx");
+/* harmony import */ var _ui_Button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../ui/Button */ "./src/components/ui/Button.tsx");
+/* harmony import */ var _ui_Dialog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../ui/Dialog */ "./src/components/ui/Dialog.tsx");
+/* harmony import */ var _ui_Checkbox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../ui/Checkbox */ "./src/components/ui/Checkbox.tsx");
+/* harmony import */ var _ui_Label__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../ui/Label */ "./src/components/ui/Label.tsx");
 /* harmony import */ var _services_importExportService__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../services/importExportService */ "./src/services/importExportService.ts");
 
 
@@ -62232,7 +62581,7 @@ const ImportExportSection = ({ className = '', onImportComplete }) => {
             setTimeout(() => setNotification(null), 5000);
         }
     };
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: `mt-8 border-t border-gray-700 pt-6 ${className}`, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", { className: "text-lg font-medium mb-4", children: "Import & Export Settings" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex space-x-4", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_2__.Button, { onClick: () => setExportDialogOpen(true), variant: "outline", className: "flex items-center space-x-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_7__["default"], { size: 18 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Export Settings" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_2__.Button, { onClick: () => setImportDialogOpen(true), variant: "outline", className: "flex items-center space-x-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_8__["default"], { size: 18 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Import Settings" })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_3__.Dialog, { open: exportDialogOpen, onOpenChange: setExportDialogOpen, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_3__.DialogContent, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_3__.DialogHeader, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_3__.DialogTitle, { children: "Export Settings" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_3__.DialogDescription, { children: "Select which settings you want to export. The exported file can be shared with other users." })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "py-4 space-y-3", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2 border-b border-gray-700 pb-2 mb-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Checkbox__WEBPACK_IMPORTED_MODULE_4__.Checkbox, { id: "exportAll", checked: exportAll, onCheckedChange: handleToggleAllExport }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "exportAll", className: "font-semibold", children: "Select All" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Checkbox__WEBPACK_IMPORTED_MODULE_4__.Checkbox, { id: "exportCategories", checked: exportCategories, onCheckedChange: (checked) => setExportCategories(checked === true) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "exportCategories", children: "Categories" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Checkbox__WEBPACK_IMPORTED_MODULE_4__.Checkbox, { id: "exportFlows", checked: exportFlows, onCheckedChange: (checked) => setExportFlows(checked === true) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "exportFlows", children: "Flows" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Checkbox__WEBPACK_IMPORTED_MODULE_4__.Checkbox, { id: "exportPrompts", checked: exportPrompts, onCheckedChange: (checked) => setExportPrompts(checked === true) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "exportPrompts", children: "Prompts" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Checkbox__WEBPACK_IMPORTED_MODULE_4__.Checkbox, { id: "exportVoiceChannels", checked: exportVoiceChannels, onCheckedChange: (checked) => setExportVoiceChannels(checked === true) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "exportVoiceChannels", children: "Voice Channels" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Checkbox__WEBPACK_IMPORTED_MODULE_4__.Checkbox, { id: "exportAgents", checked: exportAgents, onCheckedChange: (checked) => setExportAgents(checked === true) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "exportAgents", children: "Agents" })] })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_3__.DialogFooter, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_2__.Button, { onClick: handleExport, disabled: !exportCategories && !exportFlows && !exportPrompts && !exportVoiceChannels && !exportAgents, children: "Export" }) })] }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_3__.Dialog, { open: importDialogOpen, onOpenChange: setImportDialogOpen, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_3__.DialogContent, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_3__.DialogHeader, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_3__.DialogTitle, { children: "Import Settings" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_3__.DialogDescription, { children: "Select a settings file to import and choose which data to include." })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "py-4 space-y-4", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "space-y-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { children: "Settings File" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", { type: "file", ref: fileInputRef, onChange: handleFileSelect, accept: ".json", className: "hidden" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_2__.Button, { type: "button", variant: "outline", onClick: openFileSelector, className: "flex-1 text-left justify-start", children: selectedFile ? selectedFile.name : 'Select file...' })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "space-y-3", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2 border-b border-gray-700 pb-2 mb-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Checkbox__WEBPACK_IMPORTED_MODULE_4__.Checkbox, { id: "importAll", checked: importAll, onCheckedChange: handleToggleAllImport }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "importAll", className: "font-semibold", children: "Select All" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Checkbox__WEBPACK_IMPORTED_MODULE_4__.Checkbox, { id: "importCategories", checked: importCategories, onCheckedChange: (checked) => setImportCategories(checked === true) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "importCategories", children: "Categories" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Checkbox__WEBPACK_IMPORTED_MODULE_4__.Checkbox, { id: "importFlows", checked: importFlows, onCheckedChange: (checked) => setImportFlows(checked === true) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "importFlows", children: "Flows" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Checkbox__WEBPACK_IMPORTED_MODULE_4__.Checkbox, { id: "importPrompts", checked: importPrompts, onCheckedChange: (checked) => setImportPrompts(checked === true) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "importPrompts", children: "Prompts" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Checkbox__WEBPACK_IMPORTED_MODULE_4__.Checkbox, { id: "importVoiceChannels", checked: importVoiceChannels, onCheckedChange: (checked) => setImportVoiceChannels(checked === true) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "importVoiceChannels", children: "Voice Channels" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Checkbox__WEBPACK_IMPORTED_MODULE_4__.Checkbox, { id: "importAgents", checked: importAgents, onCheckedChange: (checked) => setImportAgents(checked === true) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "importAgents", children: "Agents" })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2 pt-2 border-t border-gray-700", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Checkbox__WEBPACK_IMPORTED_MODULE_4__.Checkbox, { id: "replaceExisting", checked: replaceExisting, onCheckedChange: (checked) => setReplaceExisting(checked === true) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "replaceExisting", className: "text-amber-400", children: "Replace existing data (caution: this will delete current data)" })] })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_3__.DialogFooter, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_2__.Button, { onClick: handleImport, disabled: !selectedFile ||
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: `mt-8 border-t border-gray-700 pt-6 ${className}`, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", { className: "text-lg font-medium mb-4", children: "Import & Export Settings" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex space-x-4", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_ui_Button__WEBPACK_IMPORTED_MODULE_2__.Button, { onClick: () => setExportDialogOpen(true), variant: "outline", className: "flex items-center space-x-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_7__["default"], { size: 18 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Export Settings" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_ui_Button__WEBPACK_IMPORTED_MODULE_2__.Button, { onClick: () => setImportDialogOpen(true), variant: "outline", className: "flex items-center space-x-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_8__["default"], { size: 18 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Import Settings" })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Dialog__WEBPACK_IMPORTED_MODULE_3__.Dialog, { open: exportDialogOpen, onOpenChange: setExportDialogOpen, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_ui_Dialog__WEBPACK_IMPORTED_MODULE_3__.DialogContent, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_ui_Dialog__WEBPACK_IMPORTED_MODULE_3__.DialogHeader, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Dialog__WEBPACK_IMPORTED_MODULE_3__.DialogTitle, { children: "Export Settings" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Dialog__WEBPACK_IMPORTED_MODULE_3__.DialogDescription, { children: "Select which settings you want to export. The exported file can be shared with other users." })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "py-4 space-y-3", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2 border-b border-gray-700 pb-2 mb-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Checkbox__WEBPACK_IMPORTED_MODULE_4__.Checkbox, { id: "exportAll", checked: exportAll, onCheckedChange: handleToggleAllExport }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "exportAll", className: "font-semibold", children: "Select All" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Checkbox__WEBPACK_IMPORTED_MODULE_4__.Checkbox, { id: "exportCategories", checked: exportCategories, onCheckedChange: (checked) => setExportCategories(checked === true) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "exportCategories", children: "Categories" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Checkbox__WEBPACK_IMPORTED_MODULE_4__.Checkbox, { id: "exportFlows", checked: exportFlows, onCheckedChange: (checked) => setExportFlows(checked === true) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "exportFlows", children: "Flows" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Checkbox__WEBPACK_IMPORTED_MODULE_4__.Checkbox, { id: "exportPrompts", checked: exportPrompts, onCheckedChange: (checked) => setExportPrompts(checked === true) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "exportPrompts", children: "Prompts" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Checkbox__WEBPACK_IMPORTED_MODULE_4__.Checkbox, { id: "exportVoiceChannels", checked: exportVoiceChannels, onCheckedChange: (checked) => setExportVoiceChannels(checked === true) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "exportVoiceChannels", children: "Voice Channels" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Checkbox__WEBPACK_IMPORTED_MODULE_4__.Checkbox, { id: "exportAgents", checked: exportAgents, onCheckedChange: (checked) => setExportAgents(checked === true) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "exportAgents", children: "Agents" })] })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Dialog__WEBPACK_IMPORTED_MODULE_3__.DialogFooter, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Button__WEBPACK_IMPORTED_MODULE_2__.Button, { onClick: handleExport, disabled: !exportCategories && !exportFlows && !exportPrompts && !exportVoiceChannels && !exportAgents, children: "Export" }) })] }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Dialog__WEBPACK_IMPORTED_MODULE_3__.Dialog, { open: importDialogOpen, onOpenChange: setImportDialogOpen, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_ui_Dialog__WEBPACK_IMPORTED_MODULE_3__.DialogContent, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_ui_Dialog__WEBPACK_IMPORTED_MODULE_3__.DialogHeader, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Dialog__WEBPACK_IMPORTED_MODULE_3__.DialogTitle, { children: "Import Settings" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Dialog__WEBPACK_IMPORTED_MODULE_3__.DialogDescription, { children: "Select a settings file to import and choose which data to include." })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "py-4 space-y-4", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "space-y-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { children: "Settings File" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", { type: "file", ref: fileInputRef, onChange: handleFileSelect, accept: ".json", className: "hidden" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Button__WEBPACK_IMPORTED_MODULE_2__.Button, { type: "button", variant: "outline", onClick: openFileSelector, className: "flex-1 text-left justify-start", children: selectedFile ? selectedFile.name : 'Select file...' })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "space-y-3", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2 border-b border-gray-700 pb-2 mb-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Checkbox__WEBPACK_IMPORTED_MODULE_4__.Checkbox, { id: "importAll", checked: importAll, onCheckedChange: handleToggleAllImport }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "importAll", className: "font-semibold", children: "Select All" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Checkbox__WEBPACK_IMPORTED_MODULE_4__.Checkbox, { id: "importCategories", checked: importCategories, onCheckedChange: (checked) => setImportCategories(checked === true) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "importCategories", children: "Categories" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Checkbox__WEBPACK_IMPORTED_MODULE_4__.Checkbox, { id: "importFlows", checked: importFlows, onCheckedChange: (checked) => setImportFlows(checked === true) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "importFlows", children: "Flows" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Checkbox__WEBPACK_IMPORTED_MODULE_4__.Checkbox, { id: "importPrompts", checked: importPrompts, onCheckedChange: (checked) => setImportPrompts(checked === true) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "importPrompts", children: "Prompts" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Checkbox__WEBPACK_IMPORTED_MODULE_4__.Checkbox, { id: "importVoiceChannels", checked: importVoiceChannels, onCheckedChange: (checked) => setImportVoiceChannels(checked === true) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "importVoiceChannels", children: "Voice Channels" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Checkbox__WEBPACK_IMPORTED_MODULE_4__.Checkbox, { id: "importAgents", checked: importAgents, onCheckedChange: (checked) => setImportAgents(checked === true) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "importAgents", children: "Agents" })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2 pt-2 border-t border-gray-700", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Checkbox__WEBPACK_IMPORTED_MODULE_4__.Checkbox, { id: "replaceExisting", checked: replaceExisting, onCheckedChange: (checked) => setReplaceExisting(checked === true) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Label__WEBPACK_IMPORTED_MODULE_5__.Label, { htmlFor: "replaceExisting", className: "text-amber-400", children: "Replace existing data (caution: this will delete current data)" })] })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Dialog__WEBPACK_IMPORTED_MODULE_3__.DialogFooter, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ui_Button__WEBPACK_IMPORTED_MODULE_2__.Button, { onClick: handleImport, disabled: !selectedFile ||
                                     (!importCategories && !importFlows && !importPrompts && !importVoiceChannels && !importAgents), children: "Import" }) })] }) }), notification && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: `fixed bottom-4 right-4 p-4 rounded-md shadow-lg flex items-center space-x-2 ${notification.type === 'success' ? 'bg-green-800 text-green-100' : 'bg-red-800 text-red-100'}`, children: [notification.type === 'success' ? ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_9__["default"], { size: 20, weight: "fill" })) : ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_10__["default"], { size: 20, weight: "fill" })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: notification.message })] }))] }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ImportExportSection);
@@ -62308,32 +62657,32 @@ __webpack_require__.r(__webpack_exports__);
 // Using VoiceChannel type from the hook
 const VoiceChannelSection = () => {
     const { channels, selectedChannel, isEditingChannel, channelDialogOpen, newChannel, setSelectedChannel, setChannelDialogOpen, setNewChannel, setIsEditingChannel, handleChannelSubmit, handleChannelEdit, handleChannelDelete, handleChannelInfo } = (0,_hooks_useVoiceChannelManagement__WEBPACK_IMPORTED_MODULE_5__.useVoiceChannelManagement)();
-    const { isRecording, isSending, recordingStatus, startRecording, stopRecording, cancelRecording, sendRecording } = (0,_hooks_useVoiceRecording__WEBPACK_IMPORTED_MODULE_6__.useVoiceRecording)();
+    const { isRecording, isSending, recordingStatus, recordingTimeLeft, startRecording, stopRecording, cancelRecording, sendRecording } = (0,_hooks_useVoiceRecording__WEBPACK_IMPORTED_MODULE_6__.useVoiceRecording)();
     return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "space-y-4", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex justify-between items-center", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", { className: "text-xl font-semibold", children: "Voice Channels" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.Dialog, { open: channelDialogOpen, onOpenChange: setChannelDialogOpen, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.DialogTrigger, { asChild: true, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { variant: "outline", size: "sm", className: "flex items-center space-x-1", onClick: () => {
                                         setIsEditingChannel(false);
                                         setNewChannel({ name: '', webhookUrl: '' });
-                                    }, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_7__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Add" })] }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.DialogContent, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.DialogHeader, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.DialogTitle, { children: isEditingChannel ? 'Edit Channel' : 'Create Channel' }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.DialogDescription, { children: isEditingChannel ? 'Update an existing voice channel.' : 'Add a new voice channel for communication.' })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid gap-6 py-6", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex flex-col space-y-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_4__.Label, { htmlFor: "channelName", children: "Name" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Input__WEBPACK_IMPORTED_MODULE_3__.Input, { id: "channelName", value: newChannel.name, onChange: (e) => setNewChannel({ ...newChannel, name: e.target.value }) })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex flex-col space-y-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_4__.Label, { htmlFor: "channelWebhookUrl", children: "Webhook URL" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Input__WEBPACK_IMPORTED_MODULE_3__.Input, { id: "channelWebhookUrl", value: newChannel.webhookUrl, onChange: (e) => setNewChannel({ ...newChannel, webhookUrl: e.target.value }), placeholder: "https://example.com/webhook" })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.DialogFooter, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { onClick: handleChannelSubmit, children: "Save" }) })] })] })] }), recordingStatus && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: `p-3 rounded-md ${recordingStatus.success ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`, children: recordingStatus.message })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "space-y-2", children: channels.length === 0 ? ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "text-center py-8 text-gray-500", children: "No voice channels yet. Add one to get started." })) : (channels.map((channel) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: `flex items-center justify-between p-3 rounded-md ${selectedChannel === channel.id ? 'bg-neon-pulse text-void-black ring-2 ring-white' : 'border border-gray-200'}`, onClick: () => setSelectedChannel(channel.id || null), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "flex-1 truncate", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: "font-medium", children: channel.name }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2", children: [selectedChannel === channel.id && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "flex items-center space-x-2", children: isRecording ? ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { variant: "default", size: "sm", className: "flex items-center space-x-1 bg-neon-pulse text-void-black hover:bg-neon-pulse/90", onClick: (e) => {
+                                    }, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_7__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Add" })] }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.DialogContent, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.DialogHeader, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.DialogTitle, { children: isEditingChannel ? 'Edit Channel' : 'Create Channel' }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.DialogDescription, { children: isEditingChannel ? 'Update an existing voice channel.' : 'Add a new voice channel for communication.' })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid gap-6 py-6", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex flex-col space-y-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_4__.Label, { htmlFor: "channelName", children: "Name" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Input__WEBPACK_IMPORTED_MODULE_3__.Input, { id: "channelName", value: newChannel.name, onChange: (e) => setNewChannel({ ...newChannel, name: e.target.value }) })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex flex-col space-y-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Label__WEBPACK_IMPORTED_MODULE_4__.Label, { htmlFor: "channelWebhookUrl", children: "Webhook URL" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Input__WEBPACK_IMPORTED_MODULE_3__.Input, { id: "channelWebhookUrl", value: newChannel.webhookUrl, onChange: (e) => setNewChannel({ ...newChannel, webhookUrl: e.target.value }), placeholder: "https://example.com/webhook" })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Dialog__WEBPACK_IMPORTED_MODULE_2__.DialogFooter, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { onClick: handleChannelSubmit, children: "Save" }) })] })] })] }), recordingStatus && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: `p-3 rounded-md ${recordingStatus.success ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`, children: recordingStatus.message })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "space-y-2", children: channels.length === 0 ? ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "text-center py-8 text-gray-500", children: "No voice channels yet. Add one to get started." })) : (channels.map((channel) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: `flex items-center justify-between p-3 rounded-md ${selectedChannel === channel.id ? 'bg-neon-pulse text-void-black ring-2 ring-white' : 'border border-gray-200'}`, onClick: () => setSelectedChannel(channel.id || null), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "flex-1 truncate", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: `font-medium ${selectedChannel === channel.id ? 'text-void-black' : ''}`, children: channel.name }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2", children: [selectedChannel === channel.id && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "flex items-center space-x-2", children: isRecording ? ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "flex items-center mr-2 text-sm font-medium", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", { className: "text-red-500", children: [Math.floor(recordingTimeLeft / 60), ":", (recordingTimeLeft % 60).toString().padStart(2, '0')] }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { variant: "default", size: "sm", className: "flex items-center space-x-1 bg-neon-pulse text-void-black hover:bg-neon-pulse/90 !text-void-black", onClick: (e) => {
                                                     e.stopPropagation();
                                                     stopRecording();
-                                                }, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_8__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Stop" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { variant: "outline", size: "sm", className: "flex items-center space-x-1", onClick: (e) => {
+                                                }, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_8__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Stop" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { variant: "outline", size: "sm", className: "flex items-center space-x-1 !text-void-black", onClick: (e) => {
                                                     e.stopPropagation();
                                                     cancelRecording();
-                                                }, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_9__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Cancel" })] })] })) : ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { variant: "default", size: "sm", className: "flex items-center space-x-1 bg-neon-pulse text-void-black hover:bg-neon-pulse/90", onClick: (e) => {
+                                                }, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_9__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Cancel" })] })] })) : ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { variant: "default", size: "sm", className: "flex items-center space-x-1 bg-neon-pulse text-void-black hover:bg-neon-pulse/90 !text-void-black", onClick: (e) => {
                                                     e.stopPropagation();
                                                     startRecording();
-                                                }, disabled: isSending, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_10__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Record" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { variant: "default", size: "sm", className: "flex items-center space-x-1 bg-neon-pulse text-void-black hover:bg-neon-pulse/90", onClick: (e) => {
+                                                }, disabled: isSending, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_10__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Record" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { variant: "default", size: "sm", className: "flex items-center space-x-1 bg-neon-pulse text-void-black hover:bg-neon-pulse/90 !text-void-black", onClick: (e) => {
                                                     e.stopPropagation();
                                                     sendRecording(channel.id || 0);
                                                 }, disabled: isSending || isRecording, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_11__["default"], { size: 16 }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "Send" })] })] })) })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { variant: "ghost", size: "sm", onClick: (e) => {
                                         e.stopPropagation();
                                         handleChannelInfo(channel);
-                                    }, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_12__["default"], { size: 16 }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { variant: "ghost", size: "sm", onClick: (e) => {
+                                    }, className: selectedChannel === channel.id ? '!text-void-black hover:!text-void-black/80' : '', children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_12__["default"], { size: 16 }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { variant: "ghost", size: "sm", onClick: (e) => {
                                         e.stopPropagation();
                                         handleChannelEdit(channel);
-                                    }, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_13__["default"], { size: 16 }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { variant: "ghost", size: "sm", onClick: (e) => {
+                                    }, className: selectedChannel === channel.id ? '!text-void-black hover:!text-void-black/80' : '', children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_13__["default"], { size: 16 }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { variant: "ghost", size: "sm", onClick: (e) => {
                                         e.stopPropagation();
                                         handleChannelDelete(channel.id || 0);
-                                    }, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_14__["default"], { size: 16 }) })] })] }, channel.id)))) })] }));
+                                    }, className: selectedChannel === channel.id ? '!text-void-black hover:!text-void-black/80' : '', children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_14__["default"], { size: 16 }) })] })] }, channel.id)))) })] }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (VoiceChannelSection);
 
@@ -62363,11 +62712,12 @@ __webpack_require__.r(__webpack_exports__);
 const buttonVariants = (0,class_variance_authority__WEBPACK_IMPORTED_MODULE_2__.cva)('inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-pulse focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none', {
     variants: {
         variant: {
-            default: 'bg-neon-pulse text-void-black hover:bg-neon-pulse-hover',
-            destructive: 'bg-error text-white hover:bg-error/90',
-            outline: 'border border-border-gray bg-transparent hover:bg-highlight-gray',
-            secondary: 'bg-card-gray text-text-primary hover:bg-highlight-gray',
-            ghost: 'hover:bg-highlight-gray',
+            default: 'bg-transparent dark:text-text-primary text-void-black border border-border-gray hover:bg-highlight-gray',
+            primary: 'bg-neon-pulse text-void-black hover:bg-neon-pulse-hover',
+            destructive: 'bg-transparent text-error border border-error hover:bg-error/10',
+            outline: 'border border-border-gray bg-transparent dark:text-text-primary text-void-black hover:bg-highlight-gray',
+            secondary: 'bg-transparent dark:text-text-primary text-void-black hover:bg-highlight-gray',
+            ghost: 'hover:bg-highlight-gray dark:text-text-primary text-void-black',
             link: 'text-neon-pulse underline-offset-4 hover:underline',
         },
         size: {
@@ -62453,15 +62803,15 @@ const DialogTrigger = _radix_ui_react_dialog__WEBPACK_IMPORTED_MODULE_3__.Trigge
 const DialogPortal = _radix_ui_react_dialog__WEBPACK_IMPORTED_MODULE_3__.Portal;
 const DialogOverlay = react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(({ className, ...props }, ref) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_radix_ui_react_dialog__WEBPACK_IMPORTED_MODULE_3__.Overlay, { ref: ref, className: (0,_utils_cn__WEBPACK_IMPORTED_MODULE_2__.cn)('fixed inset-0 z-50 bg-black/80 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0', className), ...props })));
 DialogOverlay.displayName = _radix_ui_react_dialog__WEBPACK_IMPORTED_MODULE_3__.Overlay.displayName;
-const DialogContent = react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(({ className, children, ...props }, ref) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(DialogPortal, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DialogOverlay, {}), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_radix_ui_react_dialog__WEBPACK_IMPORTED_MODULE_3__.Content, { ref: ref, className: (0,_utils_cn__WEBPACK_IMPORTED_MODULE_2__.cn)('fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border border-border-gray bg-card-gray p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] rounded-lg', className), ...props, children: [children, (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_radix_ui_react_dialog__WEBPACK_IMPORTED_MODULE_3__.Close, { className: "absolute right-4 top-4 rounded-sm opacity-70 ring-offset-void-black transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-neon-pulse focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-card-gray data-[state=open]:text-text-primary", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_4__["default"], { className: "h-4 w-4" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: "sr-only", children: "Close" })] })] })] })));
+const DialogContent = react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(({ className, children, ...props }, ref) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(DialogPortal, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DialogOverlay, {}), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_radix_ui_react_dialog__WEBPACK_IMPORTED_MODULE_3__.Content, { ref: ref, className: (0,_utils_cn__WEBPACK_IMPORTED_MODULE_2__.cn)('fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border border-border-gray dark:bg-card-gray bg-white p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] rounded-lg', className), ...props, children: [children, (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_radix_ui_react_dialog__WEBPACK_IMPORTED_MODULE_3__.Close, { className: "absolute right-4 top-4 rounded-sm opacity-70 ring-offset-void-black transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-neon-pulse focus:ring-offset-2 disabled:pointer-events-none dark:data-[state=open]:bg-card-gray data-[state=open]:bg-white dark:data-[state=open]:text-text-primary data-[state=open]:text-void-black", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(phosphor_react__WEBPACK_IMPORTED_MODULE_4__["default"], { className: "h-4 w-4" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: "sr-only", children: "Close" })] })] })] })));
 DialogContent.displayName = _radix_ui_react_dialog__WEBPACK_IMPORTED_MODULE_3__.Content.displayName;
 const DialogHeader = ({ className, ...props }) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: (0,_utils_cn__WEBPACK_IMPORTED_MODULE_2__.cn)('flex flex-col space-y-1.5 text-center sm:text-left', className), ...props }));
 DialogHeader.displayName = 'DialogHeader';
 const DialogFooter = ({ className, ...props }) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: (0,_utils_cn__WEBPACK_IMPORTED_MODULE_2__.cn)('flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2', className), ...props }));
 DialogFooter.displayName = 'DialogFooter';
-const DialogTitle = react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(({ className, ...props }, ref) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_radix_ui_react_dialog__WEBPACK_IMPORTED_MODULE_3__.Title, { ref: ref, className: (0,_utils_cn__WEBPACK_IMPORTED_MODULE_2__.cn)('text-lg font-semibold leading-none tracking-tight text-text-primary', className), ...props })));
+const DialogTitle = react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(({ className, ...props }, ref) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_radix_ui_react_dialog__WEBPACK_IMPORTED_MODULE_3__.Title, { ref: ref, className: (0,_utils_cn__WEBPACK_IMPORTED_MODULE_2__.cn)('text-lg font-semibold leading-none tracking-tight dark:text-text-primary text-void-black', className), ...props })));
 DialogTitle.displayName = _radix_ui_react_dialog__WEBPACK_IMPORTED_MODULE_3__.Title.displayName;
-const DialogDescription = react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(({ className, ...props }, ref) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_radix_ui_react_dialog__WEBPACK_IMPORTED_MODULE_3__.Description, { ref: ref, className: (0,_utils_cn__WEBPACK_IMPORTED_MODULE_2__.cn)('text-sm text-text-secondary', className), ...props })));
+const DialogDescription = react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(({ className, ...props }, ref) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_radix_ui_react_dialog__WEBPACK_IMPORTED_MODULE_3__.Description, { ref: ref, className: (0,_utils_cn__WEBPACK_IMPORTED_MODULE_2__.cn)('text-sm dark:text-text-secondary text-gray-600', className), ...props })));
 DialogDescription.displayName = _radix_ui_react_dialog__WEBPACK_IMPORTED_MODULE_3__.Description.displayName;
 
 
@@ -62486,7 +62836,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const Input = react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(({ className, type, ...props }, ref) => {
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", { type: type, className: (0,_utils_cn__WEBPACK_IMPORTED_MODULE_2__.cn)('flex h-10 w-full rounded-md border border-border-gray bg-input-field px-3 py-2 text-sm ring-offset-void-black file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-icon-gray focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-pulse focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50', className), ref: ref, ...props }));
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", { type: type, className: (0,_utils_cn__WEBPACK_IMPORTED_MODULE_2__.cn)('flex h-10 w-full rounded-md border border-border-gray dark:bg-input-field bg-white text-void-black dark:text-text-primary px-3 py-2 text-sm ring-offset-void-black file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-400 dark:placeholder:text-icon-gray focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-pulse focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50', className), ref: ref, ...props }));
 });
 Input.displayName = 'Input';
 
@@ -62538,7 +62888,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const Select = react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(({ className, children, ...props }, ref) => {
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("select", { className: (0,_utils_cn__WEBPACK_IMPORTED_MODULE_2__.cn)("flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50", className), ref: ref, ...props, children: children }));
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("select", { className: (0,_utils_cn__WEBPACK_IMPORTED_MODULE_2__.cn)("flex h-10 w-full rounded-md border border-border-gray bg-input-field dark:bg-input-field text-text-primary dark:text-text-primary px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-text-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-pulse focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50", className), ref: ref, ...props, children: children }));
 });
 Select.displayName = "Select";
 
@@ -62597,7 +62947,7 @@ __webpack_require__.r(__webpack_exports__);
 const Tabs = _radix_ui_react_tabs__WEBPACK_IMPORTED_MODULE_3__.Root;
 const TabsList = react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(({ className, ...props }, ref) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_radix_ui_react_tabs__WEBPACK_IMPORTED_MODULE_3__.List, { ref: ref, className: (0,_utils_cn__WEBPACK_IMPORTED_MODULE_2__.cn)('flex w-full', className), ...props })));
 TabsList.displayName = _radix_ui_react_tabs__WEBPACK_IMPORTED_MODULE_3__.List.displayName;
-const TabsTrigger = react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(({ className, ...props }, ref) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_radix_ui_react_tabs__WEBPACK_IMPORTED_MODULE_3__.Trigger, { ref: ref, className: (0,_utils_cn__WEBPACK_IMPORTED_MODULE_2__.cn)('inline-flex items-center justify-center whitespace-nowrap px-3 py-2 text-sm font-medium ring-offset-void-black transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-pulse focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-neon-pulse data-[state=active]:text-void-black data-[state=inactive]:text-text-secondary data-[state=inactive]:hover:text-text-primary data-[state=inactive]:hover:bg-highlight-gray', className), ...props })));
+const TabsTrigger = react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(({ className, ...props }, ref) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_radix_ui_react_tabs__WEBPACK_IMPORTED_MODULE_3__.Trigger, { ref: ref, className: (0,_utils_cn__WEBPACK_IMPORTED_MODULE_2__.cn)('inline-flex items-center justify-center whitespace-nowrap px-3 py-2 text-sm font-medium ring-offset-void-black transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-pulse focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-highlight-gray data-[state=active]:text-text-primary data-[state=inactive]:bg-transparent data-[state=inactive]:text-text-secondary data-[state=inactive]:hover:text-text-primary', className), ...props })));
 TabsTrigger.displayName = _radix_ui_react_tabs__WEBPACK_IMPORTED_MODULE_3__.Trigger.displayName;
 const TabsContent = react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(({ className, ...props }, ref) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_radix_ui_react_tabs__WEBPACK_IMPORTED_MODULE_3__.Content, { ref: ref, className: (0,_utils_cn__WEBPACK_IMPORTED_MODULE_2__.cn)('mt-2 ring-offset-void-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-pulse focus-visible:ring-offset-2', className), ...props })));
 TabsContent.displayName = _radix_ui_react_tabs__WEBPACK_IMPORTED_MODULE_3__.Content.displayName;
@@ -62624,7 +62974,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const Textarea = react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(({ className, ...props }, ref) => {
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("textarea", { className: (0,_utils_cn__WEBPACK_IMPORTED_MODULE_2__.cn)('flex min-h-[80px] w-full rounded-md border border-border-gray bg-input-field px-3 py-2 text-sm ring-offset-void-black placeholder:text-icon-gray focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-pulse focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50', className), ref: ref, ...props }));
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("textarea", { className: (0,_utils_cn__WEBPACK_IMPORTED_MODULE_2__.cn)('flex min-h-[80px] w-full rounded-md border border-border-gray dark:bg-input-field bg-white text-void-black dark:text-text-primary px-3 py-2 text-sm ring-offset-void-black placeholder:text-gray-400 dark:placeholder:text-icon-gray focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-pulse focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50', className), ref: ref, ...props }));
 });
 Textarea.displayName = 'Textarea';
 
@@ -63038,6 +63388,8 @@ const useFlowManagement = (selectedCategory, refreshTrigger = 0) => {
                 setFlows(allFlows);
             }
         };
+        // Clear selected flow when category changes to prevent accidental triggering
+        setSelectedFlow(null);
         loadFlows();
     }, [selectedCategory, refreshTrigger]); // Re-run when selectedCategory or refreshTrigger changes
     // Handle flow submission (create or update)
@@ -63463,7 +63815,10 @@ function useVoiceRecording() {
     const [isRecording, setIsRecording] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
     const [isSending, setIsSending] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
     const [recordingStatus, setRecordingStatus] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+    const [recordingTimeLeft, setRecordingTimeLeft] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(120); // 2 minutes in seconds
+    const maxRecordingDuration = 120; // 2 minutes in seconds
     const recorderRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(new _services_voiceService__WEBPACK_IMPORTED_MODULE_1__.VoiceRecorder());
+    const timerIntervalRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
     const audioRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
     // Start recording with high-quality audio settings
     const startRecording = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(async () => {
@@ -63477,6 +63832,22 @@ function useVoiceRecording() {
             if (success) {
                 setIsRecording(true);
                 setRecordingStatus(null);
+                // Reset the recording time left
+                setRecordingTimeLeft(maxRecordingDuration);
+                // Start the countdown timer
+                if (timerIntervalRef.current) {
+                    clearInterval(timerIntervalRef.current);
+                }
+                timerIntervalRef.current = window.setInterval(() => {
+                    setRecordingTimeLeft(prevTime => {
+                        if (prevTime <= 1) {
+                            // Time's up, stop recording
+                            stopRecording();
+                            return 0;
+                        }
+                        return prevTime - 1;
+                    });
+                }, 1000);
             }
             else {
                 setRecordingStatus({
@@ -63492,11 +63863,16 @@ function useVoiceRecording() {
                 message: `Error starting recording: ${error instanceof Error ? error.message : String(error)}`
             });
         }
-    }, []);
+    }, [maxRecordingDuration]);
     // Stop recording and get enhanced audio metadata
     const stopRecording = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(async () => {
         if (!isRecording)
             return;
+        // Clear the countdown timer
+        if (timerIntervalRef.current) {
+            clearInterval(timerIntervalRef.current);
+            timerIntervalRef.current = null;
+        }
         try {
             // Get audio data with enhanced metadata
             const audioData = await recorderRef.current.stopRecording();
@@ -63524,6 +63900,11 @@ function useVoiceRecording() {
     const cancelRecording = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(() => {
         if (!isRecording)
             return;
+        // Clear the countdown timer
+        if (timerIntervalRef.current) {
+            clearInterval(timerIntervalRef.current);
+            timerIntervalRef.current = null;
+        }
         recorderRef.current.cancelRecording();
         audioRef.current = null;
         setIsRecording(false);
@@ -63568,6 +63949,8 @@ function useVoiceRecording() {
         isRecording,
         isSending,
         recordingStatus,
+        recordingTimeLeft,
+        maxRecordingDuration,
         startRecording,
         stopRecording,
         cancelRecording,
@@ -63788,9 +64171,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // Define our database
-class YorizonDatabase extends dexie__WEBPACK_IMPORTED_MODULE_0__["default"] {
+class WebhookBuddyDatabase extends dexie__WEBPACK_IMPORTED_MODULE_0__["default"] {
     constructor() {
-        super('YorizonBuddyDB');
+        super('WebhookBuddyDB');
         Object.defineProperty(this, "users", {
             enumerable: true,
             configurable: true,
@@ -63997,7 +64380,7 @@ class YorizonDatabase extends dexie__WEBPACK_IMPORTED_MODULE_0__["default"] {
     }
 }
 // Create and export a single instance of the database
-const db = new YorizonDatabase();
+const db = new WebhookBuddyDatabase();
 
 
 /***/ }),
@@ -64387,6 +64770,18 @@ class VoiceRecorder {
             writable: true,
             value: 48000
         });
+        Object.defineProperty(this, "maxRecordingDuration", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: 120000
+        }); // 2 minutes in milliseconds
+        Object.defineProperty(this, "recordingTimer", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: null
+        });
     }
     // Start recording with options
     async startRecording(options = {}) {
@@ -64419,6 +64814,13 @@ class VoiceRecorder {
             };
             // Start recording with 10ms timeslice for more frequent ondataavailable events
             this.mediaRecorder.start(10);
+            // Set a timer to automatically stop recording after maxRecordingDuration
+            this.recordingTimer = window.setTimeout(() => {
+                if (this.isRecording()) {
+                    console.log(`Automatically stopping recording after ${this.maxRecordingDuration / 1000} seconds`);
+                    this.stopRecording();
+                }
+            }, this.maxRecordingDuration);
             return true;
         }
         catch (error) {
@@ -64452,6 +64854,11 @@ class VoiceRecorder {
                 reject(new Error('No recording in progress'));
                 return;
             }
+            // Clear the recording timer if it exists
+            if (this.recordingTimer !== null) {
+                clearTimeout(this.recordingTimer);
+                this.recordingTimer = null;
+            }
             this.mediaRecorder.onstop = () => {
                 // Calculate duration in seconds
                 const duration = (Date.now() - this.recordingStartTime) / 1000;
@@ -64479,6 +64886,11 @@ class VoiceRecorder {
     }
     // Cancel recording
     cancelRecording() {
+        // Clear the recording timer if it exists
+        if (this.recordingTimer !== null) {
+            clearTimeout(this.recordingTimer);
+            this.recordingTimer = null;
+        }
         if (this.mediaRecorder && this.mediaRecorder.state !== 'inactive') {
             this.mediaRecorder.stop();
         }
@@ -64556,14 +64968,52 @@ async function sendVoiceMessage(channelId, audioData) {
         // Add metadata as JSON
         const metadataBlob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
         formData.append('metadata', metadataBlob);
+        // Add user data as separate fields for easier access in Make.com
+        formData.append('userName', user.name);
+        formData.append('userEmail', user.email);
+        formData.append('userUrl', user.url || '');
+        formData.append('userMission', user.missionStatement || '');
+        formData.append('userId', user.id?.toString() || 'unknown');
+        // Add page data as a separate JSON field
+        if (pageData) {
+            // Create a clean JSON string of just the page data
+            const pageDataJson = JSON.stringify(pageData);
+            formData.append('pageData', pageDataJson);
+            // Also add individual page data fields for easier access
+            formData.append('pageUrl', pageData.url || '');
+            formData.append('pageTitle', pageData.title || '');
+            // Add selected text if available
+            if (pageData.selectedText) {
+                formData.append('selectedText', pageData.selectedText);
+            }
+        }
+        // Log what we're sending for debugging
+        console.log('Sending voice message to webhook:', channel.webhookUrl);
+        console.log('User data included:', {
+            userName: user.name,
+            userEmail: user.email,
+            userUrl: user.url || '',
+            userMission: user.missionStatement || '',
+            userId: user.id?.toString() || 'unknown'
+        });
         // Send the data to the webhook as multipart/form-data
         const response = await fetch(channel.webhookUrl, {
             method: 'POST',
             // No need to set Content-Type header as it's automatically set with boundary
             body: formData,
         });
+        // Log response for debugging
+        console.log('Webhook response status:', response.status);
+        let responseText = '';
+        try {
+            responseText = await response.text();
+            console.log('Webhook response:', responseText);
+        }
+        catch (e) {
+            console.log('Could not read response text:', e);
+        }
         if (!response.ok) {
-            throw new Error(`Webhook responded with status: ${response.status}`);
+            throw new Error(`Webhook responded with status: ${response.status} - ${responseText}`);
         }
         // Log the execution
         console.log(`Voice message sent successfully to channel ${channel.name}`);
@@ -64668,7 +65118,7 @@ const App = () => {
             document.documentElement.classList.remove('dark');
         }
     }, [darkMode]);
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: `min-h-screen ${darkMode ? 'dark' : ''} bg-background text-foreground`, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "p-4 flex items-center justify-between border-b border-divider-gray", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_features_user_UserProfileDialog__WEBPACK_IMPORTED_MODULE_4__["default"], { ...userProfile }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: "text-sm", children: "Dark Mode" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Switch__WEBPACK_IMPORTED_MODULE_3__.Switch, { checked: darkMode, onCheckedChange: setDarkMode })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("main", { className: "container mx-auto p-4", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Tabs__WEBPACK_IMPORTED_MODULE_2__.Tabs, { defaultValue: activeTab, onValueChange: setActiveTab, className: "w-full", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Tabs__WEBPACK_IMPORTED_MODULE_2__.TabsList, { className: "mb-4", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Tabs__WEBPACK_IMPORTED_MODULE_2__.TabsTrigger, { value: "automation", children: "Automation" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Tabs__WEBPACK_IMPORTED_MODULE_2__.TabsTrigger, { value: "prompts", children: "Prompts" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Tabs__WEBPACK_IMPORTED_MODULE_2__.TabsTrigger, { value: "voice", children: "Voice" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Tabs__WEBPACK_IMPORTED_MODULE_2__.TabsTrigger, { value: "agent", children: "Agent" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Tabs__WEBPACK_IMPORTED_MODULE_2__.TabsContent, { value: "automation", className: "space-y-8 pt-10", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-8", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "md:col-span-1", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_features_automation_CategorySection__WEBPACK_IMPORTED_MODULE_5__["default"], { ...categoryManagement }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "md:col-span-2", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_features_automation_FlowSection__WEBPACK_IMPORTED_MODULE_6__["default"], { ...flowManagement, selectedCategory: categoryManagement.selectedCategory }) })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_features_settings_ImportExportSection__WEBPACK_IMPORTED_MODULE_10__["default"], { onImportComplete: () => {
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: `min-h-screen ${darkMode ? 'dark' : ''} bg-background text-foreground`, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "p-4 flex items-center justify-center border-b border-divider-gray", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", { src: "/icons/icon-48.png", alt: "Webhook Buddy Logo", className: "h-10 w-auto mr-3" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h1", { className: "text-xl font-semibold", children: "Webhook Buddy" })] }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "p-4 flex items-center justify-between border-b border-divider-gray", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_features_user_UserProfileDialog__WEBPACK_IMPORTED_MODULE_4__["default"], { ...userProfile }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-center space-x-2 ml-auto", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: "text-sm", children: darkMode ? 'Dark' : 'Light' }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Switch__WEBPACK_IMPORTED_MODULE_3__.Switch, { checked: darkMode, onCheckedChange: setDarkMode, "aria-label": "Toggle theme", className: `theme-switch ${darkMode ? 'theme-switch-dark' : 'theme-switch-light'}` })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("main", { className: "container mx-auto p-4", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Tabs__WEBPACK_IMPORTED_MODULE_2__.Tabs, { defaultValue: activeTab, onValueChange: setActiveTab, className: "w-full", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Tabs__WEBPACK_IMPORTED_MODULE_2__.TabsList, { className: "mb-4", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Tabs__WEBPACK_IMPORTED_MODULE_2__.TabsTrigger, { value: "automation", children: "Automation" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Tabs__WEBPACK_IMPORTED_MODULE_2__.TabsTrigger, { value: "prompts", children: "Prompts" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Tabs__WEBPACK_IMPORTED_MODULE_2__.TabsTrigger, { value: "voice", children: "Voice" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_ui_Tabs__WEBPACK_IMPORTED_MODULE_2__.TabsTrigger, { value: "agent", children: "Agent" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui_Tabs__WEBPACK_IMPORTED_MODULE_2__.TabsContent, { value: "automation", className: "space-y-8 pt-10", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-8", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "md:col-span-1", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_features_automation_CategorySection__WEBPACK_IMPORTED_MODULE_5__["default"], { ...categoryManagement }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "md:col-span-2", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_features_automation_FlowSection__WEBPACK_IMPORTED_MODULE_6__["default"], { ...flowManagement, selectedCategory: categoryManagement.selectedCategory }) })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_features_settings_ImportExportSection__WEBPACK_IMPORTED_MODULE_10__["default"], { onImportComplete: () => {
                                         // Force a complete refresh of all data by incrementing the refresh trigger
                                         setRefreshTrigger(prev => prev + 1);
                                         console.log('Triggering data refresh after import');

@@ -28,6 +28,8 @@ const CategorySection: React.FC<CategorySectionProps> = ({
 }) => {
   return (
     <div className="space-y-4">
+      {/* Section Title */}
+      <h2 className="text-xl font-semibold text-void-black dark:text-white mb-2">Categories</h2>
       {/* Category Actions */}
       <div className="flex space-x-4 mb-8 ml-2 mt-10">
         <Dialog open={categoryDialogOpen} onOpenChange={setCategoryDialogOpen}>
@@ -119,7 +121,7 @@ const CategorySection: React.FC<CategorySectionProps> = ({
           categories.map((category) => (
             <div 
               key={category.id} 
-              className={`${selectedCategory === category.id ? 'bg-neon-pulse text-void-black' : 'bg-card-gray text-text-primary'} p-4 rounded-lg text-center cursor-pointer aspect-square flex flex-col justify-center ${selectedCategory === category.id ? 'ring-2 ring-white' : ''}`}
+              className={`${selectedCategory === category.id ? 'bg-void-black text-white' : 'bg-transparent dark:text-white text-void-black'} p-4 rounded-lg text-center cursor-pointer aspect-square flex flex-col justify-center border ${selectedCategory === category.id ? 'border-neon-pulse border-2' : 'border-border-gray'} transition-all duration-200`}
               onClick={() => handleCategorySelect(category.id || 0)}
             >
               <FolderSimple size={24} weight="regular" className="mx-auto mb-2" />
