@@ -187,6 +187,33 @@ Webhook Buddy can extract and send:
 
 ---
 
+## 🔗 Example Workflows
+
+Webhook Buddy includes example workflows and integrations for popular automation platforms:
+
+### 🔄 **N8N Workflows**
+- **Basic Webhook Processing**: Receive and process data from Webhook Buddy
+- **AI Content Analysis**: Send page content to AI services for analysis
+- **Data Storage**: Store extracted data in databases or spreadsheets
+- **Custom Integrations**: Build your own automation workflows
+
+📁 **Location**: [`/workflows/n8n/`](workflows/n8n/)
+
+### 🚀 **Quick Start with N8N**
+1. Download a workflow JSON file from the `workflows/n8n/` directory
+2. Import it into your N8N instance
+3. Copy the webhook URL from N8N
+4. Configure the URL in Webhook Buddy's Automation flows
+5. Test the integration and customize as needed
+
+### 🔮 **Coming Soon**
+- Zapier integration examples
+- Make.com workflow templates
+- Custom webhook examples
+- Power Automate flows
+
+---
+
 ## 🤝 Contributing
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.

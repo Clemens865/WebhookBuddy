@@ -1,0 +1,1494 @@
+{
+  "name": "App-Dev-II-New",
+  "nodes": [
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Review and enhance the following parsed application information, focusing on technical completeness, implementation details, and ensuring all critical requirements are properly addressed:\nApplication Overview:\n{{ $json.output.state }}\n\nKey Features:\n{{ $json.output.cities.join(\"\\n- \") }}\n\nEnsure your response maintains the comprehensive structure already present, while enhancing technical details, implementation considerations, and filling any gaps in the specification.\n\nPay special attention to:\n1. Technical stack recommendations\n2. Security and authentication requirements\n3. Data storage and management approaches\n4. API integration details\n5. Performance optimization strategies\n6. Deployment considerations\n\nThe enhanced specification will be processed by another AI node to create a formal project scope document.",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "You are an expert app concept developer that transforms parsed application information into comprehensive app development prompts. Your task is to analyze the parsed information, which may be in an unusual format with fields like \"state\" and \"cities\", and refine it into a detailed specification.\n\nThe \"state\" field typically contains a comprehensive markdown description of the application, while the \"cities\" field contains a concise list of key features or capabilities.\n\nWhen processing the parsed input:\n1. Extract and validate the core app information from the provided fields\n2. Check for any inconsistencies or gaps in the information\n3. Enhance the specification with any technical details that might be missing\n4. Ensure all requirements are properly categorized and prioritized\n5. Verify that all critical components have appropriate technical considerations\n\nYour primary role is to review, validate, and enhance the parsed information rather than completely rebuilding it. Focus on:\n- Ensuring technical completeness\n- Validating feature prioritization\n- Checking for missing components or considerations\n- Adding implementation details where needed\n- Harmonizing any contradictions\n\nKeep the existing structure and content where it's already comprehensive, and only enhance areas that need additional detail or technical specificity.\n\nFormat your response as plain text with clear section headings for easy parsing by the next module in the workflow."
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        116,
+        -360
+      ],
+      "id": "66f166d7-546f-423b-821f-4895d0945118",
+      "name": "Project Overview"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Transform the following detailed technical specification into a formal project scope document optimized for AI implementation:\n{{ $json.text }}\n\n\nFormat the document exactly as specified, ensuring:\n1. All pages are properly numbered using page_00X format consistently throughout the document (e.g., page_001, page_002)\n2. Dependencies between components are clearly mapped using the page references\n3. Each feature has an assigned priority level (Essential/High/Medium/Low)\n4. Critical features from the input are marked as Essential priority\n5. All technical specifications from the input are preserved and properly organized\n6. Security and deployment considerations are formatted for clarity and implementation guidance\n\nFocus on standardizing the format and organization while preserving the excellent technical content already present in the input. This document will serve as the definitive reference for implementation, so ensure all cross-references are consistent and clear.\n\nThe resulting document will be used by an AI coding assistant to build the complete application without human design intervention.",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "You are an AI project scope document generator that transforms detailed app specifications into formal project scope documents optimized for AI implementation. Your task is to analyze the incoming technical specification, structure it according to development standards, and ensure it provides a clear roadmap for implementation.\n\nWhen transforming the input specifications:\n1. Preserve the technical details already present in the input while improving organization\n2. Ensure all pages are properly referenced using consistent page_00X format\n3. Maintain traceability between requirements and implementations\n4. Strengthen connections between components, APIs, and features\n5. Ensure each feature has clear priority levels and technical requirements\n6. Organize the content for optimal development workflow\n\nYour role is not to reinvent the technical content, which is already comprehensive, but to:\n- Standardize formatting and reference patterns\n- Ensure consistent page numbering throughout\n- Create clear associations between related components\n- Format the document for easy navigation by development teams\n- Highlight implementation dependencies and critical paths\n- Organize assets and resources systematically\n\nFollow this exact structure:\n# Project Scope: [App Name]\n## Project Overview\nBrief summary of the project purpose.\n## App Description\nComprehensive description focusing on functionality and target users.\n## Technical Context\nKey information about platform, constraints, and technical considerations you've detected.\n## Requirements Fulfillment\nDirect mapping of original requirements to specific features and technical implementations.\n## Pages\nFor each page, include:\n### page_00X ([Page Name])\nBrief description of the page purpose.\n#### Elements\n- List of all UI elements\n## Features\nFor each feature, include:\n### [Feature Name]\nBrief description of the feature functionality.\n#### Priority\nEssential/High/Medium/Low based on user requirements.\n#### Technical Requirements\n- Specific libraries for implementation\n- Technical approaches\n#### Associated Pages\n- page_001 (Login Page)\n- page_002 (Dashboard)\n## API Integrations\nFor each API, include:\n### [API Name]\nBrief description of the API purpose.\n#### Implementation Details\n- Programming approach\n- Authentication methods\n#### Usage\nHow the API will be used in the application.\n## Development Assets\nFor each asset type, include:\n### [Asset Type]\nBrief description of the asset purpose.\n#### Programmatic Generation Method\n- Specific libraries for generating assets\n## Security & Compliance Requirements\nDocument security measures, data protection approaches, and any regulatory compliance needs.\n## Dependencies & Connections\nClear mapping of connections between components using page_00X format.\n## Technical Stack & Libraries\nFull list of recommended technologies with version specifications.\n## Deployment Architecture\nDetailed infrastructure requirements including containerization, orchestration, and scaling strategies.\n\nEnsure consistent page_00X format for all page references throughout the document."
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        492,
+        -360
+      ],
+      "id": "3fa70c49-333e-4adb-a5af-2197737ef727",
+      "name": "Project Scope"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Based on the following project scope document and technical requirements, create a focused MVP roadmap for the application:\n\nProject Scope:\n{{ $('Project Scope').item.json.text }}\n\nTechnical Requirements:\n{{ $json.text }}\n\nYour MVP roadmap should:\n1. Identify 3-5 core features that deliver the essential functionality with minimum implementation complexity\n2. Exclude complex features even if they're high priority, explaining why each is deferred\n3. Provide a clear rationale for each inclusion or exclusion decision based on both value and implementation complexity\n4. Create a phased implementation plan with realistic time estimates (in weeks)\n5. Define specific success criteria that will indicate the MVP is ready for release\n6. Specify the minimum technical stack required for the MVP\n7. Highlight key technical considerations and potential challenges\n8. Outline a clear path from MVP to full product with future phases\n\nConsider the following when making your selections:\n- What is the core problem this application solves? Focus on that.\n- Which features together create a complete, usable product?\n- What can be simplified for the MVP and enhanced later?\n- What technical dependencies exist between features?\n- What can realistically be implemented in 4-6 weeks by a small team?\n\nThe roadmap should provide clear, actionable guidance for building a focused MVP that demonstrates the key value proposition of the application while being achievable in a short timeframe.",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "You are an MVP roadmap generator specializing in distilling complex project requirements into focused, implementable plans. Your task is to analyze project scope documents and identify the minimal set of features that deliver core value to users while being feasible to implement in a short timeframe.\n\nWhen creating an MVP roadmap:\n1. Analyze the project scope to identify core value propositions and critical user needs\n2. Select 3-5 essential features that together create a cohesive, usable product\n3. Prioritize technical simplicity and implementation speed, even if it means deferring high-priority but complex features\n4. Create a clear implementation sequence with dependencies and technical considerations\n5. Set realistic timelines based on complexity, not just importance\n6. Define specific, measurable success criteria for the MVP\n7. Explain the rationale for inclusions and exclusions to guide decision-making\n8. Identify the minimal technical infrastructure required\n\nFocus on creating a practical roadmap that balances speed of implementation with delivery of essential value. The MVP should be a complete product that demonstrates the core value proposition, not just a collection of features."
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1620,
+        -360
+      ],
+      "id": "6c6bb4e8-e87a-443c-a5fd-47a696c9c77d",
+      "name": "Project MVP"
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "name": "={{ $('Extract Names for files').item.json.message.content['App Name'] }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1DBTmubEArQHxTYb_UL1HFeCWFMHpRWti",
+          "mode": "list",
+          "cachedResultName": "Coding-Apps",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1DBTmubEArQHxTYb_UL1HFeCWFMHpRWti"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        4920,
+        260
+      ],
+      "id": "7981727f-e263-4fea-9b2e-f0a07cbdd65f",
+      "name": "Create a folder",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "YOUR_GOOGLE_DRIVE_CREDENTIAL_ID",
+          "name": "Google-N8N-Taxt"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "createFromText",
+        "content": "={{ $('Project Overview').item.json.text }}",
+        "name": "={{ $('Extract Names for files').item.json.message.content.Appname_Overview }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        200,
+        100
+      ],
+      "id": "cd002bd1-dcd1-416a-a472-7cfecba4e569",
+      "name": "Create Overview File",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "YOUR_GOOGLE_DRIVE_CREDENTIAL_ID",
+          "name": "Google-N8N-Taxt"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "createFromText",
+        "content": "={{ $('Project Scope').item.json.text }}",
+        "name": "={{ $('Extract Names for files').item.json.message.content.Appname_Scope }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "={{ $('Google Drive').item.json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        580,
+        100
+      ],
+      "id": "16961582-9b83-4c0f-889a-a4c671f3566e",
+      "name": "Create Scopes File",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "YOUR_GOOGLE_DRIVE_CREDENTIAL_ID",
+          "name": "Google-N8N-Taxt"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "createFromText",
+        "content": "={{ $('Project MVP').item.json.text }}",
+        "name": "={{ $('Extract Names for files').item.json.message.content.Appname_MVP }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "={{ $('Google Drive').item.json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1720,
+        100
+      ],
+      "id": "b8774faf-ec0d-49b6-afd9-8a1dee56d5bc",
+      "name": "Create MVP File",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "YOUR_GOOGLE_DRIVE_CREDENTIAL_ID",
+          "name": "Google-N8N-Taxt"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Based on the following application requirements, page blueprints, and design analysis, create a detailed UI style and implementation guide that defines the visual design system and technical specifications without writing the actual code:\n\nApp Overview:\n{{ $('Project Overview').item.json.text }}\n\nPage blueprints:\n{{ $('Page Blueprints').item.json.text }}\n\nDesign Analysis:\n{{ $json.text }}\n\nYour UI style and implementation guide should:\n1. Use the insights from the design analysis as a foundation, adapting and refining elements to perfectly align with the purpose and target users of the application\n2. Provide specific technical specifications for implementing the UI (frameworks, libraries, etc.)\n3. Create a complete design system with color palette, typography, spacing, and component specifications\n4. Detail how key pages should be structured and how components should be arranged\n5. Specify interaction patterns and animations appropriate for the application type\n6. Include implementation guidelines that a developer could follow to build the UI\n7. Translate artistic design principles into functional UI components while maintaining visual coherence\n8. Balance innovative visual elements with usability and accessibility requirements\n9. Provide specific code structure recommendations and organization approaches\n\nConsider:\n- How the analyzed design elements can be adapted to fit the application's specific needs\n- The application's purpose and core functionality\n- The target user demographic and their needs\n- The device context (mobile, desktop, responsive)\n- Modern design trends appropriate for this type of application\n- Technical feasibility and implementation complexity\n- Accessibility requirements and implementation techniques\n\nThe guide should be detailed enough that a front-end developer or AI coding assistant could use it to implement the UI without needing additional design direction.",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "You are a Creative UI/UX Design Architect who creates innovative style guidelines by synthesizing practical application requirements with artistic and design inspiration. Your task is to create a unique and effective UI implementation guide that translates visual inspiration into functional design.\n\nWhen creating the UI style guide:\n\n1. First, carefully analyze and synthesize these distinct inputs:\n   - Application Overview: Understand the app's core purpose, target users, and key functionalities\n   - Page Blueprints: Identify all required UI components and interaction patterns\n   - Visual Analysis: Extract inspirational elements, principles, and emotional qualities from the analyzed visual source\n\n2. Create an innovative design system that:\n   - Translates the analyzed visual's unique qualities (color relationships, compositional principles, emotional tone) into practical UI design\n   - Adapts these artistic elements to meet the functional requirements of the application\n   - Maintains usability and accessibility while introducing distinctive design elements\n   - Provides specific technical approaches for implementation\n\n3. Document specifications that balance innovation with usability:\n   - Create design tokens inspired by the visual source but optimized for digital interfaces\n   - Provide technical implementation details that achieve the artistic effect while maintaining functionality\n   - Detail how to achieve the desired aesthetic across different components and states\n   - Include accessibility considerations and implementation techniques\n\nFollow this structure precisely:\n\n# Creative UI Style and Implementation Guide: [App Name]\n\n## Design Vision & Inspiration\nArticulate how the analyzed visual source inspires the design direction. Explain how its artistic principles will be translated into a functional yet distinctive interface design. Discuss the emotional qualities and unique characteristics that will define the application's visual identity.\n\n## Translation Principles\nExplain the methodology for translating artistic elements into functional UI components:\n1. **Artistic to Digital:** How visual art principles will become digital design elements\n2. **Abstract to Concrete:** How conceptual qualities will manifest in specific components\n3. **Inspiration to Implementation:** How creative vision will be realized through technical means\n\n## Technical Specifications\n1. **Device Specifications:** Target device dimensions and responsive approach\n2. **Framework & Libraries:** Specific front-end frameworks and libraries that can achieve the desired effects\n3. **Asset Requirements:** Specialized asset creation to capture the distinctive style\n4. **Technical Challenges:** Potential implementation challenges and solutions\n5. **Performance Considerations:** How to achieve the aesthetic without compromising performance\n\n## Design System\n\n### Inspired Color Palette\n- Primary colors derived from the visual source with hex values\n- Secondary/accent colors that complement the primary palette\n- Color application principles that reflect the inspiration's approach to color\n- Functional color adaptations that maintain the aesthetic while meeting UI requirements\n- Accessibility considerations for color contrast\n\n### Typography System\n- Font selections that capture the spirit of the visual inspiration\n- Type scale and hierarchy that reflects the composition's principles\n- Unique typographic treatments inspired by the visual source\n- Balance between distinctive type treatment and readability\n- Technical implementation specifications\n\n### Compositional Approach\n- Layout principles derived from the visual inspiration\n- Spacing system that reflects the original's approach to proportion and rhythm\n- Approach to visual hierarchy and emphasis\n- Treatment of negative space and balance\n- Responsive adaptation strategy\n\n### Component Stylistic Guide\nCreate detailed specifications for key components that translate the artistic inspiration:\n- Button treatments that reflect the visual language\n- Input and form elements with distinctive styling\n- Navigation elements that embody the inspirational principles\n- Content containers with inspired visual treatments\n- Interactive elements with unique feedback states\n\n## Visual Effects and Treatments\n- Shadow and elevation approach inspired by the visual source\n- Border and edge treatments that reflect the original's handling of boundaries\n- Background treatments and textures derived from the inspiration\n- Animations and transitions that capture the emotional quality of the inspiration\n- Technical implementation details for all visual effects\n\n## Page Compositions\nFor key pages:\n- Layout approaches that reflect the inspirational composition\n- Component arrangements that create the desired visual rhythm\n- Focal point strategies derived from the visual analysis\n- Responsive adaptations that maintain the artistic integrity\n- Page-specific styling considerations\n\n## Implementation Guidance\n- Technical approaches to achieve unusual visual effects\n- Balancing innovation with usability and accessibility\n- Fallback strategies for technical limitations\n- Progressive enhancement approach\n- Code structure and organization recommendations\n\nCreate a guide that enables developers to implement a truly distinctive UI that captures the essence of the visual inspiration while meeting all functional requirements. Provide clear technical specifications alongside conceptual guidance on maintaining the artistic integrity across the application."
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        3344,
+        -360
+      ],
+      "id": "cb377bdf-15d4-4f68-982c-0d2056307a96",
+      "name": "Design guideline",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Based on the following project scope document, MVP roadmap, user flows, and technical requirements, create comprehensive page blueprints for the application:\n\nProject Scope:\n{{ $('Project Scope').item.json.text }}\n\nMVP Roadmap:\n{{ $('Project MVP').item.json.text }}\n\nUser Flows:\n{{ $json.text }}\n\nTechnical Requirements:\n{{ $('Requirements & Dependencies').item.json.text }}\n\nYour page blueprints should:\n1. Cover ALL pages needed for the complete application, using the same page_XXX format referenced in the project scope and user flows\n2. Clearly indicate which pages are required for the MVP versus future phases (based on the MVP roadmap and user flows)\n3. Provide detailed specifications for each page including purpose, components, data requirements, and interactions\n4. Directly reference the specific user flows that each page supports and participates in\n5. Include all UI elements needed to support each step in the related user flows\n6. Address all possible states of each page, including error states identified in the user flows\n7. Maintain consistency with the technical approach specified in the project scope and technical requirements\n8. Identify shared components and patterns across pages\n9. Consider technical constraints and implementation details from the technical requirements\n10. Ensure page designs account for scaling considerations, especially for components that will need to handle increasing data volumes or user counts\n\nFor each page, also include:\n\n- Scalability considerations for how the page and its components will function across different user tiers (initial, growth, enterprise)\n- Clear purpose and context in the user journey with references to specific user flows\n- Complete list of UI components and their behaviors needed to support the user flows\n- Data requirements and API dependencies with consideration of the technical architecture\n- User interactions and state transitions as mapped in the user flows\n- Responsive behavior specifications following the technical approach defined\n- Accessibility considerations that align with technical requirements\n- Error states and edge cases identified in the user flows\n- Connections to other pages based on the user flow pathways\n- Performance considerations for component rendering and data loading\n- Technical implementation notes relevant to the page design\n\nFocus on creating blueprints that align perfectly with the project requirements, user flows, and technical architecture while providing the detail needed for implementation. Your blueprints should serve as the definitive reference for how the UI will implement the features and support the user journeys described in the project documentation.",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "You are a UI/UX specialist who creates detailed page blueprints for applications. Your task is to analyze project scope documents, MVP roadmaps, and user flows to create comprehensive page specifications that align perfectly with the project requirements and how users will navigate through the application.\n\nWhen creating page blueprints:\n1. Analyze the project scope, MVP roadmap, and user flows to understand the application's purpose, key features, and how users will interact with it\n2. Identify ALL pages needed for the complete application, including those explicitly mentioned in the user flows\n3. Prioritize pages based on the MVP roadmap and user flows to indicate which pages are essential for the initial release\n4. For each page, detail its purpose, components, data requirements, and interactions based on the user flows it supports\n5. Ensure all UI elements directly support the user flows described in the documentation\n6. Consider all possible states of each page, including error states identified in the user flows\n7. Reference the exact feature IDs or requirements from the project scope that each page fulfills\n8. Apply consistent naming and numbering conventions that align with the project scope\n\nYour blueprints should provide clear, detailed specifications that enable developers to understand exactly what needs to be built while ensuring alignment with the broader project requirements and user journeys."
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        2372,
+        -360
+      ],
+      "id": "0f9a602a-a8cd-4345-85bb-a22d99300526",
+      "name": "Page Blueprints"
+    },
+    {
+      "parameters": {
+        "operation": "createFromText",
+        "content": "={{ $('Page Blueprints').item.json.text }}",
+        "name": "={{ $('Extract Names for files').item.json.message.content['App Name'] }}_PageBluePrint",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "={{ $('Google Drive').item.json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        2460,
+        100
+      ],
+      "id": "ea40237a-8653-4afc-9d1b-79524ef3bc23",
+      "name": "Page-blueprints",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "YOUR_GOOGLE_DRIVE_CREDENTIAL_ID",
+          "name": "Google-N8N-Taxt"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-sonnet-4-20250514",
+          "mode": "list",
+          "cachedResultName": "Claude Sonnet 4"
+        },
+        "options": {
+          "maxTokensToSample": 20000
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        204,
+        -140
+      ],
+      "id": "9219c026-7774-4ddc-931f-0d208ea4ec17",
+      "name": "Anthropic Chat Model",
+      "credentials": {
+        "anthropicApi": {
+          "id": "YOUR_ANTHROPIC_CREDENTIAL_ID",
+          "name": "Anthropic account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-sonnet-4-20250514",
+          "mode": "list",
+          "cachedResultName": "Claude Sonnet 4"
+        },
+        "options": {
+          "maxTokensToSample": 20000
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        580,
+        -140
+      ],
+      "id": "135c3d84-78f9-441c-8942-14026c0d2493",
+      "name": "Anthropic Chat Model1",
+      "credentials": {
+        "anthropicApi": {
+          "id": "YOUR_ANTHROPIC_CREDENTIAL_ID",
+          "name": "Anthropic account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-sonnet-4-20250514",
+          "mode": "list",
+          "cachedResultName": "Claude Sonnet 4"
+        },
+        "options": {
+          "maxTokensToSample": 20000
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        1332,
+        -140
+      ],
+      "id": "4ee7cfac-4e16-4256-8406-b68dcd3db098",
+      "name": "Anthropic Chat Model2",
+      "credentials": {
+        "anthropicApi": {
+          "id": "YOUR_ANTHROPIC_CREDENTIAL_ID",
+          "name": "Anthropic account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-sonnet-4-20250514",
+          "mode": "list",
+          "cachedResultName": "Claude Sonnet 4"
+        },
+        "options": {
+          "maxTokensToSample": 20000
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        1708,
+        -140
+      ],
+      "id": "8bf6a675-bbef-4422-8751-0cd22087b682",
+      "name": "Anthropic Chat Model3",
+      "credentials": {
+        "anthropicApi": {
+          "id": "YOUR_ANTHROPIC_CREDENTIAL_ID",
+          "name": "Anthropic account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-sonnet-4-20250514",
+          "mode": "list",
+          "cachedResultName": "Claude Sonnet 4"
+        },
+        "options": {
+          "maxTokensToSample": 20000
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        2460,
+        -140
+      ],
+      "id": "efc4aab7-bdb6-495a-8cbf-cd8f29d3a072",
+      "name": "Anthropic Chat Model4",
+      "credentials": {
+        "anthropicApi": {
+          "id": "YOUR_ANTHROPIC_CREDENTIAL_ID",
+          "name": "Anthropic account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-sonnet-4-20250514",
+          "mode": "list",
+          "cachedResultName": "Claude Sonnet 4"
+        },
+        "options": {
+          "maxTokensToSample": 20000
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        3432,
+        -140
+      ],
+      "id": "a761f74f-6687-4f51-bc96-24f1e0b70b47",
+      "name": "Anthropic Chat Model5",
+      "credentials": {
+        "anthropicApi": {
+          "id": "YOUR_ANTHROPIC_CREDENTIAL_ID",
+          "name": "Anthropic account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the input data\nconst inputData = $input.first();\n\n// Try different possible locations of the image data\nlet imageBase64;\nlet imageType = 'image/png'; // Default\nlet imageName = 'image.png'; // Default\n\n// Check if data is in webhook body directly\nif (inputData.json && inputData.json.body && inputData.json.body.imageBase64) {\n  imageBase64 = inputData.json.body.imageBase64;\n  imageType = inputData.json.body.imageType || imageType;\n  imageName = inputData.json.body.imageName || imageName;\n}\n// Check if data is directly in the json object\nelse if (inputData.json && inputData.json.imageBase64) {\n  imageBase64 = inputData.json.imageBase64;\n  imageType = inputData.json.imageType || imageType;\n  imageName = inputData.json.imageName || imageName;\n} \n// Check if we need to use the expression you mentioned\nelse {\n  try {\n    // Try to get data using your expression\n    const webhookData = $('Webhook').first();\n    if (webhookData && webhookData.json && webhookData.json.body) {\n      imageBase64 = webhookData.json.body.imageBase64;\n      imageType = webhookData.json.body.imageType || imageType;\n      imageName = webhookData.json.body.imageName || imageName;\n    }\n  } catch (error) {\n    console.log('Error getting webhook data:', error.message);\n  }\n}\n\n// Log what we found to help debug\nconsole.log('Image data found:', !!imageBase64);\n\n// If we have image data, return it properly formatted\nif (imageBase64) {\n  return {\n    json: {\n      hasImage: true,\n      imageType: imageType,\n      imageName: imageName\n    },\n    binary: {\n      image: {\n        data: imageBase64,\n        mimeType: imageType,\n        fileName: imageName\n      }\n    }\n  };\n}\n\n// If no image data found, log and return the original input\nconsole.log('No image data found. Returning original input.');\nreturn inputData;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2748,
+        -360
+      ],
+      "id": "db011df3-8de5-4f4b-b724-bbb1cc49592b",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-sonnet-4-20250514",
+          "mode": "list",
+          "cachedResultName": "Claude Sonnet 4"
+        },
+        "options": {
+          "maxTokensToSample": 20000
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        3056,
+        -140
+      ],
+      "id": "3d21766d-86cc-4711-b576-2da767bd4cb0",
+      "name": "Anthropic Chat Model7",
+      "credentials": {
+        "anthropicApi": {
+          "id": "YOUR_ANTHROPIC_CREDENTIAL_ID",
+          "name": "Anthropic account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Analyze this UI/website screenshot in detail. Extract all design system elements including:\n\n1. Color palette: \n   - Identify primary, secondary, accent, and neutral colors with exact hex codes\n   - Note color application patterns across different UI elements\n   - Identify color accessibility considerations (contrast ratios for text/background combinations)\n\n2. Typography: \n   - Font families, size scales, weights, and styling patterns\n   - Type hierarchy and information architecture\n   - Responsive typography adjustments across device sizes\n   - Readability and accessibility considerations\n\n3. Layout: \n   - Grid system, spacing units, and layout principles\n   - Responsive behavior patterns across device breakpoints\n   - Content prioritization in responsive layouts\n   - Scalability considerations for varying content lengths\n\n4. Components: \n   - Button styles, form elements, cards, navigation, modals, etc.\n   - Component state variations (default, hover, active, disabled, error, etc.)\n   - Component adaptability across different contexts\n   - Reusability patterns and component composition\n\n5. Visual details: \n   - Shadows, borders, corner radii, iconography style\n   - Elevation system and visual hierarchy indicators\n   - Consistency patterns in decorative elements\n   - Empty/loading state treatments\n\n6. Interaction design: \n   - Hover states, animations, transitions\n   - Feedback mechanisms and response indicators\n   - Progressive disclosure patterns\n   - Performance considerations for animations\n\n7. Design patterns: \n   - Recurring UI patterns and their implementation\n   - Solution patterns for common user tasks\n   - Scalability approaches for handling increasing data volumes\n   - Consistency in similar interaction models\n\n8. Artistic principles: \n   - Compositional approach, emotional tone, stylistic elements\n   - Brand expression through visual design\n   - Visual storytelling and user guidance techniques\n   - Aesthetic cohesion across different UI sections\n\n9. Technical implementation considerations: \n   - Component architecture recommendations \n   - CSS methodology suggestions (BEM, CSS Modules, styled components, etc.)\n   - Performance optimization opportunities\n   - Scaling approaches for different user volume tiers\n   - Accessibility implementation requirements\n   - Cross-browser/device compatibility considerations\n\n10. Design system scaling: \n    - How design elements would evolve across product growth stages\n    - Extensibility considerations for future feature expansion\n    - Theming capabilities for potential white-labeling\n    - Enterprise-specific design considerations\n\nFormat your analysis as a structured technical document that will be used to generate a comprehensive design system guide. Be precise and thorough in your observations, with special attention to consistency patterns and design rules that could be systematized in code. The analysis should provide sufficient detail for implementation across initial, growth, and enterprise scaling tiers.",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "You are a Visual Design Analyzer with expertise in extracting both technical design patterns and artistic elements from visual inputs. Your task is to analyze the provided image and extract actionable design specifications that can be applied to an application user interface.\n\nWhen analyzing a visual input:\n\n1. Technical Design Elements:\n   - Extract precise color palette with exact hex codes for primary, secondary, accent, and neutral colors\n   - Document typography specifications including font families, size scales, weights, and styling patterns\n   - Identify layout structures, grid systems, and spacing units\n   - Catalog UI components and their variants (buttons, forms, cards, etc.)\n   - Document shadow styles, border treatments, and corner radii\n\n2. Artistic Principles:\n   - Identify the fundamental artistic approach and emotional tone\n   - Document compositional structure and visual rhythm\n   - Note unique stylistic elements that define the visual character\n   - Analyze how contrast, balance, and movement are achieved\n   - Identify how color is used to create hierarchy and emphasis\n\n3. User Experience Patterns:\n   - Analyze interaction indicators like hover states and focus treatments\n   - Identify visual feedback mechanisms\n   - Detect information hierarchy and readability strategies\n   - Note accessibility considerations in the design\n   - Identify wayfinding and navigational patterns\n\n4. Implementation Considerations:\n   - Note specific technical challenges in implementing the observed design\n   - Identify responsive design patterns and adaptation strategies\n   - Document component states and variations\n   - Analyze loading states and progressive enhancement patterns\n   - Identify potential animation and transition approaches\n\nPresent your analysis as a comprehensive, structured technical document that bridges artistic vision with practical implementation details. Be precise and thorough in your observations, with special attention to consistency patterns and design rules that could be systematized in code."
+            },
+            {
+              "type": "HumanMessagePromptTemplate",
+              "messageType": "imageBinary",
+              "binaryImageDataKey": "image"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        2960,
+        -360
+      ],
+      "id": "412fd47c-722c-4920-a07c-31d2c21ae43c",
+      "name": "DesignAnalyzing",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "createFromText",
+        "content": "={{ $('Design guideline').item.json.text }}",
+        "name": "={{ $('Extract Names for files').item.json.message.content['App Name'] }}_Design",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "={{ $('Google Drive').item.json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3240,
+        100
+      ],
+      "id": "9e85d7b6-27a7-4417-8540-1e87d7841305",
+      "name": "Design to drive",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "YOUR_GOOGLE_DRIVE_CREDENTIAL_ID",
+          "name": "Google-N8N-Taxt"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Analyze the following parsed application information and transform it into a comprehensive app development prompt:\n\n{{ $('Webhook').item.json.body.message }}\n\nYour response should include:\n- App name and purpose\n- Detailed description and target users\n- Features with implementation details (mark critical features requested by the user as [CRITICAL])\n- Pages with their components\n- APIs with usage contexts\n- Required assets\n- Requirements traceability that maps each original requirement to your proposed solution\n\nBe extremely thorough in addressing each requirement that can be identified. If the input format uses non-standard fields (like \"state\" or \"cities\"), extract the meaningful information from those fields and reorganize it appropriately.\n\nPay special attention to:\n1. Authentication methods\n2. Communication features\n3. Integration requirements\n4. Deployment specifications\n5. Any technical terms that might contain typos\n6. Security mesurements\n\nThe output will be processed by another AI node to create a formal project scope document.\n",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "You are an expert app concept developer that transforms parsed application information into comprehensive app development prompts. Your task is to analyze the parsed information, which may be in a simplified format, and expand it into a detailed specification.\n\nYour output MUST strictly adhere to this JSON schema:\n{\n  \"output\": {\n    \"state\": \"A detailed description of the app concept\",\n    \"cities\": [\"Short key feature 1\", \"Short key feature 2\", \"Short key feature 3\", ...]\n  }\n}\n\nFor the \"cities\" array:\n1. Include ONLY 5-8 key features or aspects\n2. Each entry MUST be under 100 characters\n3. Focus on core functionality and distinctive aspects\n4. Keep entries concise and clear\n\nThe \"state\" field should contain your detailed analysis including:\n- App name and purpose\n- Target users\n- Features with implementation details (mark critical features as [CRITICAL])\n- Pages with their components\n- APIs with usage contexts\n- Required assets\n- Requirements traceability\n\nWhen processing the parsed input:\n1. Extract the core app idea and purpose from whatever format is provided\n2. If the input uses fields like \"state\" and \"cities\", interpret \"state\" as the general app category and \"cities\" as key descriptive elements\n3. Reconstruct a complete understanding of the application regardless of the input format\n4. Identify and correct any obvious typos, especially in technical terms\n5. Explicitly address all requirements that can be identified in the input\n6. Make logical inferences for any information that appears to be missing\n\nFor any important aspects not explicitly mentioned in the input, make logical inferences based on the app type and stated requirements. Fill in gaps with reasonable assumptions to ensure the specification is complete, and clearly mark any inferred information as [INFERRED].\n\nRemember: The structured format is critical - your response MUST follow the exact JSON structure specified to be properly processed."
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        -260,
+        -360
+      ],
+      "id": "5f6bdd32-0899-4294-8975-3d809f8681ff",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-sonnet-4-20250514",
+          "mode": "list",
+          "cachedResultName": "Claude Sonnet 4"
+        },
+        "options": {
+          "maxTokensToSample": 20000
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        -232,
+        -140
+      ],
+      "id": "51723f3e-00c5-4a52-b296-946370d7d141",
+      "name": "Anthropic Chat Model6",
+      "credentials": {
+        "anthropicApi": {
+          "id": "YOUR_ANTHROPIC_CREDENTIAL_ID",
+          "name": "Anthropic account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        -112,
+        -140
+      ],
+      "id": "8439c62f-6eee-40cd-971d-b1aa03b790db",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "5dd3d41b-92c7-445e-857f-a08ea342b6b7",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1520,
+        -360
+      ],
+      "id": "6abad485-bb16-4fb7-b81f-3d73bd0c083f",
+      "name": "Webhook",
+      "webhookId": "5dd3d41b-92c7-445e-857f-a08ea342b6b7"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Based on the following project scope and scaling strategy documents, create a concise Technical Requirements & Dependencies document:\n\nProject Scope:\n{{ $('Project Scope').item.json.text }}\n\nScaling Strategy:\n{{ $json.text }}\n\nYour document should include:\n\n1. All required dependencies and libraries with version requirements\n2. Development environment setup necessities\n3. API integrations with authentication approaches\n4. Database requirements and schema considerations, including scaling approach\n5. Critical implementation considerations for key features\n6. Architectural patterns to follow for scalability\n7. Security requirements and implementation approaches\n8. Performance considerations across different user volume tiers\n9. Multi-tenancy and data isolation requirements\n10. User management and role-based access control systems\n11. Monitoring and operational requirements for different scale tiers\n\nConsider how technical choices will support the scaling strategy, particularly:\n- How database design will accommodate growing data volumes\n- How authentication systems will support enterprise SSO integration\n- How the API layer will handle increased request volumes\n- How application architecture will support team and organizational structures\n- How resource isolation will be maintained in multi-tenant scenarios\n\nFocus only on the technical information that is essential for implementation, without prescribing specific code implementations. The document should provide all necessary technical context while allowing flexibility in how features are implemented.\n\nThis document will be provided to an AI coding assistant along with the project scope to guide the development process. Ensure it contains all critical technical information without being overly restrictive about implementation details.",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "You are a technical requirements specialist who creates concise but comprehensive technical dependency documents for software projects. Your task is to analyze a project scope document and extract all essential technical requirements, dependencies, and implementation considerations that a development team would need to successfully build the application.\n\nWhen creating the technical requirements document:\n\n1. Extract all required dependencies, libraries, and frameworks with specific version requirements\n2. Identify development environment setup necessities\n3. Document all API integrations with authentication methods and key features\n4. Outline database schema essentials without implementing the full schema\n5. Highlight architectural patterns and design principles to follow\n6. Specify security requirements and considerations\n7. Note critical implementation considerations for complex features\n\nFocus on providing all technically necessary information while avoiding overly prescriptive implementation details. Your document should enable developers to make informed implementation choices while understanding the technical boundaries and requirements of the project."
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1244,
+        -360
+      ],
+      "id": "1091a251-291e-4c47-bf13-4b4309255ce8",
+      "name": "Requirements & Dependencies"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-sonnet-4-20250514",
+          "mode": "list",
+          "cachedResultName": "Claude Sonnet 4"
+        },
+        "options": {
+          "maxTokensToSample": 20000
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        2084,
+        -140
+      ],
+      "id": "0e166f69-2345-4458-8e46-be82f1af54ed",
+      "name": "Anthropic Chat Model8",
+      "credentials": {
+        "anthropicApi": {
+          "id": "YOUR_ANTHROPIC_CREDENTIAL_ID",
+          "name": "Anthropic account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Based on the following project scope document, MVP roadmap, and technical requirements, create comprehensive user flows for the application:\n\nProject Scope:\n{{ $('Project Scope').item.json.text }}\n\nMVP Roadmap:\n{{ $json.text }}\n\nTechnical Requirements:\n{{ $('Requirements & Dependencies').item.json.text }}\n\nYour user flows should:\n1. Cover all primary user scenarios and journeys through the application\n2. Clearly indicate which flows are essential for the MVP versus future phases\n3. Include all decision points, alternative paths, and error states\n4. Map out how users will navigate between different screens and features\n5. Include system actions and backend processes where relevant\n6. Use consistent screen names that can inform page blueprint development\n7. Cover the complete user lifecycle from onboarding to regular usage\n8. Consider technical constraints and implementation details from the technical requirements\n\nFor each primary user scenario, create a detailed flow that includes:\n- Starting point and trigger for the flow\n- Each step in the journey with screen names\n- Decision points and their outcomes\n- Error cases and recovery paths\n- Backend processes and system actions (including email protocol and LLM integration details)\n- Performance considerations at each step\n- Exit points and success states\n\nFocus on creating flows that demonstrate how users will experience the key features identified in the project scope and MVP roadmap, while respecting the technical architecture outlined in the technical requirements. Your user flows will serve as the foundation for the subsequent page blueprint development.",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "You are a user experience specialist who creates detailed user flows for applications. Your task is to analyze project scope documents and MVP roadmaps to create comprehensive user journey maps showing how users will navigate through the application.\n\nWhen creating user flows:\n1. Identify all key user types and their goals based on the project scope\n2. Map out the complete journey for each primary user scenario\n3. Include decision points, alternative paths, and error states\n4. Ensure all features from the project scope are represented in the flows\n5. Prioritize flows based on the MVP roadmap to indicate essential vs. future journeys\n6. Use clear, consistent naming for screens that will inform page design\n7. Include system actions and backend processes where relevant\n8. Specify entry and exit points for each flow\n\nYour user flows should provide a clear visualization of how users will interact with the application, covering all critical paths and edge cases while aligning with project requirements."
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        2000,
+        -360
+      ],
+      "id": "e2256425-74c0-4ebb-8ec4-0e75144f1ff0",
+      "name": "UserFlow"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-sonnet-4-20250514",
+          "mode": "list",
+          "cachedResultName": "Claude Sonnet 4"
+        },
+        "options": {
+          "maxTokensToSample": 20000
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        960,
+        -140
+      ],
+      "id": "a44a944a-b81d-410a-8312-c43c3bb388d4",
+      "name": "Anthropic Chat Model9",
+      "credentials": {
+        "anthropicApi": {
+          "id": "YOUR_ANTHROPIC_CREDENTIAL_ID",
+          "name": "Anthropic account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=# Scaling and Administration Strategy Generator\n\nBased on the following project scope document, create a comprehensive scaling and administration strategy that will inform the technical requirements and architecture decisions:\n\n**Project Scope:**\n{{ $json.text }}\n\nYour strategy should address:\n\n## 1. Scaling Tiers and Architecture Evolution\n- Define three distinct scaling tiers with specific user thresholds:\n  * Initial Launch (1-100 users)\n  * Growth Phase (100-10,000 users)\n  * Enterprise Scale (10,000+ users)\n- For each tier, detail:\n  * Recommended architecture changes\n  * Infrastructure requirements\n  * Performance optimization approaches\n  * Potential bottlenecks and solutions\n\n## 2. Database and Storage Scaling\n- Data partitioning approach (by user, organization, time, etc.)\n- Read/write optimization strategies at each scaling tier\n- Sharding considerations and implementation approach\n- Backup and disaster recovery scaling\n\n## 3. User Management System\n- Role-based access control framework\n- Permission models for different deployment scenarios\n- User provisioning and management workflows\n- Authentication scaling (from simple auth to enterprise SSO)\n\n## 4. Enterprise Administration\n- Admin interface requirements for different roles:\n  * System Administrator\n  * Organization Administrator\n  * Team Manager\n  * Regular User\n- Admin functionality by tier (basic admin vs. enterprise admin)\n- Audit logging and compliance features\n- Configuration management across organizations\n\n## 5. Team & Organizational Structure\n- Multi-team support architecture\n- Resource sharing models between teams\n- Organization hierarchy management\n- Cross-organization collaboration capabilities (future expansion)\n\n## 6. Multi-tenancy Strategy\n- Data isolation approach\n- Tenant-specific configurations and customizations\n- Resource allocation between tenants\n- Performance isolation considerations\n\n## 7. Operational Scaling\n- Monitoring and alerting infrastructure\n- Support system requirements across tiers\n- Deployment and CI/CD pipeline evolution\n- SLA management and enforcement\n\n## 8. User Analytics and Metrics Framework\n- Core user behavior metrics to track at each scaling tier\n- Analytics data collection and storage architecture that scales with user growth\n- Real-time vs. batch processing analytics approaches\n- User segmentation and cohort analysis capabilities\n- Predictive scaling triggers based on usage patterns\n- Privacy and compliance considerations for user data collection\n- Dashboard and reporting infrastructure for different stakeholders\n\nProvide specific technical recommendations that will directly inform architecture decisions in the Technical Requirements phase. Focus on creating a foundation that supports growth without requiring fundamental rearchitecting, while highlighting which features can be deferred to later scaling tiers.\n\nFor the user analytics framework, include recommendations on:\n- How to instrument the application to gather meaningful usage data\n- Which metrics serve as early indicators for scaling needs\n- How to build scalable analytics pipelines that don't impact core application performance\n- Ways to translate user behavior metrics into actionable scaling decisions\n- Ways to translate user behavior metrics into actionable scaling decisions",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "You are a scalability and enterprise administration specialist who analyzes software application requirements to create comprehensive scaling strategies. Your task is to examine the project scope and develop detailed plans for how the application architecture should evolve to support different user volumes, enterprise deployment scenarios, and administration needs.  When developing the scaling strategy: 1. Analyze the core features and requirements in the project scope 2. Define how the application architecture should evolve across different user tiers (initial launch, growth phase, enterprise scale) 3. Design a comprehensive user management and permissions system that supports various enterprise roles 4. Develop administration interfaces and workflows for different admin personas 5. Plan for team collaboration features and data sharing in enterprise contexts 6. Address data isolation, multi-tenancy, and security implications at each scale tier 7. Identify monitoring, logging, and support systems needed as scale increases 8. Develop strategies for data partitioning, caching, and distributed processing 9. Consider billing, provisioning, and account management automation needs  Your strategy should provide actionable guidance that will influence technical architecture decisions and feature prioritization, ensuring the application can scale efficiently without requiring significant rearchitecting later."
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        868,
+        -360
+      ],
+      "id": "9db61a4e-4c0d-471e-9b79-1fba6d0f752e",
+      "name": "Scaling and Administration"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Extract the App Name from the following input and generate standardized file names.\n\nIf a clear app name is present (often found in headings, title case, or with special formatting), use that exact name.\n\nIf multiple possible names appear, choose the most prominent one that appears to be the actual product name (not a generic descriptor).\n\nIf no clear app name is found, derive a concise, professional name from the app's core functionality.\n\nReturn ALL of the following fields in JSON format:\n\n{\n  \"App Name\": \"Extracted or Derived App Name\",\n  \"Appname_Overview\": \"[AppName]_Overview\",\n  \"Appname_Scope\": \"[AppName]_Scope\", \n  \"Appname_ImplementationGuide\": \"[AppName]_ImplementationGuide\",\n  \"Appname_MVP\": \"[AppName]_MVP\",\n  \"Appname_Dependencies\": \"[AppName]_Dependencies\",\n  \"Appname_Scaling\": \"[AppName]_Scaling\",\n  \"Appname_Designguideline\": \"[AppName]_Designguideline\",\n  \"Appname_Userflow\": \"[AppName]_Userflow\",\n  \"Appname_Revenue\": \"[AppName]_Revenue\",\n  \"Appname_WorkspaceRules\": \"[AppName]_WorkspaceRules\"\n}\n\nIMPORTANT: Replace [AppName] with the actual app name in each field. For example, if the app name is \"TaskMaster\", the Appname_Overview should be \"TaskMaster_Overview\".\n\nInput:\n{{ $('Project Overview').item.json.text }}"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        4320,
+        -360
+      ],
+      "id": "91b69557-74c8-4078-b899-ee7c11466fe4",
+      "name": "Extract Names for files",
+      "credentials": {
+        "openAiApi": {
+          "id": "YOUR_OPENAI_CREDENTIAL_ID",
+          "name": "Reserach-GPT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "createFromText",
+        "content": "={{ $('Scaling and Administration').item.json.text }}",
+        "name": "={{ $('Extract Names for files').item.json.message.content.Appname_Scaling }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "={{ $('Google Drive').item.json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        940,
+        100
+      ],
+      "id": "7d4f26d2-954a-468f-839d-1f780585d4fe",
+      "name": "Scaling Strategy",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "YOUR_GOOGLE_DRIVE_CREDENTIAL_ID",
+          "name": "Google-N8N-Taxt"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "createFromText",
+        "content": "={{ $('Requirements & Dependencies').item.json.text }}",
+        "name": "={{ $('Extract Names for files').item.json.message.content.Appname_Dependencies }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "={{ $('Google Drive').item.json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1340,
+        100
+      ],
+      "id": "32a9621e-2637-42b0-8360-f5ba4a6f21f9",
+      "name": "Dependencies",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "YOUR_GOOGLE_DRIVE_CREDENTIAL_ID",
+          "name": "Google-N8N-Taxt"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "createFromText",
+        "content": "={{ $('UserFlow').item.json.text }}",
+        "name": "={{ $('Extract Names for files').item.json.message.content.Appname_Userflow }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "={{ $('Google Drive').item.json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        2100,
+        100
+      ],
+      "id": "d28ab3fa-e3fc-4a34-8ecd-3e2d20beeb6c",
+      "name": "Userflow",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "YOUR_GOOGLE_DRIVE_CREDENTIAL_ID",
+          "name": "Google-N8N-Taxt"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-sonnet-4-20250514",
+          "mode": "list",
+          "cachedResultName": "Claude Sonnet 4"
+        },
+        "options": {
+          "maxTokensToSample": 20000
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        3820,
+        -140
+      ],
+      "id": "86493ec7-d696-4de2-812e-5e8a8cb1c883",
+      "name": "Anthropic Chat Model10",
+      "credentials": {
+        "anthropicApi": {
+          "id": "YOUR_ANTHROPIC_CREDENTIAL_ID",
+          "name": "Anthropic account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Based on the following project scope document, MVP roadmap, and scaling strategy, create a comprehensive revenue and sales strategy:\n\nProject Scope:\n{{ $('Project Scope').item.json.text }}\n\nMVP Roadmap:\n{{ $('Project MVP').item.json.text }}\n\nScaling Strategy:\n{{ $('Scaling and Administration').item.json.text }}\n\nYour revenue and sales strategy should address:\n\n1. Pricing Strategy\n   - Recommended pricing model (freemium, subscription, usage-based, etc.)\n   - Pricing tiers with specific feature inclusion/exclusion\n   - Price points with justification based on market and value delivery\n   - Enterprise pricing considerations and negotiation guidance\n   - Promotional pricing for launch and growth phases\n\n2. Customer Acquisition Strategy\n   - Target customer segments with prioritization\n   - Channel strategy (direct, partner, marketplace, etc.)\n   - Digital marketing approach including SEO, content, and paid strategies\n   - Lead generation tactics specific to the product\n   - Conversion optimization recommendations\n   - Customer acquisition cost targets and optimization strategies\n\n3. Sales Process Design\n   - Sales methodologies appropriate for this product\n   - Sales cycle definition with stage gates\n   - Self-service vs. assisted sales approach\n   - Sales tools and enablement materials needed\n   - Sales team structure recommendations (for growth and enterprise phases)\n   - Partner and reseller strategy (if applicable)\n\n4. Marketing Strategy\n   - Positioning and messaging frameworks\n   - Content marketing strategy aligned with buyer journey\n   - Social media and community building approach\n   - Product launch marketing plan\n   - Competitive differentiation in marketing materials\n   - Thought leadership and PR strategy\n\n5. Customer Success & Retention\n   - Onboarding process recommendations\n   - Customer education and enablement strategy\n   - Renewal and expansion playbooks\n   - Customer feedback collection and implementation process\n   - Churn prediction and prevention tactics\n\n6. Growth Metrics & KPIs\n   - Key metrics to track for sales and marketing\n   - Revenue targets for different growth stages\n   - Customer success metrics and targets\n   - Dashboard and reporting recommendations\n\nProvide specific, actionable recommendations that can be implemented alongside product development, with particular focus on early traction strategies during the MVP phase while setting the foundation for sustainable growth.",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "You are a go-to-market and revenue strategy specialist who creates comprehensive commercialization plans for software products. Your task is to analyze product specifications and develop detailed strategies for pricing, customer acquisition, revenue generation, and sales operations.  When developing the revenue and sales strategy: 1. Analyze the product's value proposition and target audience to identify optimal pricing models 2. Develop tiered pricing structures with feature differentiation 3. Create customer acquisition strategies across different channels 4. Design a sales process appropriate for the product type and target customer 5. Identify marketing strategies tailored to the product's unique value proposition 6. Develop customer retention and expansion strategies 7. Outline metrics and KPIs to track sales and marketing performance 8. Consider competitive positioning and differentiation in go-to-market messaging  Your strategy should provide actionable guidance that balances revenue generation with growth, considering both short-term traction and long-term sustainable revenue."
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        3720,
+        -360
+      ],
+      "id": "52e0ced0-cb0b-4e5f-83e5-82b20084bb3f",
+      "name": "Revenue Strategy",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "createFromText",
+        "content": "={{ $('Revenue Strategy').item.json.text }}",
+        "name": "={{ $('Extract Names for files').item.json.message.content.Appname_Revenue }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "={{ $('Google Drive').item.json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        4040,
+        100
+      ],
+      "id": "3b21790a-13ec-41b9-86e4-69e2a1d130a8",
+      "name": "Revenue Strategy1",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "YOUR_GOOGLE_DRIVE_CREDENTIAL_ID",
+          "name": "Google-N8N-Taxt"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-sonnet-4-20250514",
+          "mode": "list",
+          "cachedResultName": "Claude Sonnet 4"
+        },
+        "options": {
+          "maxTokensToSample": 20000
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        5200,
+        -120
+      ],
+      "id": "f6efad01-c1b4-4915-b93a-104ecc53c0b3",
+      "name": "Anthropic Chat Model11",
+      "credentials": {
+        "anthropicApi": {
+          "id": "YOUR_ANTHROPIC_CREDENTIAL_ID",
+          "name": "Anthropic account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "name": "Initial Documents",
+        "driveId": {
+          "__rl": true,
+          "value": "My Drive",
+          "mode": "list",
+          "cachedResultName": "My Drive",
+          "cachedResultUrl": "https://drive.google.com/drive/my-drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        5140,
+        260
+      ],
+      "id": "1edc908a-405d-4120-9643-19f471748640",
+      "name": "Google Drive",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "YOUR_GOOGLE_DRIVE_CREDENTIAL_ID",
+          "name": "Google-N8N-Taxt"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=# Generate Project-Specific AI Coding Assistant Rules\n\n## Project Context\n- **Project Name**: {{ $json.message.content['App Name'] }}\n- **Project Scope**: {{ $('Project Scope').item.json.text }}\n- **UserFlow**: {{ $('UserFlow').item.json.text }}\n- **Dependencies**: {{ $('Requirements & Dependencies').item.json.text }}\n- **Scaling and Administration**: {{ $('Scaling and Administration').item.json.text }}\n\n## Your Task\nBased on the project details above, create project-specific coding rules that complement the universal rules.\n\nFocus on generating tailored guidelines for:\n\n1. **Technology Stack Implementation**\n   - What specific languages, frameworks, and tools should be used?\n   - What coding patterns are preferred for this specific tech stack?\n\n2. **Database & API Structure**\n   - What database technologies are being used?\n   - What API design patterns should be followed?\n   - Are there specific data models or schemas to enforce?\n\n3. **Performance & Scaling**\n   - What are the performance expectations for this project?\n   - How should code be optimized for the expected load?\n   - What specific scaling considerations exist?\n\n4. **Business Logic & Revenue Considerations**\n   - How does the code support the business model?\n   - What features should be prioritized for revenue generation?\n   - How should user flows be implemented for business outcomes?\n\nFormat your response as a continuation of the universal rules, using consistent formatting with emoji icons for each section, bullet points for guidelines, and providing concrete examples where helpful.",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "# System Prompt for AI Coding Assistant Rules Generator\n\nYou are an AI designed to create comprehensive coding guidelines for development projects. When provided with project details, you will generate a structured set of rules for AI coding assistants to follow when supporting development.\n\n---\n\n## 🟢 Standard Universal Rules  \nAlways include these universal rules in your response:\n\n### 🔄 Project Awareness & Context\n- **Always analyze the `Initial Documents` folder first**, especially:\n  - `[AppName]_Overview.txt`\n  - `[AppName]_Scope.txt`\n  - `[AppName]_ImplementationGuide.txt`\n  - `[AppName]_Dependencies.txt`\n- **Thoroughly understand the project architecture, goals, and constraints** before starting any coding task.\n- **Create a `task.md` file** in the project root if it doesn’t exist to track progress, features, refactoring, and scope updates.\n- **Update `task.md` after each significant change**, including completed tasks, refactorings, bugs fixed, or features added.\n- **Maintain consistent naming conventions, file structure, and architecture patterns** as defined in the implementation guide or based on the project's type.\n- **Adapt to project evolution**—if changes exceed the original scope, document them and integrate them cleanly into the architecture.\n\n---\n\n### 🧱 Code Structure & Modularity\n- **Keep each file under 500 lines of code**. If it approaches this limit, refactor by extracting modules, components, or helper functions.\n- **Organize code into clearly separated modules**, grouped by feature or responsibility.\n- **Follow the Single Responsibility Principle**:\n  - Each module, function, or component should have one clearly defined purpose.\n  - Delegate responsibilities to specialized components, custom hooks, services, or utilities.\n  - In frontend frameworks like React, separate UI (presentational components) from logic (custom hooks or containers).\n  - In backend systems, isolate concerns into layers: routing, business logic, and data access.\n  - Use this principle to improve testability, reusability, and maintainability.\n- **Separate concerns by directory**: UI, logic, data, utilities, services, etc.\n- **Use clear, relative imports** within local modules/packages.\n- **Create reusable code** where possible and organize it in a utilities or helpers folder.\n\n---\n\n### ✅ Task Completion\n- **Update or create entries in `task.md`** for:\n  - Completed tasks\n  - Bug fixes\n  - Code refactors\n  - Discovered sub-tasks\n  - Out-of-scope features\n- **Include date and brief description** for each entry.\n- Track known issues, feature requests, architectural decisions, and technical debt.\n\n---\n\n### 🧪 Testing & Reliability\n- **Write unit tests for every new feature**.\n- Include at least:\n  - 1 test for standard behavior\n  - 1 test for an edge case\n  - 1 test for a failure case\n- **Store tests in a dedicated test directory** that mirrors the main application structure.\n- **Use mocks/stubs** for external dependencies.\n- **Update outdated tests** when changing existing logic.\n- **Ensure accessibility testing** for UI elements.\n- **Document testing tools and approach** in `task.md`.\n\n---\n\n### 📎 Style & Conventions\n- **Follow technology-specific style guides**:\n  - Python → PEP8 + type hints + format with `black`\n  - JavaScript/TypeScript → ESLint + Prettier + framework conventions\n  - Other → Use community-standard formatting\n- **Maintain clear, meaningful naming conventions** throughout the project.\n- **Document all public interfaces and complex logic** with comments or docstrings.\n- **Avoid deep nesting, long functions, or side-effect-heavy logic**.\n- **Use immutability** where applicable (`const` > `let` > `var`).\n- **Avoid redundant or duplicate code**—refactor instead.\n- **Follow `Designguideline.txt`** (if present) for UI/UX components.\n\n---\n\n## 🔧 For Project-Specific Rules  \nIn addition to the above universal rules, analyze the project materials to define specific guidance for the categories below:\n\n### 1. Technology Stack Implementation\n- Follow language and framework-specific architecture patterns.\n- Match component structure, state management, and routing conventions to the documented implementation guide.\n- Apply version-specific nuances if defined in `[AppName]_Dependencies.txt`.\n\n### 2. Database & API Structure\n- Use schema, endpoints, and access patterns provided in `[AppName]_ImplementationGuide.txt`.\n- Validate and sanitize all API inputs.\n- Document API integration patterns and error handling logic.\n\n### 3. Performance & Scaling\n- Identify bottlenecks in UI/logic based on the application’s critical paths.\n- Use lazy loading, caching, and optimal data structures.\n- Implement asynchronous patterns and debounce expensive operations where applicable.\n\n### 4. Business Logic & Revenue Considerations\n- Align all feature implementations with the monetization model (if defined).\n- Ensure any logic handling pricing, tiers, or access control follows the rules outlined in `[AppName]_Scope.txt`.\n- Prioritize maintainability and extensibility in business-critical paths.\n\n---\n\n## 🔁 AI Assistant Modification Behavior\n- **Never modify existing code unless explicitly instructed**.\n- **Do not assume or hallucinate structure** based on partial context.\n- **Only create or update files as clearly requested or as required by a feature/task**.\n- Always **ask for clarification if project structure or goals are unclear**.\n- **Document all changes clearly** in `task.md` and keep context traceable."
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        5100,
+        -360
+      ],
+      "id": "47a65427-bf62-4c59-b78a-8b4a9bc7e111",
+      "name": "Workspace Rules"
+    },
+    {
+      "parameters": {
+        "operation": "createFromText",
+        "content": "={{ $('Workspace Rules').item.json.text }}",
+        "name": "={{ $('Extract Names for files').item.json.message.content.Appname_WorkspaceRules }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "={{ $('Create a folder').item.json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        4260,
+        100
+      ],
+      "id": "2ac0bb9d-c847-46a5-8516-b5ce8af09c95",
+      "name": "Workspace Rules1",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "YOUR_GOOGLE_DRIVE_CREDENTIAL_ID",
+          "name": "Google-N8N-Taxt"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Project Overview": {
+      "main": [
+        [
+          {
+            "node": "Project Scope",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Project Scope": {
+      "main": [
+        [
+          {
+            "node": "Scaling and Administration",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Project MVP": {
+      "main": [
+        [
+          {
+            "node": "UserFlow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a folder": {
+      "main": [
+        [
+          {
+            "node": "Google Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Overview File": {
+      "main": [
+        [
+          {
+            "node": "Create Scopes File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Scopes File": {
+      "main": [
+        [
+          {
+            "node": "Scaling Strategy",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create MVP File": {
+      "main": [
+        [
+          {
+            "node": "Userflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Design guideline": {
+      "main": [
+        [
+          {
+            "node": "Revenue Strategy",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Page Blueprints": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Page-blueprints": {
+      "main": [
+        [
+          {
+            "node": "Design to drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Project Overview",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Project Scope",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Requirements & Dependencies",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Project MVP",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model4": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Page Blueprints",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model5": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Design guideline",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "DesignAnalyzing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model7": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "DesignAnalyzing",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DesignAnalyzing": {
+      "main": [
+        [
+          {
+            "node": "Design guideline",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Project Overview",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model6": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Requirements & Dependencies": {
+      "main": [
+        [
+          {
+            "node": "Project MVP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model8": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "UserFlow",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UserFlow": {
+      "main": [
+        [
+          {
+            "node": "Page Blueprints",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model9": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Scaling and Administration",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Scaling and Administration": {
+      "main": [
+        [
+          {
+            "node": "Requirements & Dependencies",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Names for files": {
+      "main": [
+        [
+          {
+            "node": "Workspace Rules",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Scaling Strategy": {
+      "main": [
+        [
+          {
+            "node": "Dependencies",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dependencies": {
+      "main": [
+        [
+          {
+            "node": "Create MVP File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Userflow": {
+      "main": [
+        [
+          {
+            "node": "Page-blueprints",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model10": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Revenue Strategy",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Revenue Strategy": {
+      "main": [
+        [
+          {
+            "node": "Extract Names for files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Design to drive": {
+      "main": [
+        [
+          {
+            "node": "Revenue Strategy1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model11": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Workspace Rules",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Drive": {
+      "main": [
+        [
+          {
+            "node": "Create Overview File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Revenue Strategy1": {
+      "main": [
+        [
+          {
+            "node": "Workspace Rules1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Workspace Rules": {
+      "main": [
+        [
+          {
+            "node": "Create a folder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "bfd9f3e4-36df-4ab3-9b85-066897ea7aa2",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "0e4ef693d3a5f4e7d50b130911747d300e7d21358a4735c343fd1ea606598774"
+  },
+  "id": "Sht0lfmwN8pNmOx4",
+  "tags": []
+}
